@@ -1,0 +1,27 @@
+# Local runtime and credentials
+__pycache__/
+*.pyc
+*.log
+data/
+outputs/
+.env
+.env.*
+*.dpapi
+*.sqlite3*
+*.bak
+# Keep raw captures locally; commit only reviewed app screenshots.
+*.png
+*.jpg
+*.jpeg
+# Evidence allowlist: simulated data and current checks only.
+evidence/*
+!evidence/*.md
+!evidence/continuous-browser-scene.json
+!evidence/continuous-comparison.json
+!evidence/continuous-comparison-audit.json
+!evidence/continuous-http-verification.json
+!evidence/continuous-restart.json
+!evidence/ai-live-samples.json
+!evidence/tests-0.7-comparison.txt
+!evidence/continuous-comparison-browser.jpg
+!evidence/continuous-p3-browser.jpg

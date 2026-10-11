@@ -1,0 +1,2329 @@
+{
+  "id": "66ef3729ab6646f7aad758ea479eb18e",
+  "revision": 6,
+  "clock": 506,
+  "active": 3,
+  "candidate": null,
+  "versions": [
+    {
+      "id": 1,
+      "status": "executed",
+      "plan": {
+        "data": {
+          "simulated": true,
+          "depot": [
+            0,
+            0
+          ],
+          "vehicles": [
+            {
+              "id": "V1",
+              "max_weight_kg": 1000,
+              "max_volume_m3": 4.8,
+              "fixed_cost": 30,
+              "cost_per_km": 2
+            },
+            {
+              "id": "V2",
+              "max_weight_kg": 800,
+              "max_volume_m3": 3.8,
+              "fixed_cost": 25,
+              "cost_per_km": 1.8
+            },
+            {
+              "id": "V3",
+              "max_weight_kg": 1200,
+              "max_volume_m3": 5,
+              "fixed_cost": 35,
+              "cost_per_km": 2.2
+            }
+          ],
+          "orders": [
+            {
+              "id": "S01",
+              "point": [
+                2,
+                1
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 510,
+              "close": 690,
+              "sku": "SKU-S01",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S02",
+              "point": [
+                4,
+                2
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 520,
+              "close": 690,
+              "sku": "SKU-S02",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S03",
+              "point": [
+                6,
+                1
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 530,
+              "close": 690,
+              "sku": "SKU-S03",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S04",
+              "point": [
+                8,
+                3
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 545,
+              "close": 690,
+              "sku": "SKU-S04",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S05",
+              "point": [
+                -2,
+                2
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 510,
+              "close": 690,
+              "sku": "SKU-S05",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S06",
+              "point": [
+                -4,
+                3
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 520,
+              "close": 690,
+              "sku": "SKU-S06",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S07",
+              "point": [
+                -6,
+                2
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 530,
+              "close": 690,
+              "sku": "SKU-S07",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S08",
+              "point": [
+                -8,
+                4
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 545,
+              "close": 690,
+              "sku": "SKU-S08",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S09",
+              "point": [
+                1,
+                -2
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 510,
+              "close": 690,
+              "sku": "SKU-S09",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S10",
+              "point": [
+                2,
+                -4
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 520,
+              "close": 690,
+              "sku": "SKU-S10",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S11",
+              "point": [
+                1,
+                -6
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 530,
+              "close": 690,
+              "sku": "SKU-S11",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S12",
+              "point": [
+                3,
+                -8
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 545,
+              "close": 690,
+              "sku": "SKU-S12",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            }
+          ]
+        },
+        "routes": {
+          "V1": {
+            "sequence": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ],
+            "stops": [
+              {
+                "id": "S05",
+                "arrival": 485.6569,
+                "finish": 490.6569,
+                "point": [
+                  -2,
+                  2
+                ]
+              },
+              {
+                "id": "S06",
+                "arrival": 495.129,
+                "finish": 500.129,
+                "point": [
+                  -4,
+                  3
+                ]
+              },
+              {
+                "id": "S08",
+                "arrival": 508.3752,
+                "finish": 513.3752,
+                "point": [
+                  -8,
+                  4
+                ]
+              },
+              {
+                "id": "S07",
+                "arrival": 519.0321,
+                "finish": 524.0321,
+                "point": [
+                  -6,
+                  2
+                ]
+              }
+            ],
+            "weight_kg": 480,
+            "volume_m3": 3.2,
+            "distance": 18.3406,
+            "return_at": 536.6812,
+            "cost": 66.6812,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "anchor": {
+              "point": [
+                0,
+                0
+              ],
+              "available": 480,
+              "traveled": 0,
+              "cargo": [
+                "S05",
+                "S06",
+                "S08",
+                "S07"
+              ],
+              "completed": [],
+              "remaining": [
+                "S05",
+                "S06",
+                "S08",
+                "S07"
+              ],
+              "weight_kg": 480,
+              "volume_m3": 3.2
+            }
+          },
+          "V2": {
+            "sequence": [
+              "S01",
+              "S02",
+              "S04",
+              "S03"
+            ],
+            "stops": [
+              {
+                "id": "S01",
+                "arrival": 484.4721,
+                "finish": 489.4721,
+                "point": [
+                  2,
+                  1
+                ]
+              },
+              {
+                "id": "S02",
+                "arrival": 493.9443,
+                "finish": 498.9443,
+                "point": [
+                  4,
+                  2
+                ]
+              },
+              {
+                "id": "S04",
+                "arrival": 507.1905,
+                "finish": 512.1905,
+                "point": [
+                  8,
+                  3
+                ]
+              },
+              {
+                "id": "S03",
+                "arrival": 517.8473,
+                "finish": 522.8473,
+                "point": [
+                  6,
+                  1
+                ]
+              }
+            ],
+            "weight_kg": 480,
+            "volume_m3": 3.2,
+            "distance": 17.5064,
+            "return_at": 535.0129,
+            "cost": 56.5116,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "anchor": {
+              "point": [
+                0,
+                0
+              ],
+              "available": 480,
+              "traveled": 0,
+              "cargo": [
+                "S01",
+                "S02",
+                "S04",
+                "S03"
+              ],
+              "completed": [],
+              "remaining": [
+                "S01",
+                "S02",
+                "S04",
+                "S03"
+              ],
+              "weight_kg": 480,
+              "volume_m3": 3.2
+            }
+          },
+          "V3": {
+            "sequence": [
+              "S09",
+              "S10",
+              "S12",
+              "S11"
+            ],
+            "stops": [
+              {
+                "id": "S09",
+                "arrival": 484.4721,
+                "finish": 489.4721,
+                "point": [
+                  1,
+                  -2
+                ]
+              },
+              {
+                "id": "S10",
+                "arrival": 493.9443,
+                "finish": 498.9443,
+                "point": [
+                  2,
+                  -4
+                ]
+              },
+              {
+                "id": "S12",
+                "arrival": 507.1905,
+                "finish": 512.1905,
+                "point": [
+                  3,
+                  -8
+                ]
+              },
+              {
+                "id": "S11",
+                "arrival": 517.8473,
+                "finish": 522.8473,
+                "point": [
+                  1,
+                  -6
+                ]
+              }
+            ],
+            "weight_kg": 480,
+            "volume_m3": 3.2,
+            "distance": 17.5064,
+            "return_at": 535.0129,
+            "cost": 73.5141,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "anchor": {
+              "point": [
+                0,
+                0
+              ],
+              "available": 480,
+              "traveled": 0,
+              "cargo": [
+                "S09",
+                "S10",
+                "S12",
+                "S11"
+              ],
+              "completed": [],
+              "remaining": [
+                "S09",
+                "S10",
+                "S12",
+                "S11"
+              ],
+              "weight_kg": 480,
+              "volume_m3": 3.2
+            }
+          }
+        },
+        "unserved": [],
+        "simulated": true,
+        "method": "多起点插入 + 单订单移位，启发式求解，无全局最优保证",
+        "metrics": {
+          "served": 12,
+          "unserved": 0,
+          "late_orders": 0,
+          "late_minutes": 0,
+          "cost": 196.71,
+          "distance": 53.35
+        },
+        "solve_ms": 207.247
+      },
+      "executed_until": 505
+    },
+    {
+      "id": 2,
+      "status": "executed",
+      "base": 1,
+      "time": 505,
+      "plan": {
+        "routes": {
+          "V1": {
+            "sequence": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ],
+            "stops": [
+              {
+                "id": "S05",
+                "arrival": 485.6569,
+                "finish": 490.6569,
+                "point": [
+                  -2,
+                  2
+                ]
+              },
+              {
+                "id": "S06",
+                "arrival": 495.129,
+                "finish": 500.129,
+                "point": [
+                  -4,
+                  3
+                ]
+              },
+              {
+                "id": "S08",
+                "point": [
+                  -8,
+                  4
+                ],
+                "arrival": 508.3752,
+                "finish": 513.3752,
+                "weight_kg": 120,
+                "volume_m3": 0.8
+              },
+              {
+                "id": "S07",
+                "point": [
+                  -6,
+                  2
+                ],
+                "arrival": 519.0321,
+                "finish": 524.0321,
+                "weight_kg": 0,
+                "volume_m3": 0.0
+              }
+            ],
+            "distance": 18.3406,
+            "cost": 66.6812,
+            "position": [
+              -6.362782059103946,
+              3.5906955147759865
+            ],
+            "peak_weight_kg": 240,
+            "peak_volume_m3": 1.6,
+            "return_at": 536.6811761414012,
+            "anchor": {
+              "point": [
+                -6.362782059103946,
+                3.5906955147759865
+              ],
+              "available": 505,
+              "traveled": 7.499995102245969,
+              "cargo": [
+                "S07",
+                "S08"
+              ],
+              "completed": [
+                {
+                  "id": "S05",
+                  "arrival": 485.6569,
+                  "finish": 490.6569,
+                  "point": [
+                    -2,
+                    2
+                  ]
+                },
+                {
+                  "id": "S06",
+                  "arrival": 495.129,
+                  "finish": 500.129,
+                  "point": [
+                    -4,
+                    3
+                  ]
+                }
+              ],
+              "remaining": [
+                "S08",
+                "S07"
+              ],
+              "weight_kg": 240,
+              "volume_m3": 1.6
+            }
+          },
+          "V2": {
+            "sequence": [
+              "S01",
+              "S02",
+              "S04",
+              "S03",
+              "W",
+              "E01"
+            ],
+            "stops": [
+              {
+                "id": "S01",
+                "arrival": 484.4721,
+                "finish": 489.4721,
+                "point": [
+                  2,
+                  1
+                ]
+              },
+              {
+                "id": "S02",
+                "arrival": 493.9443,
+                "finish": 498.9443,
+                "point": [
+                  4,
+                  2
+                ]
+              },
+              {
+                "id": "S04",
+                "point": [
+                  8,
+                  3
+                ],
+                "arrival": 507.1905,
+                "finish": 512.1905,
+                "weight_kg": 120,
+                "volume_m3": 0.8
+              },
+              {
+                "id": "S03",
+                "point": [
+                  6,
+                  1
+                ],
+                "arrival": 517.8474,
+                "finish": 522.8474,
+                "weight_kg": 0,
+                "volume_m3": 0.0
+              },
+              {
+                "id": "W",
+                "point": [
+                  0,
+                  0
+                ],
+                "arrival": 535.0129,
+                "finish": 543.0129,
+                "weight_kg": 120,
+                "volume_m3": 0.8,
+                "load_ids": [
+                  "E01"
+                ]
+              },
+              {
+                "id": "E01",
+                "point": [
+                  -6,
+                  2
+                ],
+                "arrival": 555.662,
+                "finish": 560.662,
+                "weight_kg": 0,
+                "volume_m3": 0.0
+              }
+            ],
+            "distance": 30.1555,
+            "cost": 79.28,
+            "position": [
+              6.937445969065044,
+              2.734361492266261
+            ],
+            "peak_weight_kg": 240,
+            "peak_volume_m3": 1.6,
+            "return_at": 573.3111118426712,
+            "anchor": {
+              "point": [
+                6.937445969065044,
+                2.734361492266261
+              ],
+              "available": 505,
+              "traveled": 7.49998595499958,
+              "cargo": [
+                "S03",
+                "S04"
+              ],
+              "completed": [
+                {
+                  "id": "S01",
+                  "arrival": 484.4721,
+                  "finish": 489.4721,
+                  "point": [
+                    2,
+                    1
+                  ]
+                },
+                {
+                  "id": "S02",
+                  "arrival": 493.9443,
+                  "finish": 498.9443,
+                  "point": [
+                    4,
+                    2
+                  ]
+                }
+              ],
+              "remaining": [
+                "S04",
+                "S03"
+              ],
+              "weight_kg": 240,
+              "volume_m3": 1.6
+            }
+          },
+          "V3": {
+            "sequence": [
+              "S09",
+              "S10",
+              "S12",
+              "S11"
+            ],
+            "stops": [
+              {
+                "id": "S09",
+                "arrival": 484.4721,
+                "finish": 489.4721,
+                "point": [
+                  1,
+                  -2
+                ]
+              },
+              {
+                "id": "S10",
+                "arrival": 493.9443,
+                "finish": 498.9443,
+                "point": [
+                  2,
+                  -4
+                ]
+              },
+              {
+                "id": "S12",
+                "point": [
+                  3,
+                  -8
+                ],
+                "arrival": 507.1905,
+                "finish": 512.1905,
+                "weight_kg": 120,
+                "volume_m3": 0.8
+              },
+              {
+                "id": "S11",
+                "point": [
+                  1,
+                  -6
+                ],
+                "arrival": 517.8474,
+                "finish": 522.8474,
+                "weight_kg": 0,
+                "volume_m3": 0.0
+              }
+            ],
+            "distance": 17.5064,
+            "cost": 73.5141,
+            "position": [
+              2.734361492266261,
+              -6.937445969065044
+            ],
+            "peak_weight_kg": 240,
+            "peak_volume_m3": 1.6,
+            "return_at": 535.0128905613242,
+            "anchor": {
+              "point": [
+                2.734361492266261,
+                -6.937445969065044
+              ],
+              "available": 505,
+              "traveled": 7.49998595499958,
+              "cargo": [
+                "S11",
+                "S12"
+              ],
+              "completed": [
+                {
+                  "id": "S09",
+                  "arrival": 484.4721,
+                  "finish": 489.4721,
+                  "point": [
+                    1,
+                    -2
+                  ]
+                },
+                {
+                  "id": "S10",
+                  "arrival": 493.9443,
+                  "finish": 498.9443,
+                  "point": [
+                    2,
+                    -4
+                  ]
+                }
+              ],
+              "remaining": [
+                "S12",
+                "S11"
+              ],
+              "weight_kg": 240,
+              "volume_m3": 1.6
+            }
+          }
+        },
+        "unserved_ids": [],
+        "metrics": {
+          "served": 13,
+          "unserved": 0,
+          "late_orders": 1,
+          "late_minutes": 15.66,
+          "cost": 219.48,
+          "distance": 66.0,
+          "changed_orders": 0,
+          "changed_ids": [],
+          "new_orders_served": 1
+        },
+        "status": "候选试算，未采用或派单",
+        "solve_ms": 8.844,
+        "checked_routes": 66,
+        "method": "回仓及新单插入 + 原车内有限单节点移位",
+        "data": {
+          "simulated": true,
+          "depot": [
+            0,
+            0
+          ],
+          "vehicles": [
+            {
+              "id": "V1",
+              "max_weight_kg": 1000,
+              "max_volume_m3": 4.8,
+              "fixed_cost": 30,
+              "cost_per_km": 2
+            },
+            {
+              "id": "V2",
+              "max_weight_kg": 800,
+              "max_volume_m3": 3.8,
+              "fixed_cost": 25,
+              "cost_per_km": 1.8
+            },
+            {
+              "id": "V3",
+              "max_weight_kg": 1200,
+              "max_volume_m3": 5,
+              "fixed_cost": 35,
+              "cost_per_km": 2.2
+            }
+          ],
+          "orders": [
+            {
+              "id": "S01",
+              "point": [
+                2,
+                1
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 510,
+              "close": 690,
+              "sku": "SKU-S01",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S02",
+              "point": [
+                4,
+                2
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 520,
+              "close": 690,
+              "sku": "SKU-S02",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S03",
+              "point": [
+                6,
+                1
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 530,
+              "close": 690,
+              "sku": "SKU-S03",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S04",
+              "point": [
+                8,
+                3
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 545,
+              "close": 690,
+              "sku": "SKU-S04",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S05",
+              "point": [
+                -2,
+                2
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 510,
+              "close": 690,
+              "sku": "SKU-S05",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S06",
+              "point": [
+                -4,
+                3
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 520,
+              "close": 690,
+              "sku": "SKU-S06",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S07",
+              "point": [
+                -6,
+                2
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 530,
+              "close": 690,
+              "sku": "SKU-S07",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S08",
+              "point": [
+                -8,
+                4
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 545,
+              "close": 690,
+              "sku": "SKU-S08",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S09",
+              "point": [
+                1,
+                -2
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 510,
+              "close": 690,
+              "sku": "SKU-S09",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S10",
+              "point": [
+                2,
+                -4
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 520,
+              "close": 690,
+              "sku": "SKU-S10",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S11",
+              "point": [
+                1,
+                -6
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 530,
+              "close": 690,
+              "sku": "SKU-S11",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S12",
+              "point": [
+                3,
+                -8
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 545,
+              "close": 690,
+              "sku": "SKU-S12",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "E01",
+              "store": "S07",
+              "sku": "SKU-S07",
+              "point": [
+                -6,
+                2
+              ],
+              "quantity": 10,
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08,
+              "open": 505,
+              "due": 540,
+              "close": 690
+            }
+          ]
+        }
+      },
+      "states": {
+        "V1": {
+          "point": [
+            -6.362782059103946,
+            3.5906955147759865
+          ],
+          "available": 505,
+          "traveled": 7.499995102245969,
+          "cargo": [
+            "S07",
+            "S08"
+          ],
+          "completed": [
+            {
+              "id": "S05",
+              "arrival": 485.6569,
+              "finish": 490.6569,
+              "point": [
+                -2,
+                2
+              ]
+            },
+            {
+              "id": "S06",
+              "arrival": 495.129,
+              "finish": 500.129,
+              "point": [
+                -4,
+                3
+              ]
+            }
+          ],
+          "remaining": [
+            "S08",
+            "S07"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        },
+        "V2": {
+          "point": [
+            6.937445969065044,
+            2.734361492266261
+          ],
+          "available": 505,
+          "traveled": 7.49998595499958,
+          "cargo": [
+            "S03",
+            "S04"
+          ],
+          "completed": [
+            {
+              "id": "S01",
+              "arrival": 484.4721,
+              "finish": 489.4721,
+              "point": [
+                2,
+                1
+              ]
+            },
+            {
+              "id": "S02",
+              "arrival": 493.9443,
+              "finish": 498.9443,
+              "point": [
+                4,
+                2
+              ]
+            }
+          ],
+          "remaining": [
+            "S04",
+            "S03"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        },
+        "V3": {
+          "point": [
+            2.734361492266261,
+            -6.937445969065044
+          ],
+          "available": 505,
+          "traveled": 7.49998595499958,
+          "cargo": [
+            "S11",
+            "S12"
+          ],
+          "completed": [
+            {
+              "id": "S09",
+              "arrival": 484.4721,
+              "finish": 489.4721,
+              "point": [
+                1,
+                -2
+              ]
+            },
+            {
+              "id": "S10",
+              "arrival": 493.9443,
+              "finish": 498.9443,
+              "point": [
+                2,
+                -4
+              ]
+            }
+          ],
+          "remaining": [
+            "S12",
+            "S11"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        }
+      },
+      "executed_until": 506
+    },
+    {
+      "id": 3,
+      "status": "adopted",
+      "base": 2,
+      "time": 506,
+      "plan": {
+        "routes": {
+          "V1": {
+            "sequence": [
+              "S05",
+              "S06",
+              "S07",
+              "S08"
+            ],
+            "stops": [
+              {
+                "id": "S05",
+                "arrival": 485.6569,
+                "finish": 490.6569,
+                "point": [
+                  -2,
+                  2
+                ]
+              },
+              {
+                "id": "S06",
+                "arrival": 495.129,
+                "finish": 500.129,
+                "point": [
+                  -4,
+                  3
+                ]
+              },
+              {
+                "id": "S07",
+                "point": [
+                  -6,
+                  2
+                ],
+                "arrival": 509.8208,
+                "finish": 514.8208,
+                "weight_kg": 120,
+                "volume_m3": 0.8
+              },
+              {
+                "id": "S08",
+                "point": [
+                  -8,
+                  4
+                ],
+                "arrival": 555,
+                "finish": 560,
+                "weight_kg": 0,
+                "volume_m3": 0
+              }
+            ],
+            "anchor": {
+              "point": [
+                -6.847853309176612,
+                3.711963327294153
+              ],
+              "available": 506,
+              "traveled": 7.999995102245969,
+              "cargo": [
+                "S07",
+                "S08"
+              ],
+              "completed": [
+                {
+                  "id": "S05",
+                  "arrival": 485.6569,
+                  "finish": 490.6569,
+                  "point": [
+                    -2,
+                    2
+                  ]
+                },
+                {
+                  "id": "S06",
+                  "arrival": 495.129,
+                  "finish": 500.129,
+                  "point": [
+                    -4,
+                    3
+                  ]
+                }
+              ],
+              "remaining": [
+                "S08",
+                "S07"
+              ],
+              "weight_kg": 240,
+              "volume_m3": 1.6
+            },
+            "distance": 21.683106047517892,
+            "cost": 73.36621209503579,
+            "return_at": 577.8885438199983,
+            "peak_weight_kg": 240,
+            "peak_volume_m3": 1.6,
+            "retained_ids": []
+          },
+          "V2": {
+            "sequence": [
+              "S01",
+              "S02",
+              "S04",
+              "S03",
+              "W",
+              "E01"
+            ],
+            "stops": [
+              {
+                "id": "S01",
+                "arrival": 484.4721,
+                "finish": 489.4721,
+                "point": [
+                  2,
+                  1
+                ]
+              },
+              {
+                "id": "S02",
+                "arrival": 493.9443,
+                "finish": 498.9443,
+                "point": [
+                  4,
+                  2
+                ]
+              },
+              {
+                "id": "S04",
+                "point": [
+                  8,
+                  3
+                ],
+                "arrival": 507.1905,
+                "finish": 512.1905,
+                "weight_kg": 120,
+                "volume_m3": 0.8
+              },
+              {
+                "id": "S03",
+                "point": [
+                  6,
+                  1
+                ],
+                "arrival": 517.8474,
+                "finish": 522.8474,
+                "weight_kg": 0,
+                "volume_m3": 0
+              },
+              {
+                "id": "W",
+                "point": [
+                  0,
+                  0
+                ],
+                "arrival": 535.0129,
+                "finish": 543.0129,
+                "weight_kg": 120,
+                "volume_m3": 0.8,
+                "load_ids": [
+                  "E01"
+                ]
+              },
+              {
+                "id": "E01",
+                "point": [
+                  -6,
+                  2
+                ],
+                "arrival": 555.662,
+                "finish": 560.662,
+                "weight_kg": 0,
+                "volume_m3": 0
+              }
+            ],
+            "anchor": {
+              "point": [
+                7.42251721913771,
+                2.8556293047844274
+              ],
+              "available": 506,
+              "traveled": 7.99998595499958,
+              "cargo": [
+                "S03",
+                "S04"
+              ],
+              "completed": [
+                {
+                  "id": "S01",
+                  "arrival": 484.4721,
+                  "finish": 489.4721,
+                  "point": [
+                    2,
+                    1
+                  ]
+                },
+                {
+                  "id": "S02",
+                  "arrival": 493.9443,
+                  "finish": 498.9443,
+                  "point": [
+                    4,
+                    2
+                  ]
+                }
+              ],
+              "remaining": [
+                "S04",
+                "S03",
+                "W",
+                "E01"
+              ],
+              "weight_kg": 240,
+              "volume_m3": 1.6
+            },
+            "distance": 30.155541876335167,
+            "cost": 79.2799753774033,
+            "return_at": 573.3111118426712,
+            "peak_weight_kg": 240,
+            "peak_volume_m3": 1.6,
+            "retained_ids": []
+          },
+          "V3": {
+            "sequence": [
+              "S09",
+              "S10",
+              "S12",
+              "S11"
+            ],
+            "stops": [
+              {
+                "id": "S09",
+                "arrival": 484.4721,
+                "finish": 489.4721,
+                "point": [
+                  1,
+                  -2
+                ]
+              },
+              {
+                "id": "S10",
+                "arrival": 493.9443,
+                "finish": 498.9443,
+                "point": [
+                  2,
+                  -4
+                ]
+              },
+              {
+                "id": "S12",
+                "point": [
+                  3,
+                  -8
+                ],
+                "arrival": 507.1905,
+                "finish": 512.1905,
+                "weight_kg": 120,
+                "volume_m3": 0.8
+              },
+              {
+                "id": "S11",
+                "point": [
+                  1,
+                  -6
+                ],
+                "arrival": 517.8474,
+                "finish": 522.8474,
+                "weight_kg": 0,
+                "volume_m3": 0
+              }
+            ],
+            "anchor": {
+              "point": [
+                2.8556293047844274,
+                -7.42251721913771
+              ],
+              "available": 506,
+              "traveled": 7.99998595499958,
+              "cargo": [
+                "S11",
+                "S12"
+              ],
+              "completed": [
+                {
+                  "id": "S09",
+                  "arrival": 484.4721,
+                  "finish": 489.4721,
+                  "point": [
+                    1,
+                    -2
+                  ]
+                },
+                {
+                  "id": "S10",
+                  "arrival": 493.9443,
+                  "finish": 498.9443,
+                  "point": [
+                    2,
+                    -4
+                  ]
+                }
+              ],
+              "remaining": [
+                "S12",
+                "S11"
+              ],
+              "weight_kg": 240,
+              "volume_m3": 1.6
+            },
+            "distance": 17.50643123566165,
+            "cost": 73.51414871845563,
+            "return_at": 535.0128905613242,
+            "peak_weight_kg": 240,
+            "peak_volume_m3": 1.6,
+            "retained_ids": []
+          }
+        },
+        "unserved_ids": [],
+        "metrics": {
+          "served": 13,
+          "unserved": 0,
+          "late_orders": 1,
+          "late_minutes": 15.66,
+          "cost": 226.16,
+          "changed_orders": 2,
+          "changed_ids": [
+            "S07",
+            "S08"
+          ]
+        },
+        "status": "候选试算，未采用或派单",
+        "solve_ms": 6.633,
+        "checked_routes": 3,
+        "method": "回仓及新单插入 + 原车内有限单节点移位",
+        "data": {
+          "simulated": true,
+          "depot": [
+            0,
+            0
+          ],
+          "vehicles": [
+            {
+              "id": "V1",
+              "max_weight_kg": 1000,
+              "max_volume_m3": 4.8,
+              "fixed_cost": 30,
+              "cost_per_km": 2
+            },
+            {
+              "id": "V2",
+              "max_weight_kg": 800,
+              "max_volume_m3": 3.8,
+              "fixed_cost": 25,
+              "cost_per_km": 1.8
+            },
+            {
+              "id": "V3",
+              "max_weight_kg": 1200,
+              "max_volume_m3": 5,
+              "fixed_cost": 35,
+              "cost_per_km": 2.2
+            }
+          ],
+          "orders": [
+            {
+              "id": "S01",
+              "point": [
+                2,
+                1
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 510,
+              "close": 690,
+              "sku": "SKU-S01",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S02",
+              "point": [
+                4,
+                2
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 520,
+              "close": 690,
+              "sku": "SKU-S02",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S03",
+              "point": [
+                6,
+                1
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 530,
+              "close": 690,
+              "sku": "SKU-S03",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S04",
+              "point": [
+                8,
+                3
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 545,
+              "close": 690,
+              "sku": "SKU-S04",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S05",
+              "point": [
+                -2,
+                2
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 510,
+              "close": 690,
+              "sku": "SKU-S05",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S06",
+              "point": [
+                -4,
+                3
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 520,
+              "close": 690,
+              "sku": "SKU-S06",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S07",
+              "point": [
+                -6,
+                2
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 530,
+              "close": 690,
+              "sku": "SKU-S07",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S08",
+              "point": [
+                -8,
+                4
+              ],
+              "quantity": 10,
+              "open": 555,
+              "due": 570,
+              "close": 690,
+              "sku": "SKU-S08",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S09",
+              "point": [
+                1,
+                -2
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 510,
+              "close": 690,
+              "sku": "SKU-S09",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S10",
+              "point": [
+                2,
+                -4
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 520,
+              "close": 690,
+              "sku": "SKU-S10",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S11",
+              "point": [
+                1,
+                -6
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 530,
+              "close": 690,
+              "sku": "SKU-S11",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "S12",
+              "point": [
+                3,
+                -8
+              ],
+              "quantity": 10,
+              "open": 480,
+              "due": 545,
+              "close": 690,
+              "sku": "SKU-S12",
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08
+            },
+            {
+              "id": "E01",
+              "store": "S07",
+              "sku": "SKU-S07",
+              "point": [
+                -6,
+                2
+              ],
+              "quantity": 10,
+              "unit_weight_kg": 12,
+              "unit_volume_m3": 0.08,
+              "open": 505,
+              "due": 540,
+              "close": 690
+            }
+          ]
+        }
+      },
+      "states": {
+        "V1": {
+          "point": [
+            -6.847853309176612,
+            3.711963327294153
+          ],
+          "available": 506,
+          "traveled": 7.999995102245969,
+          "cargo": [
+            "S07",
+            "S08"
+          ],
+          "completed": [
+            {
+              "id": "S05",
+              "arrival": 485.6569,
+              "finish": 490.6569,
+              "point": [
+                -2,
+                2
+              ]
+            },
+            {
+              "id": "S06",
+              "arrival": 495.129,
+              "finish": 500.129,
+              "point": [
+                -4,
+                3
+              ]
+            }
+          ],
+          "remaining": [
+            "S08",
+            "S07"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        },
+        "V2": {
+          "point": [
+            7.42251721913771,
+            2.8556293047844274
+          ],
+          "available": 506,
+          "traveled": 7.99998595499958,
+          "cargo": [
+            "S03",
+            "S04"
+          ],
+          "completed": [
+            {
+              "id": "S01",
+              "arrival": 484.4721,
+              "finish": 489.4721,
+              "point": [
+                2,
+                1
+              ]
+            },
+            {
+              "id": "S02",
+              "arrival": 493.9443,
+              "finish": 498.9443,
+              "point": [
+                4,
+                2
+              ]
+            }
+          ],
+          "remaining": [
+            "S04",
+            "S03",
+            "W",
+            "E01"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        },
+        "V3": {
+          "point": [
+            2.8556293047844274,
+            -7.42251721913771
+          ],
+          "available": 506,
+          "traveled": 7.99998595499958,
+          "cargo": [
+            "S11",
+            "S12"
+          ],
+          "completed": [
+            {
+              "id": "S09",
+              "arrival": 484.4721,
+              "finish": 489.4721,
+              "point": [
+                1,
+                -2
+              ]
+            },
+            {
+              "id": "S10",
+              "arrival": 493.9443,
+              "finish": 498.9443,
+              "point": [
+                2,
+                -4
+              ]
+            }
+          ],
+          "remaining": [
+            "S12",
+            "S11"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        }
+      },
+      "executed_until": 506
+    }
+  ],
+  "events": [
+    {
+      "kind": "urgent",
+      "event": {
+        "time": 505,
+        "store": "S07",
+        "due": 540,
+        "close": 690,
+        "quantity": 10
+      },
+      "version": 2
+    },
+    {
+      "kind": "window",
+      "event": {
+        "time": 506,
+        "store": "S08",
+        "due": 570,
+        "close": 690,
+        "open": 555
+      },
+      "version": 3
+    }
+  ],
+  "execution": [
+    {
+      "version": 1,
+      "time": 505,
+      "states": {
+        "V1": {
+          "point": [
+            -6.362782059103946,
+            3.5906955147759865
+          ],
+          "available": 505,
+          "traveled": 7.499995102245969,
+          "cargo": [
+            "S07",
+            "S08"
+          ],
+          "completed": [
+            {
+              "id": "S05",
+              "arrival": 485.6569,
+              "finish": 490.6569,
+              "point": [
+                -2,
+                2
+              ]
+            },
+            {
+              "id": "S06",
+              "arrival": 495.129,
+              "finish": 500.129,
+              "point": [
+                -4,
+                3
+              ]
+            }
+          ],
+          "remaining": [
+            "S08",
+            "S07"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        },
+        "V2": {
+          "point": [
+            6.937445969065044,
+            2.734361492266261
+          ],
+          "available": 505,
+          "traveled": 7.49998595499958,
+          "cargo": [
+            "S03",
+            "S04"
+          ],
+          "completed": [
+            {
+              "id": "S01",
+              "arrival": 484.4721,
+              "finish": 489.4721,
+              "point": [
+                2,
+                1
+              ]
+            },
+            {
+              "id": "S02",
+              "arrival": 493.9443,
+              "finish": 498.9443,
+              "point": [
+                4,
+                2
+              ]
+            }
+          ],
+          "remaining": [
+            "S04",
+            "S03"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        },
+        "V3": {
+          "point": [
+            2.734361492266261,
+            -6.937445969065044
+          ],
+          "available": 505,
+          "traveled": 7.49998595499958,
+          "cargo": [
+            "S11",
+            "S12"
+          ],
+          "completed": [
+            {
+              "id": "S09",
+              "arrival": 484.4721,
+              "finish": 489.4721,
+              "point": [
+                1,
+                -2
+              ]
+            },
+            {
+              "id": "S10",
+              "arrival": 493.9443,
+              "finish": 498.9443,
+              "point": [
+                2,
+                -4
+              ]
+            }
+          ],
+          "remaining": [
+            "S12",
+            "S11"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        }
+      }
+    },
+    {
+      "version": 2,
+      "time": 506,
+      "states": {
+        "V1": {
+          "point": [
+            -6.847853309176612,
+            3.711963327294153
+          ],
+          "available": 506,
+          "traveled": 7.999995102245969,
+          "cargo": [
+            "S07",
+            "S08"
+          ],
+          "completed": [
+            {
+              "id": "S05",
+              "arrival": 485.6569,
+              "finish": 490.6569,
+              "point": [
+                -2,
+                2
+              ]
+            },
+            {
+              "id": "S06",
+              "arrival": 495.129,
+              "finish": 500.129,
+              "point": [
+                -4,
+                3
+              ]
+            }
+          ],
+          "remaining": [
+            "S08",
+            "S07"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        },
+        "V2": {
+          "point": [
+            7.42251721913771,
+            2.8556293047844274
+          ],
+          "available": 506,
+          "traveled": 7.99998595499958,
+          "cargo": [
+            "S03",
+            "S04"
+          ],
+          "completed": [
+            {
+              "id": "S01",
+              "arrival": 484.4721,
+              "finish": 489.4721,
+              "point": [
+                2,
+                1
+              ]
+            },
+            {
+              "id": "S02",
+              "arrival": 493.9443,
+              "finish": 498.9443,
+              "point": [
+                4,
+                2
+              ]
+            }
+          ],
+          "remaining": [
+            "S04",
+            "S03",
+            "W",
+            "E01"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        },
+        "V3": {
+          "point": [
+            2.8556293047844274,
+            -7.42251721913771
+          ],
+          "available": 506,
+          "traveled": 7.99998595499958,
+          "cargo": [
+            "S11",
+            "S12"
+          ],
+          "completed": [
+            {
+              "id": "S09",
+              "arrival": 484.4721,
+              "finish": 489.4721,
+              "point": [
+                1,
+                -2
+              ]
+            },
+            {
+              "id": "S10",
+              "arrival": 493.9443,
+              "finish": 498.9443,
+              "point": [
+                2,
+                -4
+              ]
+            }
+          ],
+          "remaining": [
+            "S12",
+            "S11"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        }
+      }
+    },
+    {
+      "version": 2,
+      "time": 506,
+      "states": {
+        "V1": {
+          "point": [
+            -6.847853309176612,
+            3.711963327294153
+          ],
+          "available": 506,
+          "traveled": 7.999995102245969,
+          "cargo": [
+            "S07",
+            "S08"
+          ],
+          "completed": [
+            {
+              "id": "S05",
+              "arrival": 485.6569,
+              "finish": 490.6569,
+              "point": [
+                -2,
+                2
+              ]
+            },
+            {
+              "id": "S06",
+              "arrival": 495.129,
+              "finish": 500.129,
+              "point": [
+                -4,
+                3
+              ]
+            }
+          ],
+          "remaining": [
+            "S08",
+            "S07"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        },
+        "V2": {
+          "point": [
+            7.42251721913771,
+            2.8556293047844274
+          ],
+          "available": 506,
+          "traveled": 7.99998595499958,
+          "cargo": [
+            "S03",
+            "S04"
+          ],
+          "completed": [
+            {
+              "id": "S01",
+              "arrival": 484.4721,
+              "finish": 489.4721,
+              "point": [
+                2,
+                1
+              ]
+            },
+            {
+              "id": "S02",
+              "arrival": 493.9443,
+              "finish": 498.9443,
+              "point": [
+                4,
+                2
+              ]
+            }
+          ],
+          "remaining": [
+            "S04",
+            "S03",
+            "W",
+            "E01"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        },
+        "V3": {
+          "point": [
+            2.8556293047844274,
+            -7.42251721913771
+          ],
+          "available": 506,
+          "traveled": 7.99998595499958,
+          "cargo": [
+            "S11",
+            "S12"
+          ],
+          "completed": [
+            {
+              "id": "S09",
+              "arrival": 484.4721,
+              "finish": 489.4721,
+              "point": [
+                1,
+                -2
+              ]
+            },
+            {
+              "id": "S10",
+              "arrival": 493.9443,
+              "finish": 498.9443,
+              "point": [
+                2,
+                -4
+              ]
+            }
+          ],
+          "remaining": [
+            "S12",
+            "S11"
+          ],
+          "weight_kg": 240,
+          "volume_m3": 1.6
+        }
+      }
+    }
+  ],
+  "states": {
+    "V1": {
+      "point": [
+        -6.847853309176612,
+        3.711963327294153
+      ],
+      "available": 506,
+      "traveled": 7.999995102245969,
+      "cargo": [
+        "S07",
+        "S08"
+      ],
+      "completed": [
+        {
+          "id": "S05",
+          "arrival": 485.6569,
+          "finish": 490.6569,
+          "point": [
+            -2,
+            2
+          ]
+        },
+        {
+          "id": "S06",
+          "arrival": 495.129,
+          "finish": 500.129,
+          "point": [
+            -4,
+            3
+          ]
+        }
+      ],
+      "remaining": [
+        "S07",
+        "S08"
+      ],
+      "weight_kg": 240,
+      "volume_m3": 1.6
+    },
+    "V2": {
+      "point": [
+        7.42251721913771,
+        2.8556293047844274
+      ],
+      "available": 506,
+      "traveled": 7.99998595499958,
+      "cargo": [
+        "S03",
+        "S04"
+      ],
+      "completed": [
+        {
+          "id": "S01",
+          "arrival": 484.4721,
+          "finish": 489.4721,
+          "point": [
+            2,
+            1
+          ]
+        },
+        {
+          "id": "S02",
+          "arrival": 493.9443,
+          "finish": 498.9443,
+          "point": [
+            4,
+            2
+          ]
+        }
+      ],
+      "remaining": [
+        "S04",
+        "S03",
+        "W",
+        "E01"
+      ],
+      "weight_kg": 240,
+      "volume_m3": 1.6
+    },
+    "V3": {
+      "point": [
+        2.8556293047844274,
+        -7.42251721913771
+      ],
+      "available": 506,
+      "traveled": 7.99998595499958,
+      "cargo": [
+        "S11",
+        "S12"
+      ],
+      "completed": [
+        {
+          "id": "S09",
+          "arrival": 484.4721,
+          "finish": 489.4721,
+          "point": [
+            1,
+            -2
+          ]
+        },
+        {
+          "id": "S10",
+          "arrival": 493.9443,
+          "finish": 498.9443,
+          "point": [
+            2,
+            -4
+          ]
+        }
+      ],
+      "remaining": [
+        "S12",
+        "S11"
+      ],
+      "weight_kg": 240,
+      "volume_m3": 1.6
+    }
+  },
+  "cargo": {
+    "S01": "delivered",
+    "S02": "delivered",
+    "S03": "V2",
+    "S04": "V2",
+    "S05": "delivered",
+    "S06": "delivered",
+    "S07": "V1",
+    "S08": "V1",
+    "S09": "delivered",
+    "S10": "delivered",
+    "S11": "V3",
+    "S12": "V3",
+    "E01": "warehouse"
+  }
+}
