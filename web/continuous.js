@@ -1,8 +1,12 @@
 // This page's forms use persistent dispatch when a scene has been started.
+let dispatchDisplayedToken=null;
 function dispatchEnable(){
  for(const id of ['startDispatch','refreshDispatch'])byId(id).disabled=dispatchBusy||calculating||recovering;
  for(const id of ['advanceDispatch','downloadDispatch'])byId(id).disabled=dispatchBusy||!dispatchScene;
- byId('adoptDispatch').disabled=dispatchBusy||!dispatchScene?.candidate;
+ const candidate=dispatchScene?.versions.find(v=>v.id===dispatchScene.candidate);
+ byId('adoptDispatch').disabled=dispatchBusy||calculating||recovering||!candidate||candidate.plan.metrics.unserved>0||!dispatchReviewed;
+ byId('discardDispatch').disabled=dispatchBusy||calculating||recovering||!candidate;
+ if(byId('dispatchReviewAck'))byId('dispatchReviewAck').disabled=dispatchBusy||calculating||recovering||!candidate||candidate.plan.metrics.unserved>0;
  if(dispatchBusy){for(const id of ['simulateUrgent','simulateWindow','interpretAI','applyAI'])byId(id).disabled=true;}
  if(dispatchScene){
   for(const id of ['calculate','increase','oversize','restore','simulateFailure','otherFailure'])byId(id).disabled=true;
@@ -14,6 +18,12 @@ const oldEnable=enable; enable=()=>{oldEnable();dispatchEnable()};
 function dispatchRender(){
  if(!dispatchScene){byId('dispatchStatus').textContent='尚无连续场景。先保存完整正常计划。';dispatchEnable();return;}
  const s=dispatchScene,active=s.versions.find(v=>v.id===s.active),candidate=s.versions.find(v=>v.id===s.candidate),p=(candidate||active).plan;
+ const token=`${s.id}:${s.revision}`;
+ if(dispatchDisplayedToken&&dispatchDisplayedToken!==token){
+  aiDraft=null;aiContext=[];byId('aiPreview').hidden=true;
+  byId('aiStatus').textContent='保存状态已变化；上一次AI事件核对已清除，需要重新理解消息。历史真实调用记录仍保留。';
+ }
+ dispatchDisplayedToken=token;
  byId('summary').hidden=true;byId('summary').style.display='none';byId('normalReference').open=false;
  byId('failureStatus').textContent='连续场景暂未接入故障，当前按钮已禁用。';
  byId('urgentStatus').textContent=active.plan.data.orders.some(x=>x.id==='E01')?'E01已在保存计划中，本轮仅继续收货变化。':'紧急单将基于已采用P'+s.active+'生成候选。';
@@ -22,6 +32,7 @@ function dispatchRender(){
  const m=p.metrics,states=candidate?.states||s.states;
  let html=`<b>${candidate?'候选':'已采用'}计划 P${(candidate||active).id}：${m.served}/${p.data.orders.length}单，迟到${m.late_orders}单 / ${m.late_minutes}分钟，费用${m.cost}元，改动${m.changed_orders||0}单，求解${p.solve_ms}ms</b>`;
  if(candidate)html+=`<p>最近采用P${s.active}费用${active.plan.metrics.cost}元 → 候选${m.cost}元；迟到${active.plan.metrics.late_minutes} → ${m.late_minutes}分钟。新增订单或窗口不同，不能把差额直接称为降本。</p>`;
+ if(candidate?.plan.metrics.unserved)html+=`<p class="notice">未找到完整方案，不能采用。未安排：${p.unserved_ids.join('、')}。已采用P${s.active}继续保留，未安排原货仍在原车；请放弃候选或修改事件重算。</p>`;
  let svg='<rect x="316" y="176" width="28" height="28" fill="#254e68"/><text x="348" y="182">仓库 / 装E01</text>';
  for(const[vid,r]of Object.entries(p.routes)){
   const q=states[vid],points=[q.point,...r.stops.slice(q.completed.length).map(x=>x.point),[0,0]];
@@ -33,9 +44,10 @@ function dispatchRender(){
  html+='<div class="vehicles">'+p.data.vehicles.map(v=>{const r=p.routes[v.id],q=states[v.id];return `<article class="vehicle" style="--color:${palette[v.id]}"><b>${v.id} · 位置 (${q.point.map(x=>x.toFixed(2)).join(', ')})</b><p>已交付：${q.completed.filter(x=>x.id!=='W').map(x=>x.id).join('、')||'无'}<br>当前车上：${q.cargo.join('、')||'无'}<br>后续：${r.sequence.slice(q.completed.length).map(x=>x==='W'?'回仓装E01（8分钟）':x).join(' → ')||'回仓'}<br>最高${r.peak_weight_kg??r.weight_kg} kg / ${r.peak_volume_m3??r.volume_m3} m³</p></article>`}).join('')+'</div>';
  const a=locations(p);
  html+='<div class="table-wrap"><table><thead><tr><th>订单</th><th>已保存货物状态</th><th>当前显示计划：车辆 / ETA</th></tr></thead><tbody>'+p.data.orders.map(o=>`<tr><td>${o.id}${o.store?' → '+o.store:''} · ${o.quantity}箱</td><td>${s.cargo[o.id]==='delivered'?'已交付':s.cargo[o.id]==='warehouse'?'仓库（尚未装车）':s.cargo[o.id]||'新增候选，尚未采用'}</td><td>${a[o.id]?`${a[o.id].v} / ${at(a[o.id].arrival)}${a[o.id].arrival>o.due?' 迟到':''}`:'未安排'}</td></tr>`).join('')+'</tbody></table></div>';
- html+='<p>版本：'+s.versions.map(v=>`P${v.id} ${({adopted:'已采用',candidate:'候选',executed:'已有模拟执行',superseded:'候选已替代'})[v.status]}${v.executed_until!=null?' · 执行到'+at(v.executed_until):''}`).join('；')+'</p>';
+ html+='<p>版本：'+s.versions.map(v=>`P${v.id} ${({adopted:'已采用',candidate:'候选',executed:'已有模拟执行',superseded:'候选已失效',discarded:'候选已放弃'})[v.status]}${v.executed_until!=null?' · 执行到'+at(v.executed_until):''}`).join('；')+'</p>';
  html+='<p>回仓记录：'+Object.entries(p.routes).flatMap(([vid,r])=>r.stops.filter(x=>x.id==='W').map(x=>`${vid} ${at(x.arrival)}到仓 → ${at(x.finish)}装完 ${x.load_ids.join('、')}`)).join('；')+'</p>';
  byId('dispatchView').innerHTML=html;dispatchEnable();
+ loadDecisionReview(s.id,s.revision);loadDispatchArchive();
  loadComparison(s.id,s.revision);
 }
 async function loadComparison(id,revision){
@@ -55,9 +67,19 @@ async function loadComparison(id,revision){
   host.hidden=false;
  }catch(e){host.textContent='未显示对照：'+e.message;host.hidden=false;}
 }
-async function loadDispatch(){try{const r=await fetch('/api/dispatch');const b=await r.json();if(!r.ok)throw Error(b.error);dispatchScene=b.scene;dispatchRender()}catch(e){byId('dispatchStatus').textContent='读取失败：'+e.message}}
+async function loadDispatch(){
+ if(dispatchBusy)return;
+ dispatchBusy=true;dispatchReviewed=false;
+ if(byId('dispatchReviewAck'))byId('dispatchReviewAck').checked=false;
+ enable();
+ try{const r=await fetch('/api/dispatch');const b=await r.json();if(!r.ok)throw Error(b.error);dispatchScene=b.scene;dispatchRender()}
+ catch(e){byId('dispatchStatus').textContent='读取失败：'+e.message}
+ finally{dispatchBusy=false;enable()}
+}
 async function dispatchAction(action,extra={}){
  if(dispatchBusy||calculating||recovering)return;
+ dispatchReviewed=false;
+ if(byId('dispatchReviewAck'))byId('dispatchReviewAck').checked=false;
  dispatchBusy=true;enable();try{
   const r=await fetch('/api/dispatch/'+action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:dispatchScene?.id,revision:dispatchScene?.revision,...extra})});
   const b=await r.json();if(!r.ok)throw Error(b.error+(r.status===409?'；请点击刷新保存状态':''));dispatchScene=b.scene;dispatchRender();
@@ -71,6 +93,7 @@ async function dispatchEvent(kind){
 }
 byId('startDispatch').onclick=()=>dispatchAction('start',{data:normalResult.data});
 byId('adoptDispatch').onclick=()=>dispatchAction('adopt',{candidate:dispatchScene.candidate});
+byId('discardDispatch').onclick=()=>dispatchAction('discard',{candidate:dispatchScene.candidate});
 byId('advanceDispatch').onclick=()=>dispatchAction('advance',{time:minutes(byId('executionTime').value)});
 byId('refreshDispatch').onclick=loadDispatch;
 byId('downloadDispatch').onclick=()=>{const u=URL.createObjectURL(new Blob([JSON.stringify(dispatchScene,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=u;a.download='continuous-dispatch.json';a.click();URL.revokeObjectURL(u)};

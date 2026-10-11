@@ -22,7 +22,12 @@ class Handler(SimpleHTTPRequestHandler):
         raw=json.dumps(result,ensure_ascii=False).encode()
         self.send_response(status); self.send_header('Content-Type','application/json; charset=utf-8'); self.send_header('Content-Length',str(len(raw))); self.end_headers(); self.wfile.write(raw)
     def do_GET(self):
-        if self.path=='/api/dispatch/comparison':
+        if self.path=='/api/dispatch/history': self.reply(dispatch.archive())
+        elif self.path.startswith('/api/dispatch/history/'):
+            scene=dispatch.read(self.path.rsplit('/',1)[1])
+            self.reply(dict(scene=scene,read_only=True),200 if scene else 404)
+        elif self.path=='/api/dispatch/review': self.reply(continuous.review_version(dispatch.read()))
+        elif self.path=='/api/dispatch/comparison':
             try: self.reply(dispatch.compare())
             except ValueError as e: self.reply(dict(error=str(e)),409)
         elif self.path=='/api/dispatch': self.reply(dict(scene=dispatch.read()))
@@ -32,7 +37,7 @@ class Handler(SimpleHTTPRequestHandler):
         elif self.path=='/api/sessions': self.reply(dict(sessions=store.archive()))
         else: super().do_GET()
     def do_POST(self):
-        if self.path not in ('/api/dispatch/start','/api/dispatch/event','/api/dispatch/adopt','/api/dispatch/advance','/api/normal','/api/failure','/api/urgent','/api/window','/api/interpret','/api/run','/api/adopt','/api/withdraw','/api/reset'): self.send_error(404); return
+        if self.path not in ('/api/dispatch/start','/api/dispatch/event','/api/dispatch/adopt','/api/dispatch/discard','/api/dispatch/advance','/api/normal','/api/failure','/api/urgent','/api/window','/api/interpret','/api/run','/api/adopt','/api/withdraw','/api/reset'): self.send_error(404); return
         try:
             length=int(self.headers.get('Content-Length','0'))
             if not 0<=length<=16384: raise ValueError('消息长度无效')

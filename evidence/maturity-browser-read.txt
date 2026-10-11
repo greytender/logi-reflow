@@ -1,0 +1,291 @@
+- banner:
+  - generic: LogiReflow｜城配续航
+  - generic: 正常计划与三类异常 / 连续调度原型 0.8（本地）
+- main:
+  - heading "早上，12家门店的货怎么分给3辆车？" [level=1]
+  - paragraph: 调度员填订单，算法分车辆、排顺序，检查装得下、来得及。你可以改货量，看计划怎样变化。
+  - generic: 模拟数据，实际算法计算。地图为平面直线示意，速度30 km/h；体积总量检查不代表三维装载可行。连续场景保存在本机SQLite，旧故障记录保留；所有执行进度都是模拟。
+  - button "按当前数据重新分配" [disabled]
+  - button "S07 增加到40箱" [disabled]
+  - button "S07 增加到100箱" [disabled]
+  - button "恢复默认10箱" [disabled]
+  - status: 下方普通计划图是早上参考；连续计划、货物与执行状态以本区为准。修改基础数据需开始新的独立模拟。
+  - heading "连续调度：采用后，下一次异常接着算" [level=2]
+  - paragraph: 先保存早上正常计划，再用下方紧急单、收货变化表单。例子：08:25插入E01 → 核对采用 → 08:26推进执行 → S08改为09:15收货。采用会先按原计划模拟到事件时刻；候选不会自行执行。
+  - button "保存正常计划，开始新模拟"
+  - button "核对后采用并保存候选" [disabled]
+  - button "放弃候选，保留记录" [disabled]
+  - text: 模拟执行到
+  - textbox "模拟执行到": 08:26
+  - button "推进模拟执行"
+  - button "下载连续场景记录"
+  - button "刷新保存状态"
+  - status: 场景 ebb79254 · 修订 6 · 模拟时间 08:26 · 已采用 P3。刷新会保留，未实际派单。
+  - heading "已采用版本记录 P3" [level=3]
+  - paragraph: 生成时刻 08:26 · 基于P2 · 固定6单已交付历史。以下ETA与窗口是该版本生成时的记录，窗口依次为开门 / 承诺 / 截止。
+  - paragraph: 事件：收货时间变化 · S08 · 08:26发生。
+  - table:
+    - rowgroup:
+      - row "订单 / 变化原因 父计划 → 此版本 ETA 收货窗口变化 事件时货物 / 此版本迟到":
+        - columnheader "订单 / 变化原因"
+        - columnheader "父计划 → 此版本 ETA"
+        - columnheader "收货窗口变化"
+        - columnheader "事件时货物 / 此版本迟到"
+    - rowgroup:
+      - row "S07 · 前一站变化、ETA变化超过1分钟 V1 / 08:39 → V1 / 08:30 08:00 / 08:50 / 11:30 → 08:00 / 08:50 / 11:30 V1 / 0分钟":
+        - cell "S07 · 前一站变化、ETA变化超过1分钟"
+        - cell "V1 / 08:39 → V1 / 08:30"
+        - cell "08:00 / 08:50 / 11:30 → 08:00 / 08:50 / 11:30"
+        - cell "V1 / 0分钟"
+      - row "S08 · 前一站变化、ETA变化超过1分钟、收货窗口变化 V1 / 08:28 → V1 / 09:15 08:00 / 09:05 / 11:30 → 09:15 / 09:30 / 11:30 V1 / 0分钟":
+        - cell "S08 · 前一站变化、ETA变化超过1分钟、收货窗口变化"
+        - cell "V1 / 08:28 → V1 / 09:15"
+        - cell "08:00 / 09:05 / 11:30 → 09:15 / 09:30 / 11:30"
+        - cell "V1 / 0分钟"
+  - paragraph: 回仓装货：V2 08:55到仓 → 09:03装完 E01
+  - paragraph: 这里只查看采用记录，不会推进执行，也不提供撤回已发生配送。
+  - text: 已采用计划 P3：13/13单，迟到1单 / 15.66分钟，费用226.16元，改动2单，求解6.314ms
+  - img "连续计划路线":
+    - generic: 仓库 / 装E01
+    - generic: V1
+    - generic: V2
+    - generic: V3
+    - generic: "01"
+    - generic: "02"
+    - generic: "03"
+    - generic: "04"
+    - generic: "05"
+    - generic: "06"
+    - generic: "07"
+    - generic: "08"
+    - generic: "09"
+    - generic: "10"
+    - generic: "11"
+    - generic: "12"
+  - paragraph: 方块为当前显示计划起点位置，实线为剩余路线；已走轨迹与交付历史保存在下载记录，地图不是实时交通。
+  - article:
+    - text: V1 · 位置 (-6.85, 3.71)
+    - paragraph:
+      - text: 已交付：S05、S06
+      - text: 当前车上：S07、S08
+      - text: 后续：S07 → S08
+      - text: 最高240 kg / 1.6 m³
+  - article:
+    - text: V2 · 位置 (7.42, 2.86)
+    - paragraph:
+      - text: 已交付：S01、S02
+      - text: 当前车上：S03、S04
+      - text: 后续：S04 → S03 → 回仓装E01（8分钟） → E01
+      - text: 最高240 kg / 1.6 m³
+  - article:
+    - text: V3 · 位置 (2.86, -7.42)
+    - paragraph:
+      - text: 已交付：S09、S10
+      - text: 当前车上：S11、S12
+      - text: 后续：S12 → S11
+      - text: 最高240 kg / 1.6 m³
+  - table:
+    - rowgroup:
+      - row "订单 已保存货物状态 当前显示计划：车辆 / ETA":
+        - columnheader "订单"
+        - columnheader "已保存货物状态"
+        - columnheader "当前显示计划：车辆 / ETA"
+    - rowgroup:
+      - row "S01 · 10箱 已交付 V2 / 08:04":
+        - cell "S01 · 10箱"
+        - cell "已交付"
+        - cell "V2 / 08:04"
+      - row "S02 · 10箱 已交付 V2 / 08:14":
+        - cell "S02 · 10箱"
+        - cell "已交付"
+        - cell "V2 / 08:14"
+      - row "S03 · 10箱 V2 V2 / 08:38":
+        - cell "S03 · 10箱"
+        - cell "V2"
+        - cell "V2 / 08:38"
+      - row "S04 · 10箱 V2 V2 / 08:27":
+        - cell "S04 · 10箱"
+        - cell "V2"
+        - cell "V2 / 08:27"
+      - row "S05 · 10箱 已交付 V1 / 08:06":
+        - cell "S05 · 10箱"
+        - cell "已交付"
+        - cell "V1 / 08:06"
+      - row "S06 · 10箱 已交付 V1 / 08:15":
+        - cell "S06 · 10箱"
+        - cell "已交付"
+        - cell "V1 / 08:15"
+      - row "S07 · 10箱 V1 V1 / 08:30":
+        - cell "S07 · 10箱"
+        - cell "V1"
+        - cell "V1 / 08:30"
+      - row "S08 · 10箱 V1 V1 / 09:15":
+        - cell "S08 · 10箱"
+        - cell "V1"
+        - cell "V1 / 09:15"
+      - row "S09 · 10箱 已交付 V3 / 08:04":
+        - cell "S09 · 10箱"
+        - cell "已交付"
+        - cell "V3 / 08:04"
+      - row "S10 · 10箱 已交付 V3 / 08:14":
+        - cell "S10 · 10箱"
+        - cell "已交付"
+        - cell "V3 / 08:14"
+      - row "S11 · 10箱 V3 V3 / 08:38":
+        - cell "S11 · 10箱"
+        - cell "V3"
+        - cell "V3 / 08:38"
+      - row "S12 · 10箱 V3 V3 / 08:27":
+        - cell "S12 · 10箱"
+        - cell "V3"
+        - cell "V3 / 08:27"
+      - row "E01 → S07 · 10箱 仓库（尚未装车） V2 / 09:16 迟到":
+        - cell "E01 → S07 · 10箱"
+        - cell "仓库（尚未装车）"
+        - cell "V2 / 09:16 迟到"
+  - paragraph: 版本：P1 已有模拟执行 · 执行到08:25；P2 已有模拟执行 · 执行到08:26；P3 已采用 · 执行到08:26
+  - paragraph: 回仓记录：V2 08:55到仓 → 09:03装完 E01
+  - heading "同一次收货变化：等待还是调整？" [level=3]
+  - paragraph: 两边都基于已采用P2，从08:26的相同位置和车上货出发，使用相同新收货窗口。此次展示为P3事件时刻的对照，读取不会采用或推进执行。
+  - table:
+    - rowgroup:
+      - row "指标 保持原顺序等待 原车内调整":
+        - columnheader "指标"
+        - columnheader "保持原顺序等待"
+        - columnheader "原车内调整"
+    - rowgroup:
+      - row "安排订单 13 单 13 单":
+        - cell "安排订单"
+        - cell "13 单"
+        - cell "13 单"
+      - row "未安排 0 单 0 单":
+        - cell "未安排"
+        - cell "0 单"
+        - cell "0 单"
+      - row "迟到订单 2 单 1 单":
+        - cell "迟到订单"
+        - cell "2 单"
+        - cell "1 单"
+      - row "迟到分钟 51.32 分钟 15.66 分钟":
+        - cell "迟到分钟"
+        - cell "51.32 分钟"
+        - cell "15.66 分钟"
+      - row "模拟费用 219.48 元 226.16 元":
+        - cell "模拟费用"
+        - cell "219.48 元"
+        - cell "226.16 元"
+      - row "改动原有订单 2 单 2 单":
+        - cell "改动原有订单"
+        - cell "2 单"
+        - cell "2 单"
+      - row "求解时间 1.552 ms 2.906 ms":
+        - cell "求解时间"
+        - cell "1.552 ms"
+        - cell "2.906 ms"
+  - paragraph: 本例迟到减少35.66分钟，费用变化6.68元；改动2 → 2单。E01回仓装货与已交付历史两边均保留。
+  - paragraph: 相同事件对照不能证明平均收益。全部模拟数据，有限启发式，无全局最优保证；原窗口计划不是本次对照基准。
+  - paragraph: 仅验证一个紧急单后连续收货变化；故障仍是独立试算。新建场景保留旧场景，已执行的配送不提供撤回。
+  - heading "查看保存的场景与版本" [level=2]
+  - paragraph: 历史只读；放弃的是尚未采用的候选，不能撤回已发生的配送。
+  - text: 场景
+  - combobox "历史场景":
+    - option "选择场景，只读查看"
+    - option "当前 ebb79254 · P3 · 08:26 · 已交付6单"
+    - option "归档 66ef3729 · P5 · 08:27 · 已交付6单" [selected]
+  - text: 版本
+  - combobox "历史计划版本":
+    - option "P1 · 已有模拟执行 · 执行到08:25"
+    - option "P2 · 已有模拟执行 · 执行到08:26"
+    - option "P3 · 已有模拟执行 · 执行到08:27"
+    - option "P4 · 候选已放弃"
+    - option "P5 · 已采用 · 执行到08:27"
+    - option "P6 · 候选已放弃" [selected]
+  - button "刷新历史列表"
+  - status: 共2个场景，显示最近2个。查看历史不会切换当前场景或恢复旧计划。
+  - heading "只读历史 66ef3729 / P6 · 候选已放弃" [level=3]
+  - paragraph: 12单已安排 · 未安排1单 · 迟到15.66分钟 · 模拟费用215.26元。
+  - paragraph: 收货变化 · S08 · 08:28发生，基于P5。
+  - paragraph: 用户放弃候选；未采用、未执行
+  - list:
+    - listitem: V1：S05 → S06 → S07；回仓 08:47；原车带回未交付货物：S08
+    - listitem: V2：S01 → S02 → S04 → S03 → 回仓装货 → E01；回仓 09:33
+    - listitem: V3：S09 → S10 → S12 → S11；回仓 08:55
+  - paragraph: 以上包含历史节点。只是读取保存记录；当前活动场景和模拟时间不改变。
+  - heading "用一句话说明异常（DeepSeek）" [level=2]
+  - paragraph: AI只理解事件，不直接改路线。先核对结构化结果，再点击试算；缺时间、箱数或收货窗口会补问。无密钥时不调用API，也不把规则解析冒充AI。
+  - text: 给AI的业务消息
+  - textbox "给AI的业务消息": 08:25，S07临时追加10箱，货在仓库，承诺09:00前送到，最晚11:30收货
+  - button "AI理解消息"
+  - status: 模型 deepseek-flash：密钥已配置，等待本次服务首次调用。
+  - button "按核对后的事件试算" [disabled]
+  - button "清空补问上下文"
+  - paragraph: 只发送当前业务消息及最多4条补问原话到DeepSeek；不发送订单全表、路线或密钥到网页。当前均为模拟数据。
+  - heading "途中，一辆车发生故障" [level=2]
+  - text: 故障快捷消息（规则解析，AI入口在上方）
+  - textbox "故障快捷消息（规则解析，AI入口在上方）": V2 在 08:25 故障
+  - button "模拟故障并恢复" [disabled]
+  - button "试试 V3 在 08:16 故障" [disabled]
+  - status: 连续场景暂未接入故障，当前按钮已禁用。
+  - paragraph: 支持V1–V3、08:00–09:00的单次故障。故障只在未开启连续场景时独立试算；旧故障记录保留。
+  - heading "车已出发，门店临时追加一单" [level=2]
+  - paragraph: 例子：08:25，S07追加10箱，货还在仓库。接手车必须回仓装货8分钟，再送E01；原车上的货不换车，已交付订单不动。
+  - text: 发生时间
+  - textbox "紧急订单发生时间": 08:25
+  - text: 门店
+  - combobox "紧急订单门店":
+    - option "S01"
+    - option "S02"
+    - option "S03"
+    - option "S04"
+    - option "S05"
+    - option "S06"
+    - option "S07" [selected]
+    - option "S08"
+    - option "S09"
+    - option "S10"
+    - option "S11"
+    - option "S12"
+  - text: 箱数
+  - spinbutton "紧急订单箱数": "10"
+  - text: 承诺
+  - textbox "紧急订单承诺时间": 09:00
+  - text: 截止
+  - textbox "紧急订单截止时间": 11:30
+  - button "回仓取货并插入紧急单"
+  - status: E01已在保存计划中，本轮仅继续收货变化。
+  - paragraph: 开启连续场景后，从最近采用计划及模拟执行进度出发。未开启时为独立试算。E01是新订单，目的地为现有门店，箱重与体积沿用该店SKU。
+  - heading "门店临时推迟收货" [level=2]
+  - paragraph: 例子：紧急单采用后，08:26，S08通知09:15才开门。原货继续留在原车，比较“在店前等”和“先送其他门店再来”。已经交付的订单不可改写。
+  - text: 发生时间
+  - textbox "收货变化发生时间": 08:26
+  - text: 门店
+  - combobox "收货变化门店":
+    - option "S01"
+    - option "S02"
+    - option "S03"
+    - option "S04"
+    - option "S05"
+    - option "S06"
+    - option "S07"
+    - option "S08" [selected]
+    - option "S09"
+    - option "S10"
+    - option "S11"
+    - option "S12"
+  - text: 新开门
+  - textbox "新开门时间": 09:15
+  - text: 新承诺
+  - textbox "新承诺时间": 09:30
+  - text: 新截止
+  - textbox "新截止时间": 11:30
+  - button "按新收货时间重排"
+  - status: 收货变化将基于已采用P3及模拟执行进度生成候选。
+  - generic "早上正常计划与独立试算参考（不代表当前执行计划）"
+  - heading "然后做什么？" [level=2]
+  - paragraph: 已接通：修改数据 → 正常分配 → 单次故障、紧急插单或收货变化 → 接货或回仓 → 约束检查和对照指标。重新生成正常计划后，旧异常试算清除。
+  - paragraph: 尚未实现：更广泛的AI理解质量验证、连续故障和更多紧急单、真实企业规则。当前连续闭环仅为模拟，不是实际司机执行。
+  - link "查看原有故障演示和版本记录（旧的抽象容量数据）":
+    - /url: /
+  - text: 自制模拟数据 · 候选试算 · 无实际派单
+  - checkbox "显示操作指示光标" [checked]
+  - text: 显示操作指示光标

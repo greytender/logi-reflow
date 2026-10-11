@@ -1,0 +1,77 @@
+test_empty_truncated_bad_json_and_bad_context (test_ai_events.AITests.test_empty_truncated_bad_json_and_bad_context) ... ok
+test_failures_are_sanitized_and_not_retried (test_ai_events.AITests.test_failures_are_sanitized_and_not_retried) ... ok
+test_missing_fields_are_questions_not_defaults (test_ai_events.AITests.test_missing_fields_are_questions_not_defaults) ... ok
+test_missing_key_never_calls_network (test_ai_events.AITests.test_missing_key_never_calls_network) ... ok
+test_mock_transport_and_followup_context (test_ai_events.AITests.test_mock_transport_and_followup_context) ... ok
+test_valid_events_and_malformed_rejected (test_ai_events.AITests.test_valid_events_and_malformed_rejected) ... ok
+test_advance_invalidates_pending_candidate (test_continuous.ContinuousTests.test_advance_invalidates_pending_candidate) ... ok
+test_candidate_does_not_execute_or_change_active (test_continuous.ContinuousTests.test_candidate_does_not_execute_or_change_active) ... ok
+test_comparison_refuses_saved_plan_drift (test_continuous.ContinuousTests.test_comparison_refuses_saved_plan_drift) ... C:\Users\15057\anaconda3\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 401: 'secret-detail'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+C:\Users\15057\anaconda3\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 429: 'secret-detail'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+ok
+test_complete_chain_restart_and_loading (test_continuous.ContinuousTests.test_complete_chain_restart_and_loading) ... ok
+test_constraints_and_cost_independent (test_continuous.ContinuousTests.test_constraints_and_cost_independent) ... ok
+test_delivered_cannot_be_changed (test_continuous.ContinuousTests.test_delivered_cannot_be_changed) ... ok
+test_infeasible_candidate_cannot_adopt (test_continuous.ContinuousTests.test_infeasible_candidate_cannot_adopt) ... ok
+test_infeasible_comparison_keeps_goods_and_reports_missing (test_continuous.ContinuousTests.test_infeasible_comparison_keeps_goods_and_reports_missing) ... ok
+test_new_scene_archives_and_preserves_legacy (test_continuous.ContinuousTests.test_new_scene_archives_and_preserves_legacy) ... ok
+test_receiving_change_on_truck_with_warehouse_node (test_continuous.ContinuousTests.test_receiving_change_on_truck_with_warehouse_node) ... ok
+test_same_state_comparison_and_read_only (test_continuous.ContinuousTests.test_same_state_comparison_and_read_only) ... ok
+test_scope_is_explicit (test_continuous.ContinuousTests.test_scope_is_explicit) ... ok
+test_stale_and_concurrent_adoption (test_continuous.ContinuousTests.test_stale_and_concurrent_adoption) ... ok
+test_time_never_moves_back_and_failed_write_rolls_back (test_continuous.ContinuousTests.test_time_never_moves_back_and_failed_write_rolls_back) ... ok
+test_unchanged_window_does_not_invent_improvement (test_continuous.ContinuousTests.test_unchanged_window_does_not_invent_improvement) ... ok
+test_adopt_receiving_change_while_loading_does_not_restart_loading (test_dispatch_maturity.DispatchMaturityTests.test_adopt_receiving_change_while_loading_does_not_restart_loading) ... ok
+test_candidate_review_explains_new_order_and_immutable_history (test_dispatch_maturity.DispatchMaturityTests.test_candidate_review_explains_new_order_and_immutable_history) ... ok
+test_comparison_matrix_keeps_same_event_and_goods (test_dispatch_maturity.DispatchMaturityTests.test_comparison_matrix_keeps_same_event_and_goods) ... ok
+test_discard_preserves_adopted_and_execution_but_keeps_candidate_history (test_dispatch_maturity.DispatchMaturityTests.test_discard_preserves_adopted_and_execution_but_keeps_candidate_history) ... ok
+test_history_reads_do_not_make_an_archived_scene_current (test_dispatch_maturity.DispatchMaturityTests.test_history_reads_do_not_make_an_archived_scene_current) ... ok
+test_incomplete_review_blocked_and_can_be_discarded (test_dispatch_maturity.DispatchMaturityTests.test_incomplete_review_blocked_and_can_be_discarded) ... ok
+test_multiple_adopted_changes_on_three_vehicles_are_auditable (test_dispatch_maturity.DispatchMaturityTests.test_multiple_adopted_changes_on_three_vehicles_are_auditable) ... ok
+test_stale_discard_cannot_remove_a_newer_candidate (test_dispatch_maturity.DispatchMaturityTests.test_stale_discard_cannot_remove_a_newer_candidate) ... ok
+test_bounded_search_at_large_stranded_load (test_dynamic.DynamicTests.test_bounded_search_at_large_stranded_load) ... ok
+test_changed_quantity_uses_same_input_and_plan (test_dynamic.DynamicTests.test_changed_quantity_uses_same_input_and_plan) ... ok
+test_clarification_and_incomplete_normal_plan (test_dynamic.DynamicTests.test_clarification_and_incomplete_normal_plan) ... ok
+test_default_cargo_time_capacity_cost (test_dynamic.DynamicTests.test_default_cargo_time_capacity_cost) ... ok
+test_multiple_fault_times_including_service (test_dynamic.DynamicTests.test_multiple_fault_times_including_service) ... ok
+test_no_solution_preserves_healthy_work (test_dynamic.DynamicTests.test_no_solution_preserves_healthy_work) ... ok
+test_pickup_volume_and_precedence (test_dynamic.DynamicTests.test_pickup_volume_and_precedence) ... ok
+test_clarification_and_bad_input (test_engine.RecoveryTests.test_clarification_and_bad_input) ... ok
+test_default_operational_invariants (test_engine.RecoveryTests.test_default_operational_invariants) ... ok
+test_delivery_before_pickup_rejected (test_engine.RecoveryTests.test_delivery_before_pickup_rejected) ... ok
+test_different_truck_and_service_in_progress (test_engine.RecoveryTests.test_different_truck_and_service_in_progress) ... ok
+test_failure_after_deliveries (test_engine.RecoveryTests.test_failure_after_deliveries) ... ok
+test_hard_window_rejected (test_engine.RecoveryTests.test_hard_window_rejected) ... ok
+test_over_capacity_rejected (test_engine.RecoveryTests.test_over_capacity_rejected) ... ok
+test_changed_quantity_not_fixed_group (test_normal.NormalTests.test_changed_quantity_not_fixed_group) ... ok
+test_default (test_normal.NormalTests.test_default) ... ok
+test_hard_window (test_normal.NormalTests.test_hard_window) ... ok
+test_impossible_volume_explicit (test_normal.NormalTests.test_impossible_volume_explicit) ... ok
+test_tiny_capacities_never_overload (test_normal.NormalTests.test_tiny_capacities_never_overload) ... ok
+test_validation (test_normal.NormalTests.test_validation) ... ok
+test_adopted_scene_blocks_new_fault_and_reset_archives (test_store.SessionTests.test_adopted_scene_blocks_new_fault_and_reset_archives) ... ok
+test_clarification_does_not_change_plan_or_log (test_store.SessionTests.test_clarification_does_not_change_plan_or_log) ... ok
+test_failed_reset_leaves_original_session_intact (test_store.SessionTests.test_failed_reset_leaves_original_session_intact) ... ok
+test_recalculation_preserves_old_candidate (test_store.SessionTests.test_recalculation_preserves_old_candidate) ... ok
+test_refresh_and_restart_preserve_adoption (test_store.SessionTests.test_refresh_and_restart_preserve_adoption) ... ok
+test_same_message_reuses_fault_event (test_store.SessionTests.test_same_message_reuses_fault_event) ... ok
+test_stale_page_and_wrong_candidate_are_rejected (test_store.SessionTests.test_stale_page_and_wrong_candidate_are_rejected) ... ok
+test_two_tabs_cannot_adopt_twice (test_store.SessionTests.test_two_tabs_cannot_adopt_twice) ... ok
+test_withdraw_does_not_erase_fault_or_restore_old_route (test_store.SessionTests.test_withdraw_does_not_erase_fault_or_restore_old_route) ... ok
+test_completed_and_invalid_windows_rejected (test_timewindow.WindowTests.test_completed_and_invalid_windows_rejected) ... ok
+test_delayed_opening_ownership_and_completed (test_timewindow.WindowTests.test_delayed_opening_ownership_and_completed) ... ok
+test_unchanged_window_and_changed_quantity (test_timewindow.WindowTests.test_unchanged_window_and_changed_quantity) ... ok
+test_unreachable_keeps_goods_and_other_work (test_timewindow.WindowTests.test_unreachable_keeps_goods_and_other_work) ... ok
+test_default_conservation_ownership_capacity_time_cost_disturbance (test_urgent.UrgentTests.test_default_conservation_ownership_capacity_time_cost_disturbance) ... ok
+test_event_validation_and_incomplete_initial (test_urgent.UrgentTests.test_event_validation_and_incomplete_initial) ... ok
+test_in_service_waiting_enroute_and_returned (test_urgent.UrgentTests.test_in_service_waiting_enroute_and_returned) ... ok
+test_modified_quantity_and_bounded_search (test_urgent.UrgentTests.test_modified_quantity_and_bounded_search) ... ok
+test_oversized_and_unreachable_keep_original_work (test_urgent.UrgentTests.test_oversized_and_unreachable_keep_original_work) ... ok
+test_pickup_capacity_and_precedence (test_urgent.UrgentTests.test_pickup_capacity_and_precedence) ... ok
+
+----------------------------------------------------------------------
+Ran 68 tests in 8.045s
+
+OK

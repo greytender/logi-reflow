@@ -25,3 +25,8 @@ evidence/*
 !evidence/tests-0.7-comparison.txt
 !evidence/continuous-comparison-browser.jpg
 !evidence/continuous-p3-browser.jpg
+!evidence/tests-0.8.txt
+!evidence/maturity-http-verification.json
+!evidence/maturity-browser-read.txt
+!evidence/maturity-incomplete-browser.jpg
+!evidence/maturity-history-browser.jpg

@@ -178,16 +178,68 @@ def comparison(scene):
         limits='同一模拟案例，有限启发式，无全局最优保证；不代表企业收益或平均效果')
 
 
+def review_version(scene, number=None):
+    """Read-only event-time explanation; never move the live simulation clock."""
+    if not scene: return dict(available=False)
+    number = number if number is not None else scene['candidate'] or scene['active']
+    version=next((v for v in scene['versions'] if v['id']==number),None)
+    if version is None: raise ValueError('计划版本不存在')
+    plan=version['plan'];parent=next((v['plan'] for v in scene['versions'] if v['id']==version.get('base')),plan)
+    before=dynamic.assignments(parent);after=dynamic.assignments(plan)
+    old_orders={o['id']:o for o in parent['data']['orders']}
+    states=version.get('states') or {vid:r['anchor'] for vid,r in plan['routes'].items()}
+    completed={s['id'] for q in states.values() for s in q['completed'] if s['id']!='W'}
+    cargo_owner={oid:vid for vid,q in states.items() for oid in q['cargo']}
+    rows=[]
+    for o in plan['data']['orders']:
+        oid=o['id'];old=before.get(oid);new=after.get(oid);reasons=[]
+        if oid not in old_orders: reasons.append('新增订单')
+        if new is None: reasons.append('未安排，需人工处理')
+        if old and new and oid not in completed:
+            if old[0]!=new[0]: reasons.append('车辆变化')
+            if old[2]!=new[2]: reasons.append('前一站变化')
+            if abs(old[1]-new[1])>1: reasons.append('ETA变化超过1分钟')
+        old_window={k:old_orders[oid][k] for k in ('open','due','close')} if oid in old_orders else None
+        window={k:o[k] for k in ('open','due','close')}
+        if old_window and old_window!=window: reasons.append('收货窗口变化')
+        rows.append(dict(id=oid,store=o.get('store',oid),quantity=o['quantity'],
+            delivered=oid in completed,cargo_owner='delivered' if oid in completed else cargo_owner.get(oid,'warehouse'),
+            before=dict(vehicle=old[0],eta=old[1]) if old else None,
+            after=dict(vehicle=new[0],eta=new[1],late_minutes=round(max(0,new[1]-o['due']),2)) if new else None,
+            old_window=old_window,window=window,reasons=reasons))
+    event=next((e for e in scene['events'] if e['version']==number),None)
+    return dict(available=True,scene_id=scene['id'],revision=scene['revision'],version=number,
+        base=version.get('base'),status=version['status'],reason=version.get('reason'),event=deepcopy(event),
+        time=version.get('time',480),executed_until=version['executed_until'],rows=rows,
+        frozen_delivery_count=len(completed),metrics=deepcopy(plan['metrics']),
+        adoptable=scene['candidate']==number and not plan['metrics']['unserved'],
+        blocked_reason='未找到完整方案；已采用计划保留，未安排原货仍留原车' if plan['metrics']['unserved'] else None,
+        pickups=[dict(vehicle=vid,arrival=s['arrival'],finish=s['finish'],load_ids=s['load_ids'],
+            completed=s in states[vid]['completed']) for vid,r in plan['routes'].items() for s in r['stops'] if s['id']=='W'])
+
+
 class DispatchStore:
     def __init__(self,path):
         self.path=Path(path)
         with closing(sqlite3.connect(self.path)) as c, c:
             c.execute('CREATE TABLE IF NOT EXISTS dispatch_scenes (id TEXT PRIMARY KEY, body TEXT NOT NULL)')
 
-    def read(self):
+    def read(self, scene_id=None):
         with closing(sqlite3.connect(self.path)) as c, c:
-            row=c.execute('SELECT body FROM dispatch_scenes ORDER BY rowid DESC LIMIT 1').fetchone()
+            row=c.execute('SELECT body FROM dispatch_scenes WHERE id=?',(scene_id,)).fetchone() if scene_id is not None else c.execute('SELECT body FROM dispatch_scenes ORDER BY rowid DESC LIMIT 1').fetchone()
         return json.loads(row[0]) if row else None
+
+    def archive(self):
+        with closing(sqlite3.connect(self.path)) as c:
+            rows=c.execute('SELECT body FROM dispatch_scenes ORDER BY rowid DESC LIMIT 20').fetchall()
+            total=c.execute('SELECT COUNT(*) FROM dispatch_scenes').fetchone()[0]
+        summaries=[]
+        for index,(body,) in enumerate(rows):
+            scene=json.loads(body);plan=next(v['plan'] for v in scene['versions'] if v['id']==scene['active'])
+            summaries.append(dict(id=scene['id'],revision=scene['revision'],clock=scene['clock'],active=scene['active'],
+                candidate=scene['candidate'],versions=len(scene['versions']),orders=len(plan['data']['orders']),
+                delivered=sum(value=='delivered' for value in scene['cargo'].values()),current=index==0))
+        return dict(scenes=summaries,total=total,limit=20)
 
     def compare(self):
         return comparison(self.read())
@@ -219,7 +271,8 @@ class DispatchStore:
                     if not isinstance(event,dict): raise ValueError('事件必须是对象')
                     plan,states=calculate(base,event,kind,state['clock'])
                     if state['candidate']:
-                        next(v for v in state['versions'] if v['id']==state['candidate'])['status']='superseded'
+                        previous=next(v for v in state['versions'] if v['id']==state['candidate'])
+                        previous.update(status='superseded',reason='新的事件试算替代了候选；未采用、未执行')
                     number=len(state['versions'])+1
                     state['versions'].append(dict(id=number,status='candidate',base=state['active'],time=event['time'],plan=plan,states=states,executed_until=None))
                     state['events'].append(dict(kind=kind,event=event,version=number))
@@ -231,11 +284,17 @@ class DispatchStore:
                     self.advance(state,base,version['time'])
                     version['status']='adopted'; version['executed_until']=version['time']
                     state['active']=version['id']; state['candidate']=None
+                elif action=='discard':
+                    if not state['candidate'] or body.get('candidate')!=state['candidate']: raise Conflict('候选已变化，请刷新核对')
+                    version=next(v for v in state['versions'] if v['id']==state['candidate'])
+                    version.update(status='discarded',reason='用户放弃候选；未采用、未执行')
+                    state['candidate']=None
                 elif action=='advance':
                     normal.numeric(body.get('time'),'模拟执行时间',state['clock'],1440)
                     self.advance(state,base,body['time'])
                     if state['candidate']:
-                        next(v for v in state['versions'] if v['id']==state['candidate'])['status']='superseded'
+                        previous=next(v for v in state['versions'] if v['id']==state['candidate'])
+                        previous.update(status='superseded',reason='模拟执行进度已变化，原候选失效；未采用、未执行')
                         state['candidate']=None
                 else: raise ValueError('未知操作')
                 state['revision']+=1

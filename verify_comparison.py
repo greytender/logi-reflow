@@ -32,7 +32,12 @@ def audit(plan,states,parent):
             d=distance(pos,dest);km+=d;arrival=t+d/.5
             if oid=='W':
                 assert stop['load_ids']==['E01'] and 'E01' not in cargo and 'E01' not in loaded
-                cargo.update(stop['load_ids']);loaded.update(stop['load_ids']);finish=arrival+8
+                old=next((s for s in parent['routes'][vid]['stops'] if s['id']=='W'),None)
+                if old and old['arrival']<=state['available']<old['finish']:
+                    assert stop is r['stops'][n] and distance(state['point'],[0,0])<1e-7,'已开始装货被移动'
+                    arrival=old['arrival'];finish=old['finish']
+                else: finish=arrival+8
+                cargo.update(stop['load_ids']);loaded.update(stop['load_ids'])
             else:
                 assert oid in cargo,'先送后取或换车货物'
                 cargo.remove(oid);arrival=max(arrival,orders[oid]['open']);finish=arrival+5
