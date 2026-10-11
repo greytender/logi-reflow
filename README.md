@@ -1,4 +1,6 @@
-# 面向城市配送的动态调度与异常恢复系统
+# LogiReflow｜城配续航
+
+面向城市配送的动态调度与异常恢复系统。私人仓库：[greytender/logi-reflow](https://github.com/greytender/logi-reflow)。
 
 传化 × 动势“AI重构产业·架构师大赛”，AI＋物流赛道。当前为可运行、可审查的0.7原型，使用自制模拟数据；没有实际派单，也没有提交比赛。
 
