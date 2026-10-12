@@ -1,5 +1,11 @@
 # 城配续航 LogiReflow
 
+> **第一次看这个项目？先读这里：**
+>
+> **[大白话讲清城配续航：完整思路、最终目标、优点与不足](docs/大白话讲清城配续航.md)**
+>
+> 从仓库收到订单，讲到装车、临时变化、卸货和签收。想逐章阅读，可在启动应用后打开 **[交互故事阅读页](http://127.0.0.1:8766/story.html)**；全文文档在GitHub上可直接阅读。
+
 城市配送智能配载与异常重排原型。**路线可行，还需要装得下、卸得出；出发后的调整必须保留原坐标、货物归属与执行事实。**
 
 参赛者：陈祉好｜东北财经大学。
@@ -16,7 +22,7 @@ Windows安装Python 3.10+并加入PATH后，双击 **打开城配续航.cmd**，
 python server.py
 ```
 
-应用运行仅需Python标准库，无需npm或第三方Python包；前端使用原生JavaScript与SVG。服务只绑定127.0.0.1。启动器优先打开Chrome；没有Chrome时会按现有逻辑回退系统浏览器，指定Chrome演示请先安装Chrome。本轮官网核查只使用用户指定Chrome。
+应用运行仅需Python标准库，无需npm或第三方Python包；前端使用原生JavaScript与SVG。服务只绑定127.0.0.1。启动器优先打开Chrome；没有Chrome时会按现有逻辑回退系统浏览器，指定Chrome演示请先安装Chrome。官网本轮最终通过本人授权的Tabbit完成正文核查，Chrome连接失败记录保留。
 
 端口冲突时执行 `python server.py --port 8767`，然后打开对应地址。独立运行可加 `--database outputs/reviewer-test.sqlite3`，避免使用原运行数据库。
 

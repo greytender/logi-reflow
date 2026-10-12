@@ -113,3 +113,9 @@ evidence/*
 !evidence/official-submission-source-20261012.json
 !evidence/submission-preparation-20261012.json
 !evidence/submission-confirmation-20261012.json
+!evidence/story-browser-verification.json
+!evidence/story-reading-desktop.png
+!evidence/story-reading-mobile.png
+!evidence/responsive-verification-20261012.json
+!evidence/video-verification-20261012.json
+!evidence/tests-story-responsive-20261012.txt

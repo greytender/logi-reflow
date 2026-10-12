@@ -1,0 +1,28 @@
+{
+  "checks": {
+    "app_methods_link_visible": true,
+    "chapters": 13,
+    "desktop_no_horizontal_overflow": true,
+    "direct_chapter_jump": true,
+    "full_text_toggle": true,
+    "initial_single_chapter": true,
+    "mobile_directory_collapse": true,
+    "mobile_no_horizontal_overflow": true,
+    "previous_next": true
+  },
+  "console_errors": [],
+  "dispatch_state_mutations": false,
+  "model_calls": false,
+  "checked_date": "2026-10-12",
+  "browser": "Tabbit Browser",
+  "source_document": "docs/大白话讲清城配续航.md",
+  "source_sha256": "624459e66d0395e19edf2e00e688b0f4d22946580a4c46abf8a3ff47c8530a87",
+  "screenshots": [
+    "story-reading-desktop.png",
+    "story-reading-mobile.png"
+  ],
+  "algorithm_regression_rerun": false,
+  "detector": "regex fallback only; HTML parser modules absent; no findings does not establish computed contrast or full accessibility",
+  "main_entry": "http://127.0.0.1:8766/",
+  "reading_route": "http://127.0.0.1:8766/story.html"
+}
