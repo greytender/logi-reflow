@@ -37,7 +37,7 @@ def main():
     manifest=dict(checkpoint=args.label,files=files,
                   data_kind='constructed data and manual simulation only',
                   excluded='runtime SQLite, credentials, environment files, backups, logs, raw unapproved screenshots, node packages, outputs and git internals',
-                  limits='Constructed simulation only; package creation is not competition submission or acceptance of terms; current official submission guide pending Chrome reconnection; team identity confirmed in README')
+                  limits='Constructed simulation only; package creation is not competition submission or acceptance of terms; official source verification and submission status are recorded in docs/比赛核对.md; team identity confirmed in README')
     with ZipFile(output,'w',ZIP_DEFLATED) as archive:
         for item in files:archive.write(ROOT/item['path'],item['path'])
         archive.writestr('CHECKPOINT-MANIFEST.json',json.dumps(manifest,ensure_ascii=False,indent=2))

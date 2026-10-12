@@ -110,3 +110,5 @@ evidence/*
 !evidence/delivery-audit-20261012.json
 !evidence/chrome-recheck-20261012.json
 !evidence/repository-sync-20261012.json
+!evidence/official-submission-source-20261012.json
+!evidence/submission-preparation-20261012.json

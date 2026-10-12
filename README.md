@@ -68,3 +68,5 @@ python reproduce_csv_checkpoint.py
 真实截图：[首页](evidence/app-home-desktop.png)、[手机](evidence/app-home-mobile.png)、[完整演示](evidence/app-complete-demo.png)、[候选核对](evidence/app-candidate-review.png)。28组构造异常、56份独立核算方案保留无改善、取舍与不完整结果；不证明企业收益或原创算法。
 
 [作品方案](docs/作品方案与评审展示.md)｜[提交清单](docs/提交材料清单.md)｜[方法来源](docs/智能配载方法筛选与实现.md)。带“历史”的记录仅供追溯，其旧入口、数量与未实现状态不作为当前说明。
+
+官网提交指导与物流正文已于2026-10-12用Tabbit实际复核。本人确认截止为当日18:00（北京时间），具体[初赛登记表](https://v.wjx.cn/vm/rmEuv50.aspx#)已填写、未提交；DsChHack/write协作邀请已发送、待接受。官网知识产权归属条款与来源边界见[比赛核对](docs/比赛核对.md)，当前未代本人接受条款。

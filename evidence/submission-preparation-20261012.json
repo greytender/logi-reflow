@@ -1,0 +1,30 @@
+{
+  "checked_date": "2026-10-12",
+  "official_guide_read": true,
+  "browser": "Tabbit Browser",
+  "repository": "https://github.com/greytender/logi-reflow",
+  "private": true,
+  "judge_invitation": {
+    "account": "DsChHack",
+    "id": 337265455,
+    "permission": "write",
+    "sent": true,
+    "accepted": false,
+    "verification": "GitHub invitations API; pending invite present",
+    "authorization": "User explicitly asked to bring official judge account into repository collaboration"
+  },
+  "deadline": {
+    "value": "2026-10-12T18:00:00+08:00",
+    "source": "user confirmed"
+  },
+  "submission_form": {
+    "url": "https://v.wjx.cn/vm/rmEuv50.aspx#",
+    "title": "AI重构产业·架构师大赛作品登记",
+    "filled": true,
+    "submitted": false,
+    "contact": "user entered directly; no value retained in repository",
+    "draft": "docs/初赛表单核对稿.md"
+  },
+  "terms_accepted": false,
+  "organizer_receipt_verified": false
+}
