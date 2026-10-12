@@ -14,7 +14,7 @@ class DispatchMaturityTests(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
         self.path=Path(self.tmp.name)/'scene.sqlite3';self.store=continuous.DispatchStore(self.path)
-        self.scene=self.store.act('start',dict(data=normal.defaults()))
+        self.scene=self.store.act('start',dict(data=normal.defaults(),progress_mode='legacy_eta'))
 
     def act(self,action,**extra):
         self.scene=self.store.act(action,dict(id=self.scene['id'],revision=self.scene['revision'],**extra))

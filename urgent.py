@@ -30,6 +30,11 @@ def validate(event, data):
 
 
 def future(seq, state, vehicle, orders):
+    if state.get('progress_mode')=='manual_receipts':
+        import continuous
+        rr=continuous.future(seq,state,vehicle,orders,dict(stops=[dict(id='W',load_ids=['E01'],arrival=-100,finish=-92)]))
+        if rr: rr['sequence']=list(seq)
+        return rr
     # Reuse the audited cargo simulator, with a warehouse pickup rather than a
     # roadside transfer. Public routes use W; there is no roadside transfer fee.
     rr = dynamic.future_route(['P' if x == 'W' else x for x in seq], state, vehicle,

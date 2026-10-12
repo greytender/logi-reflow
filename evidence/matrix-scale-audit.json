@@ -1,0 +1,98 @@
+[
+  {
+    "stores": 3,
+    "sku_rows": 30,
+    "initial": {
+      "passed": true,
+      "scene_id": "f84a040d8c9849438e2da875049f8e44",
+      "revision": 1,
+      "orders": 3,
+      "signatures": 0,
+      "receipts": 0,
+      "prediction_checked": true,
+      "scope": "SKU算术、唯一货物归属、签收历史、回仓装货、保存锚点后有向路线/窗口/班次/费用；不验证真实位置或企业效果"
+    },
+    "after_signature": {
+      "passed": true,
+      "scene_id": "f84a040d8c9849438e2da875049f8e44",
+      "revision": 4,
+      "orders": 3,
+      "signatures": 1,
+      "receipts": 3,
+      "prediction_checked": true,
+      "scope": "SKU算术、唯一货物归属、签收历史、回仓装货、保存锚点后有向路线/窗口/班次/费用；不验证真实位置或企业效果"
+    }
+  },
+  {
+    "stores": 12,
+    "sku_rows": 120,
+    "initial": {
+      "passed": true,
+      "scene_id": "a67be68ab78b48a5b6b7dee7ae2d4f9c",
+      "revision": 1,
+      "orders": 12,
+      "signatures": 0,
+      "receipts": 0,
+      "prediction_checked": true,
+      "scope": "SKU算术、唯一货物归属、签收历史、回仓装货、保存锚点后有向路线/窗口/班次/费用；不验证真实位置或企业效果"
+    },
+    "after_signature": {
+      "passed": true,
+      "scene_id": "a67be68ab78b48a5b6b7dee7ae2d4f9c",
+      "revision": 4,
+      "orders": 12,
+      "signatures": 1,
+      "receipts": 3,
+      "prediction_checked": true,
+      "scope": "SKU算术、唯一货物归属、签收历史、回仓装货、保存锚点后有向路线/窗口/班次/费用；不验证真实位置或企业效果"
+    }
+  },
+  {
+    "stores": 30,
+    "sku_rows": 300,
+    "initial": {
+      "passed": true,
+      "scene_id": "b03624ce48aa4a4bbeff562ce88abbb6",
+      "revision": 1,
+      "orders": 30,
+      "signatures": 0,
+      "receipts": 0,
+      "prediction_checked": true,
+      "scope": "SKU算术、唯一货物归属、签收历史、回仓装货、保存锚点后有向路线/窗口/班次/费用；不验证真实位置或企业效果"
+    },
+    "after_signature": {
+      "passed": true,
+      "scene_id": "b03624ce48aa4a4bbeff562ce88abbb6",
+      "revision": 4,
+      "orders": 30,
+      "signatures": 1,
+      "receipts": 3,
+      "prediction_checked": true,
+      "scope": "SKU算术、唯一货物归属、签收历史、回仓装货、保存锚点后有向路线/窗口/班次/费用；不验证真实位置或企业效果"
+    }
+  },
+  {
+    "stores": 40,
+    "sku_rows": 400,
+    "initial": {
+      "passed": true,
+      "scene_id": "a9507be6ccef43bc9ce2b4478e441d9f",
+      "revision": 1,
+      "orders": 40,
+      "signatures": 0,
+      "receipts": 0,
+      "prediction_checked": true,
+      "scope": "SKU算术、唯一货物归属、签收历史、回仓装货、保存锚点后有向路线/窗口/班次/费用；不验证真实位置或企业效果"
+    },
+    "after_signature": {
+      "passed": true,
+      "scene_id": "a9507be6ccef43bc9ce2b4478e441d9f",
+      "revision": 4,
+      "orders": 40,
+      "signatures": 1,
+      "receipts": 3,
+      "prediction_checked": true,
+      "scope": "SKU算术、唯一货物归属、签收历史、回仓装货、保存锚点后有向路线/窗口/班次/费用；不验证真实位置或企业效果"
+    }
+  }
+]

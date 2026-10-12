@@ -1,0 +1,49 @@
+{
+  "before": {
+    "sessions": {
+      "rows": 1,
+      "sha256": "b2e633aafb159c290d2eee4e6954cfff8a6f319731b595d99b59a97e8bc988fb"
+    },
+    "meta": {
+      "rows": 1,
+      "sha256": "e757692a022584de0c2406a2a5e061462bce31b6fb695c3930b227da0f6b5127"
+    },
+    "dispatch_scenes": {
+      "rows": 6,
+      "sha256": "ded760a37135f4af215ceb96c1e686e55e0bbf8da0ce1bdc9d10cea2a4e27cf2"
+    }
+  },
+  "backup": "data\\backups\\before-csv-ai-20261011-202622.sqlite3",
+  "after": {
+    "sessions": {
+      "rows": 1,
+      "sha256": "b2e633aafb159c290d2eee4e6954cfff8a6f319731b595d99b59a97e8bc988fb"
+    },
+    "meta": {
+      "rows": 1,
+      "sha256": "e757692a022584de0c2406a2a5e061462bce31b6fb695c3930b227da0f6b5127"
+    },
+    "dispatch_scenes": {
+      "rows": 6,
+      "sha256": "ded760a37135f4af215ceb96c1e686e55e0bbf8da0ce1bdc9d10cea2a4e27cf2"
+    }
+  },
+  "unchanged": true,
+  "current_scene_id": "b9cebc6ac73249808d70afba028ccd00",
+  "revision": 27,
+  "production_audit": {
+    "passed": true,
+    "scene_id": "b9cebc6ac73249808d70afba028ccd00",
+    "revision": 27,
+    "orders": 5,
+    "signatures": 5,
+    "receipts": 15,
+    "prediction_checked": true,
+    "scope": "SKU算术、唯一货物归属、签收历史、回仓装货、保存锚点后有向路线/窗口/班次/费用；不验证真实位置或企业效果"
+  },
+  "stale_interpretation_http": 409,
+  "stale_message": {
+    "error": "页面版本已过期，请刷新，不能覆盖新计划"
+  },
+  "source": "本机运行数据库，只有行数与摘要、场景编号及算术核验；不包含原始数据库"
+}

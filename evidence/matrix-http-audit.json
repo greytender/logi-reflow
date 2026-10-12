@@ -1,0 +1,22 @@
+{
+  "current": {
+    "passed": true,
+    "scene_id": "bf11b1f8696240cf98cc9c04354c709d",
+    "revision": 1,
+    "orders": 3,
+    "signatures": 0,
+    "receipts": 0,
+    "prediction_checked": true,
+    "scope": "SKU算术、唯一货物归属、签收历史、回仓装货、保存锚点后有向路线/窗口/班次/费用；不验证真实位置或企业效果"
+  },
+  "completed": {
+    "passed": true,
+    "scene_id": "a5927166202b47eabe29d4bfadf0f98a",
+    "revision": 26,
+    "orders": 4,
+    "signatures": 4,
+    "receipts": 12,
+    "prediction_checked": true,
+    "scope": "SKU算术、唯一货物归属、签收历史、回仓装货、保存锚点后有向路线/窗口/班次/费用；不验证真实位置或企业效果"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "checked_date": "2026-10-12",
+  "repository": "https://github.com/greytender/logi-reflow",
+  "repository_private_verified": true,
+  "github_api_access_verified": true,
+  "chrome_running": true,
+  "chrome_extension_enabled": true,
+  "chrome_native_host_configuration_valid": true,
+  "chrome_window_recovery_attempted": true,
+  "current_chrome_content_read": false,
+  "current_submission_guide_rechecked": false,
+  "last_verified_submission_guide_date": "2026-10-10",
+  "latest_existing_logistics_track_read_date": "2026-10-12",
+  "team_identity": {
+    "name": "陈祉好",
+    "school": "东北财经大学",
+    "source": "user confirmed in current chat"
+  },
+  "judge_collaborator_access": "owner only; no pending invitations; not invited",
+  "competition_form_submitted": false,
+  "limits": "This record does not represent a new official rules verification, judge access, acceptance of terms, or competition submission.",
+  "github_check_method": "GitHub API with single-process HTTPS proxy, plus git ls-remote and fetch"
+}

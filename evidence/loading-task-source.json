@@ -1,0 +1,13 @@
+{
+  "url": "http://asserts.dsdigital.team/static/transfar/transfar-dsgroup-ai-architect-hackathon.html",
+  "checked_at": "2026-10-11T13:29:29.803Z",
+  "method": "Installed Chrome headless, clicked official logistics detail in srcdoc; isolated profile",
+  "characters": 2064,
+  "sha256": "b3c04ef11ad773a06d7bf8d04d9a2076a32ed4c26eba913d4aa760140f1a07d3",
+  "confirmed": [
+    "车辆与路线",
+    "重量/体积/易碎/堆叠/车厢空间",
+    "3D布局与分步骤装卸",
+    "终赛提供数据示例"
+  ]
+}

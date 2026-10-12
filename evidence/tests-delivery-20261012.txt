@@ -1,0 +1,34 @@
+127.0.0.1 - - [12/Oct/2026 13:54:04] "POST /api/dispatch/interpret HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:05] "POST /api/dispatch/interpret HTTP/1.1" 409 -
+127.0.0.1 - - [12/Oct/2026 13:54:05] "POST /api/dispatch/interpret HTTP/1.1" 409 -
+127.0.0.1 - - [12/Oct/2026 13:54:06] "GET /api/dispatch/handoff?id=18f5645b8eb4414cbb67d74b7ea982d9&revision=0 HTTP/1.1" 409 -
+127.0.0.1 - - [12/Oct/2026 13:54:06] "GET /api/dispatch/handoff?id=18f5645b8eb4414cbb67d74b7ea982d9&revision=1 HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:06] "GET /api/dispatch/handoff?id=18f5645b8eb4414cbb67d74b7ea982d9&revision=1&format=csv HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:12] "POST /api/loading/solve HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:12] "POST /api/loading/solve HTTP/1.1" 400 -
+127.0.0.1 - - [12/Oct/2026 13:54:25] "POST /api/ai/key/set HTTP/1.1" 403 -
+127.0.0.1 - - [12/Oct/2026 13:54:25] "POST /api/ai/key/set HTTP/1.1" 403 -
+127.0.0.1 - - [12/Oct/2026 13:54:25] "POST /api/ai/key/set HTTP/1.1" 403 -
+127.0.0.1 - - [12/Oct/2026 13:54:25] "POST /api/ai/key/set HTTP/1.1" 403 -
+127.0.0.1 - - [12/Oct/2026 13:54:25] "GET /api/ai/key/status HTTP/1.1" 403 -
+127.0.0.1 - - [12/Oct/2026 13:54:26] "POST /api/ai/key/set HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:26] "GET /api/ai/key/status HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:26] "GET /api/ai/key/status HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:26] "POST /api/ai/key/clear HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:27] "POST /api/ai/key/set HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:27] "GET /api/ai/status HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:27] "GET /api/ai/status HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:27] "POST /api/scenario/live/start HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:27] "POST /api/scenario/live/interpret HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:27] "POST /api/scenario/live/interpret HTTP/1.1" 503 -
+127.0.0.1 - - [12/Oct/2026 13:54:28] "GET /api/scenario/sample HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:29] "POST /api/scenario/run HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:29] "POST /api/scenario/run HTTP/1.1" 400 -
+127.0.0.1 - - [12/Oct/2026 13:54:31] "POST /api/scenario/live/start HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:31] "POST /api/scenario/live/action HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:31] "POST /api/scenario/live/action HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 13:54:31] "POST /api/scenario/live/start HTTP/1.1" 400 -
+----------------------------------------------------------------------
+Ran 185 tests in 34.282s
+
+OK

@@ -1,0 +1,283 @@
+{
+  "base": "http://127.0.0.1:18777",
+  "checks": [
+    {
+      "evidence_case": "geometry",
+      "result": {
+        "case": "geometry",
+        "baseline": {
+          "metrics": {
+            "served": 2,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 48,
+            "distance": 9
+          },
+          "sequence": [
+            "SHOP_B",
+            "SHOP_A"
+          ],
+          "executable": false,
+          "reason": "仅按重量和总体积排程；基线装载状态见独立检查"
+        },
+        "checked": {
+          "metrics": {
+            "served": 2,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 117,
+            "distance": 9
+          },
+          "sequence": [
+            "SHOP_A",
+            "SHOP_B"
+          ],
+          "executable": true,
+          "reason": "改用可容纳箱体的大车，费用增加是约束代价"
+        },
+        "coordinates": [
+          {
+            "id": "SHOP_B/BOX_B/1",
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "dx": 100,
+            "dy": 70,
+            "dz": 70
+          },
+          {
+            "id": "SHOP_A/FRAGILE_A/1",
+            "x": 100,
+            "y": 0,
+            "z": 0,
+            "dx": 100,
+            "dy": 70,
+            "dz": 70
+          }
+        ]
+      }
+    },
+    {
+      "evidence_case": "fixed_route",
+      "result": {
+        "case": "fixed_route",
+        "baseline": {
+          "metrics": {
+            "served": 3,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 38,
+            "changed_orders": 2,
+            "changed_ids": [
+              "B",
+              "C"
+            ]
+          },
+          "sequence": [
+            "A",
+            "C",
+            "B"
+          ],
+          "executable": false,
+          "reason": "路线试算忽略原摆放，不能沿此顺序直线卸货"
+        },
+        "checked": {
+          "metrics": {
+            "served": 3,
+            "unserved": 0,
+            "late_orders": 1,
+            "late_minutes": 45,
+            "cost": 38,
+            "changed_orders": 2,
+            "changed_ids": [
+              "B",
+              "C"
+            ]
+          },
+          "sequence": [
+            "A",
+            "B",
+            "C"
+          ],
+          "executable": true,
+          "reason": "核验出发坐标，保留45分钟预测迟到的可执行候选"
+        },
+        "coordinates": [
+          {
+            "id": "C/BOX/1",
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "dx": 50,
+            "dy": 50,
+            "dz": 50
+          },
+          {
+            "id": "B/BOX/1",
+            "x": 50,
+            "y": 0,
+            "z": 0,
+            "dx": 50,
+            "dy": 50,
+            "dz": 50
+          },
+          {
+            "id": "A/BOX/1",
+            "x": 100,
+            "y": 0,
+            "z": 0,
+            "dx": 50,
+            "dy": 50,
+            "dz": 50
+          }
+        ]
+      }
+    },
+    {
+      "evidence_case": "fragile",
+      "result": {
+        "case": "fragile",
+        "baseline": {
+          "metrics": {
+            "served": 2,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 36,
+            "distance": 3
+          },
+          "sequence": [
+            "LAST",
+            "FIRST"
+          ],
+          "executable": false,
+          "reason": "仅按重量和总体积排程；基线装载状态见独立检查"
+        },
+        "checked": {
+          "metrics": {
+            "served": 1,
+            "unserved": 1,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 34,
+            "distance": 2
+          },
+          "sequence": [
+            "FIRST"
+          ],
+          "executable": false,
+          "reason": "保留未安排订单；部分方案低费用不作降本比较"
+        },
+        "coordinates": [
+          {
+            "id": "FIRST/TOP/1",
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "dx": 50,
+            "dy": 50,
+            "dz": 30
+          }
+        ]
+      }
+    },
+    {
+      "settings_dialog": true,
+      "api_key_not_changed": true
+    },
+    {
+      "full_demo": {
+        "stores": 6,
+        "receipts": 18,
+        "finished": 571
+      }
+    },
+    {
+      "fixed_live_coordinates_preserved": true,
+      "execution": {
+        "receipts": [
+          {
+            "vehicle": "LARGE",
+            "order": "S01",
+            "receipt": "arrived",
+            "time": 486,
+            "source": "manual_simulation",
+            "version": 2
+          },
+          {
+            "vehicle": "LARGE",
+            "order": "S01",
+            "receipt": "unloading",
+            "time": 486,
+            "source": "manual_simulation",
+            "version": 2
+          },
+          {
+            "vehicle": "LARGE",
+            "order": "S01",
+            "receipt": "signed",
+            "time": 491,
+            "source": "manual_simulation",
+            "version": 2
+          }
+        ],
+        "cargo": {
+          "S01": "delivered",
+          "S02": "LARGE",
+          "S03": "LARGE",
+          "S04": "LARGE",
+          "S05": "LARGE",
+          "S06": "LARGE"
+        },
+        "status": "状态已更新；候选采用与回执均按修订号保护。"
+      }
+    },
+    {
+      "csv_urgent_generated_and_adopted": true
+    },
+    {
+      "professional_modules": true
+    },
+    {
+      "old_entry_redirect": "normal.html",
+      "destination": "http://127.0.0.1:18777/#tools/dispatch"
+    },
+    {
+      "old_entry_redirect": "loading.html",
+      "destination": "http://127.0.0.1:18777/#tools/cargo"
+    },
+    {
+      "old_entry_redirect": "scenario.html",
+      "destination": "http://127.0.0.1:18777/"
+    },
+    {
+      "reduced_motion": true,
+      "technical_boundaries": true
+    },
+    {
+      "mobile_interactive_and_module": true
+    }
+  ],
+  "viewport": [
+    {
+      "width": 375,
+      "document": 375
+    },
+    {
+      "width": 768,
+      "document": 768
+    },
+    {
+      "width": 1024,
+      "document": 1024
+    },
+    {
+      "width": 1440,
+      "document": 1440
+    }
+  ],
+  "console_errors": []
+}

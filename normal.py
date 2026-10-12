@@ -80,37 +80,41 @@ def score(routes):
             round(sum(r['cost'] for r in routes.values()),4))
 
 
-def solve(data):
-    started=perf_counter(); data=deepcopy(data); validate(data)
+def solve(data, *, validator=None, evaluator=None, search_rounds=8):
+    started=perf_counter(); data=deepcopy(data); (validator or validate)(data)
+    evaluate = evaluator or route
     orders={o['id']:o for o in data['orders']}; vehicles=data['vehicles']; candidates=[]
     by_due=sorted(orders,key=lambda x:(orders[x]['due'],x))
     by_size=sorted(orders,key=lambda x:(-orders[x]['quantity']*orders[x]['unit_volume_m3'],x))
     # Different insertion orders reduce dependence on one greedy start.
     priorities=[by_due,by_size]+[by_due[i:]+by_due[:i] for i in (3,6,9)]
     for priority in priorities:
-        routes={v['id']:route([],v,orders) for v in vehicles}; unserved=[]
+        routes={v['id']:evaluate([],v,orders) for v in vehicles}; unserved=[]
         for oid in priority:
             best=None
             for v in vehicles:
                 vid=v['id']; old=routes[vid]['sequence']
                 for pos in range(len(old)+1):
-                    trial=route(old[:pos]+[oid]+old[pos:],v,orders)
+                    trial=evaluate(old[:pos]+[oid]+old[pos:],v,orders)
                     if trial is None: continue
                     key=score({**routes,vid:trial})
                     if best is None or key<best[0]: best=(key,vid,trial)
             if best is None: unserved.append(oid)
             else: routes[best[1]]=best[2]
         # Bounded local improvement: move one order between/within vehicles.
-        for _ in range(8):
+        for _ in range(search_rounds):
             best=None; oldscore=score(routes)
             for source in vehicles:
                 sid=source['id']; original=routes[sid]['sequence']
                 for oid in original:
-                    removed=route([x for x in original if x!=oid],source,orders)
+                    removed=evaluate([x for x in original if x!=oid],source,orders)
+                    # With directed road times a shortcut can be slower, so
+                    # removing a visit need not preserve feasibility.
+                    if removed is None: continue
                     for dest in vehicles:
                         did=dest['id']; base=removed['sequence'] if did==sid else routes[did]['sequence']
                         for pos in range(len(base)+1):
-                            trial=route(base[:pos]+[oid]+base[pos:],dest,orders)
+                            trial=evaluate(base[:pos]+[oid]+base[pos:],dest,orders)
                             if trial is None: continue
                             proposal={**routes,sid:removed,did:trial}; key=score(proposal)
                             if key<oldscore and (best is None or key<best[0]): best=(key,proposal)
@@ -122,7 +126,7 @@ def solve(data):
             for v in vehicles:
                 vid=v['id']; seq=routes[vid]['sequence']
                 for pos in range(len(seq)+1):
-                    trial=route(seq[:pos]+[oid]+seq[pos:],v,orders)
+                    trial=evaluate(seq[:pos]+[oid]+seq[pos:],v,orders)
                     if trial: options.append((score({**routes,vid:trial}),vid,trial))
             if options:
                 _,vid,trial=min(options,key=lambda x:x[0]); routes[vid]=trial; unserved.remove(oid)
@@ -133,14 +137,14 @@ def solve(data):
         w,vol=totals([oid],orders)
         if not any(w<=v['max_weight_kg']+1e-8 and vol<=v['max_volume_m3']+1e-8 for v in vehicles):
             reason=f'该单 {w:g} kg / {vol:g} m³，没有车辆能单独装下；本版不拆单。'
-        elif not any(route([oid],v,orders) for v in vehicles):
+        elif not any(evaluate([oid],v,orders) for v in vehicles):
             reason='即使单独从仓库出发，也无法在最晚收货时间前到达。'
         else:
             reason='当前有限搜索未找到插入位置；可能受总容量或时间约束限制，不代表已证明无解。'
         rejected.append(dict(id=oid,reason=reason))
     return dict(data=data,routes=routes,unserved=rejected,simulated=True,
                 method='多起点插入 + 单订单移位，启发式求解，无全局最优保证',
-                metrics=dict(served=12-len(unserved),unserved=len(unserved),late_orders=score(routes)[0],
+                metrics=dict(served=len(orders)-len(unserved),unserved=len(unserved),late_orders=score(routes)[0],
                     late_minutes=round(score(routes)[1],2),cost=round(score(routes)[2],2),
                     distance=round(sum(r['distance'] for r in routes.values()),2)),
                 solve_ms=round((perf_counter()-started)*1000,3))

@@ -1,0 +1,92 @@
+{
+  "browser": "Installed Google Chrome, headless, separate temporary profile; no foreground interaction",
+  "source": "real DeepSeek API; constructed messages",
+  "live_calls": 3,
+  "before": {
+    "id": "e59ffa3c4bfa443d9d44b13326eb2be0",
+    "revision": 1,
+    "active": 1
+  },
+  "afterUnderstanding": {
+    "id": "e59ffa3c4bfa443d9d44b13326eb2be0",
+    "revision": 1,
+    "active": 1
+  },
+  "parsed": {
+    "sceneId": "e59ffa3c4bfa443d9d44b13326eb2be0",
+    "revision": 1,
+    "event": {
+      "type": "urgent_order",
+      "time": 420,
+      "store": "STORE_002",
+      "lines": [
+        {
+          "sku": "WEB_A",
+          "quantity": 2,
+          "unit_weight_kg": 7,
+          "unit_volume_m3": 0.03
+        }
+      ],
+      "due": 780,
+      "close": 960
+    },
+    "model": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 515,
+      "completion_tokens": 69,
+      "total_tokens": 584,
+      "prompt_cache_hit_tokens": 381,
+      "prompt_cache_miss_tokens": 134
+    }
+  },
+  "candidate": {
+    "active": 1,
+    "candidate": 2,
+    "cargo": {
+      "STORE_001": "TRUCK_1",
+      "STORE_002": "TRUCK_1",
+      "STORE_003": "TRUCK_1"
+    }
+  },
+  "completed": {
+    "receipts": 12,
+    "allDelivered": true,
+    "allReturned": true
+  },
+  "signed_order_rejection": {
+    "status": 503,
+    "response": {
+      "error": "AI输出未通过CSV事件校验：该订单已交付，不能改写历史；未修改计划",
+      "ready": false,
+      "elapsed_ms": 854.15,
+      "usage": {
+        "prompt_tokens": 527,
+        "completion_tokens": 38,
+        "total_tokens": 565,
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 143
+      }
+    }
+  },
+  "stale_http_status": 409,
+  "page_errors": [],
+  "screenshots": [
+    "csv-ai-understood-browser.png",
+    "csv-ai-adopted-browser.png",
+    "csv-ai-completed-browser.png"
+  ],
+  "scope": "真实页面完成缺体积补问、补充理解、勾选、候选和核对采用、四单12条回执及回仓；另以HTTP验证已签收改窗拒绝与用量保留",
+  "final_state": {
+    "id": "e59ffa3c4bfa443d9d44b13326eb2be0",
+    "revision": 21,
+    "active": 2,
+    "cargo": {
+      "STORE_001": "delivered",
+      "STORE_002": "delivered",
+      "STORE_003": "delivered",
+      "E01": "delivered"
+    }
+  },
+  "execution_total_live_calls_this_turn": 17,
+  "execution_note": "12条真实小样本、初次网页验证2次、简化核对显示后的网页验证3次，共17次；无自动重试。"
+}

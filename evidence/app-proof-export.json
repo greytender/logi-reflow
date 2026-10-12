@@ -1,0 +1,224 @@
+{
+  "case": "fragile",
+  "data_kind": "constructed",
+  "title": "易碎箱不能靠叠放把订单塞进车里",
+  "baseline": {
+    "metrics": {
+      "served": 2,
+      "unserved": 0,
+      "late_orders": 0,
+      "late_minutes": 0,
+      "cost": 36,
+      "distance": 3
+    },
+    "sequence": [
+      "LAST",
+      "FIRST"
+    ],
+    "executable": false,
+    "reason": "仅按重量和总体积排程；基线装载状态见独立检查"
+  },
+  "checked": {
+    "metrics": {
+      "served": 1,
+      "unserved": 1,
+      "late_orders": 0,
+      "late_minutes": 0,
+      "cost": 34,
+      "distance": 2
+    },
+    "sequence": [
+      "FIRST"
+    ],
+    "executable": false,
+    "reason": "保留未安排订单；部分方案低费用不作降本比较"
+  },
+  "geometry": {
+    "vehicle": {
+      "id": "V1",
+      "max_weight_kg": 100,
+      "max_volume_m3": 0.225,
+      "fixed_cost": 30,
+      "cost_per_km": 2,
+      "shift_start": 480,
+      "shift_end": 720,
+      "length_cm": 50,
+      "width_cm": 50,
+      "height_cm": 90
+    },
+    "items": [
+      {
+        "order": "FIRST",
+        "sku": "TOP",
+        "length_cm": 50,
+        "width_cm": 50,
+        "height_cm": 30,
+        "rotate_base": false,
+        "fragile": true,
+        "max_top_load_kg": 0,
+        "id": "FIRST/TOP/1",
+        "weight_kg": 5
+      },
+      {
+        "order": "LAST",
+        "sku": "BASE",
+        "length_cm": 50,
+        "width_cm": 50,
+        "height_cm": 30,
+        "rotate_base": false,
+        "fragile": true,
+        "max_top_load_kg": 0,
+        "id": "LAST/BASE/1",
+        "weight_kg": 15
+      },
+      {
+        "order": "LAST",
+        "sku": "MID",
+        "length_cm": 50,
+        "width_cm": 50,
+        "height_cm": 30,
+        "rotate_base": false,
+        "fragile": true,
+        "max_top_load_kg": 0,
+        "id": "LAST/MID/1",
+        "weight_kg": 10
+      }
+    ],
+    "placements": [
+      {
+        "id": "FIRST/TOP/1",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "dx": 50,
+        "dy": 50,
+        "dz": 30
+      }
+    ],
+    "sequence": [
+      "FIRST"
+    ]
+  },
+  "checks": [
+    "V1: NOT_FOUND"
+  ],
+  "verification": {
+    "independent_route_audit": {
+      "passed": true,
+      "checked_stops": 1,
+      "unserved": 1,
+      "checks": [
+        "SKU汇总载重与体积",
+        "车辆准入",
+        "有向道路时间",
+        "卸货与窗口",
+        "班次回仓",
+        "费用",
+        "迟到",
+        "完整且唯一归属"
+      ]
+    },
+    "loading_audits": {
+      "V1": {
+        "layout": {
+          "passed": true,
+          "errors": [],
+          "boxes": 1,
+          "top_loads_kg": {
+            "FIRST/TOP/1": 0
+          },
+          "checks": [
+            "边界",
+            "唯一箱体",
+            "不重叠",
+            "允许朝向",
+            "载重",
+            "单箱全底面支撑",
+            "累计堆叠承重",
+            "易碎不压货",
+            "逐店直线取货与支撑顺序"
+          ]
+        },
+        "instructions": {
+          "passed": true,
+          "errors": [],
+          "load_states": 1,
+          "unload_states": 1
+        }
+      }
+    }
+  },
+  "source_sha256": {
+    "orders.csv": "ae7293b4b6452806951d9f52a6ef5e2a56275e5e3da7817d82c576a452320550",
+    "vehicles.csv": "c927f195983f796e45774abb56c47e0f63bf6571b5f188d07085364273924eb8",
+    "travel.csv": "7dcdf293c18c7ae9905b57e4ed2666c0029b298958d60c4d951035f91f19157a",
+    "settings.json": "78e3ec320f3fb03c64e5fe48c1fb7468316ac039bb7f4b7fd0141bac8b204341",
+    "loading.json": "6390a15bdff217fadf6fc319967e4a1e866940291e2d7959f7aaa5963637c944"
+  },
+  "unserved": [
+    {
+      "id": "LAST",
+      "reason": "路线/装载有限搜索未找到联合方案；不证明无解，需核查尺寸、规则或换求解器",
+      "code": "LOADING_OR_ROUTE_SEARCH_NOT_FOUND"
+    }
+  ],
+  "work": {
+    "route_checks": 5,
+    "placement_checks": 46,
+    "loading_rejections": 3,
+    "budget_exhausted": false
+  },
+  "inputs": {
+    "csv_files": {
+      "orders.csv": "stop_id,sku,quantity,unit_weight_kg,unit_volume_m3,open,due,close,service_minutes,allowed_vehicles\r\nFIRST,TOP,1,5,0.075,08:00,09:00,11:00,5,V1\r\nLAST,BASE,1,15,0.075,08:00,09:00,11:00,5,V1\r\nLAST,MID,1,10,0.075,08:00,09:00,11:00,5,V1\r\n",
+      "vehicles.csv": "vehicle_id,max_weight_kg,max_volume_m3,fixed_cost,cost_per_km,shift_start,shift_end\r\nV1,100,0.225,30,2,08:00,12:00\r\n",
+      "travel.csv": "from_id,to_id,distance_km,travel_minutes\r\nWH,FIRST,1,5\r\nWH,LAST,1,5\r\nFIRST,WH,1,5\r\nFIRST,LAST,1,5\r\nLAST,WH,1,5\r\nLAST,FIRST,1,5\r\n",
+      "settings.json": "{\"depot_id\": \"WH\", \"data_kind\": \"simulated\", \"travel_source\": \"constructed roads\", \"window_rule\": \"finish\"}"
+    },
+    "loading_profile": {
+      "schema": "loading_v1",
+      "data_kind": "simulated",
+      "vehicles": [
+        {
+          "id": "V1",
+          "length_cm": 50,
+          "width_cm": 50,
+          "height_cm": 90
+        }
+      ],
+      "items": [
+        {
+          "order": "FIRST",
+          "sku": "TOP",
+          "length_cm": 50,
+          "width_cm": 50,
+          "height_cm": 30,
+          "rotate_base": false,
+          "fragile": true,
+          "max_top_load_kg": 0
+        },
+        {
+          "order": "LAST",
+          "sku": "BASE",
+          "length_cm": 50,
+          "width_cm": 50,
+          "height_cm": 30,
+          "rotate_base": false,
+          "fragile": true,
+          "max_top_load_kg": 0
+        },
+        {
+          "order": "LAST",
+          "sku": "MID",
+          "length_cm": 50,
+          "width_cm": 50,
+          "height_cm": 30,
+          "rotate_base": false,
+          "fragile": true,
+          "max_top_load_kg": 0
+        }
+      ]
+    }
+  },
+  "limits": "有限启发式；缺规则拒绝推测。一般未找到布局不等于已证明无解"
+}

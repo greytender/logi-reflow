@@ -1,0 +1,24 @@
+{
+  "original_scenes": [
+    {
+      "id": "66ef3729ab6646f7aad758ea479eb18e",
+      "unchanged": true,
+      "sha256": "e2d7ad2fa270eca88a1ba2795d734bddb796ff360805f92d95ce2f477b33c96d"
+    },
+    {
+      "id": "ebb79254438f44d4919b8abe2c1bf557",
+      "unchanged": true,
+      "sha256": "81020360f3dea2111f30ee1948624100895faaab05f8a562096ba52be3bbb3e4"
+    },
+    {
+      "id": "a1924cb1ee52480f80894fd4c2425456",
+      "unchanged": true,
+      "sha256": "ad999cd506254b5d452347b09e0cdee987902e1a510e4d5f1d928f6b236dafc3"
+    }
+  ],
+  "completed_scene": "a5927166202b47eabe29d4bfadf0f98a",
+  "completed_revision": 26,
+  "restart_raw_json_unchanged": true,
+  "import_scene": "bf11b1f8696240cf98cc9c04354c709d",
+  "completed_scene_preserved_after_new_import": true
+}

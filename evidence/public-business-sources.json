@@ -1,0 +1,118 @@
+{
+  "browser": "Installed Chrome, headless, isolated profile",
+  "pages": [
+    {
+      "id": "transfar-freight",
+      "url": "https://www.transfarzl.com/products/freight.html",
+      "checked_at": "2026-10-11T13:06:06.301Z",
+      "status": 200,
+      "final_url": "https://www.transfarzl.com/products/freight.html",
+      "title": "数字化运输服务-传化智联股份有限公司",
+      "characters": 1150,
+      "body_sha256": "90ec30a05573ee5daff5153ba88865a1389997e6ec933afbb3c6201c054f04a5"
+    },
+    {
+      "id": "transfar-platform",
+      "url": "https://www.transfarzl.com/products/info.html",
+      "checked_at": "2026-10-11T13:06:09.786Z",
+      "status": 200,
+      "final_url": "https://www.transfarzl.com/products/info.html",
+      "title": "智能信息服务-传化智联股份有限公司",
+      "characters": 1530,
+      "body_sha256": "368e324f70c68f1dff06f22cac6be431e4b2982b803c7fcb581c926f271ee1bd"
+    },
+    {
+      "id": "transfar-highway",
+      "url": "https://www.transfarzl.com/index.php/products/highway.html",
+      "checked_at": "2026-10-11T13:06:11.881Z",
+      "status": 200,
+      "final_url": "https://www.transfarzl.com/index.php/products/highway.html",
+      "title": "智能公路港服务-传化智联股份有限公司",
+      "characters": 1116,
+      "body_sha256": "28c976e4f5dfd3c98642229956799ab35904ed89372dbca3757f68325aee930c"
+    },
+    {
+      "id": "transfar-receipt-case",
+      "url": "https://www.transfarzl.com/news/dynamicinfo/66.html",
+      "checked_at": "2026-10-11T13:06:14.535Z",
+      "status": 200,
+      "final_url": "https://www.transfarzl.com/news/dynamicinfo/66.html",
+      "title": "传化智联，南充传化公路港，618，物流，-传化智联股份有限公司",
+      "characters": 3194,
+      "body_sha256": "ae05498ec05f595841c3be03be871d5daa16afa12942def9e0485a2780350379"
+    },
+    {
+      "id": "transfar-group",
+      "url": "https://www.etransfar.com/index.php/business/logistics.html",
+      "checked_at": "2026-10-11T13:06:16.707Z",
+      "status": 200,
+      "final_url": "https://www.etransfar.com/index.php/business/logistics.html",
+      "title": "传化集团-传化物流-传化集团有限公司",
+      "characters": 1872,
+      "body_sha256": "9d2ac4ab219c3c13eae7716ab2c3c4e33ae35e95e3b721ca0807f8b8bd9ea28c"
+    },
+    {
+      "id": "transfar-net",
+      "url": "https://www.tf56.com/",
+      "checked_at": "2026-10-11T13:06:22.769Z",
+      "status": 200,
+      "final_url": "https://www.tf56.com/#/",
+      "title": "传化智联-传化网",
+      "characters": 447,
+      "body_sha256": "be03b0d56e45b909b247d79882fb4795dd0341717a2c58ca86cd2b198aebcd8f"
+    },
+    {
+      "id": "ds-about",
+      "url": "https://www.dsdigitalgroup.com/about",
+      "checked_at": "2026-10-11T13:06:25.978Z",
+      "status": 200,
+      "final_url": "https://www.dsdigitalgroup.com/about",
+      "title": "动势 AI业务架构师 · 动势科技",
+      "characters": 4623,
+      "body_sha256": "0da904103014503d2653f4816eb9eabd134ce1bb1fc126da1d13476c7857838f"
+    },
+    {
+      "id": "ds-solutions",
+      "url": "https://www.dsdigitalgroup.com/cases",
+      "checked_at": "2026-10-11T13:06:29.145Z",
+      "status": 200,
+      "final_url": "https://www.dsdigitalgroup.com/cases",
+      "title": "AI解决方案 · 动势科技",
+      "characters": 3111,
+      "body_sha256": "209ec7f6c2833c14f3e157a4e1735be8b7a1d2cdef9627bf3574f70ebc69ed76"
+    },
+    {
+      "id": "competition",
+      "url": "http://asserts.dsdigital.team/static/transfar/transfar-dsgroup-ai-architect-hackathon.html",
+      "checked_at": "2026-10-11T13:06:32.808Z",
+      "status": 200,
+      "final_url": "http://asserts.dsdigital.team/static/transfar/transfar-dsgroup-ai-architect-hackathon.html",
+      "title": "AI重构产业·架构师大赛",
+      "characters": 0,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "frames": [
+        {
+          "url": "about:srcdoc",
+          "characters": 237
+        }
+      ]
+    },
+    {
+      "id": "competition-logistics",
+      "url": "http://asserts.dsdigital.team/static/transfar/transfar-dsgroup-ai-architect-hackathon.html",
+      "checked_at": "2026-10-11T13:10:33.379Z",
+      "method": "Installed Chrome: logistics card clicked in official srcdoc frame",
+      "characters": 2064,
+      "body_sha256": "b3c04ef11ad773a06d7bf8d04d9a2076a32ed4c26eba913d4aa760140f1a07d3"
+    },
+    {
+      "id": "sf-pharma",
+      "url": "https://www.sf-express.com/chn/sc/express/warehouse/pt-warehousing",
+      "status": 200,
+      "checked_at": "2026-10-11T13:10:36.142Z",
+      "characters": 1568,
+      "body_sha256": "3ba0f400eba856d0f103d666d51fe5ff6f39dd968ed0b6aeed6864927f0da506"
+    }
+  ],
+  "scope": "Chrome后台核查9个初始网址、1个顺丰医药仓储页面，并点击官方比赛物流卡片阅读全文。具体限制以读取记录为准。"
+}

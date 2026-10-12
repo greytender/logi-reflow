@@ -1,3 +1,4 @@
+param([int]$Port=8766,[string]$Database='')
 Set-Location -LiteralPath $PSScriptRoot
 $ErrorActionPreference = 'Stop'
 $loadedProjectKey = $false
@@ -13,6 +14,9 @@ if (-not $env:LOGISTICS_DEEPSEEK_API_KEY -and (Test-Path -LiteralPath $credentia
         $secureKey.Dispose()
     }
 }
-try { python server.py } finally {
+try {
+    if ($Database) { python server.py --port $Port --database $Database }
+    else { python server.py --port $Port }
+} finally {
     if ($loadedProjectKey) { Remove-Item Env:LOGISTICS_DEEPSEEK_API_KEY -ErrorAction SilentlyContinue }
 }

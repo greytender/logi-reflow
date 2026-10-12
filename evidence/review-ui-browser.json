@@ -1,0 +1,59 @@
+{
+  "geometry": "配送顺序\tSHOP_B → SHOP_A\tSHOP_A → SHOP_B\n安排 / 未安排\t2 / 0\t2 / 0\n模拟运输费\t48元\t117元\n预测迟到\t0分钟\t0分钟\n执行判断\t缺少可执行装载证明\t当前模型核验通过",
+  "fixed": "配送顺序\tA → C → B\tA → B → C\n安排 / 未安排\t3 / 0\t3 / 0\n模拟运输费\t38元\t38元\n预测迟到\t0分钟\t45分钟\n执行判断\t缺少可执行装载证明\t当前模型核验通过",
+  "fragile": "配送顺序\tLAST → FIRST\tFIRST\n安排 / 未安排\t2 / 0\t1 / 1\n模拟运输费\t36元\t34元\n预测迟到\t0分钟\t0分钟\n执行判断\t缺少可执行装载证明\t仅部分订单通过核验，方案不完整",
+  "keySet": {
+    "status": "已设置临时密钥；有效性需在主动调用AI时验证。",
+    "inputCleared": true,
+    "inputType": "password"
+  },
+  "keyClearedStatus": "使用本机预配置密钥；没有额外临时密钥。",
+  "finalFixed": "配送顺序\tA → C → B\tA → B → C\n安排 / 未安排\t3 / 0\t3 / 0\n模拟运输费\t38元\t38元\n预测迟到\t0分钟\t45分钟\n执行判断\t原摆放不支持此卸货顺序\t当前模型核验通过",
+  "desktop": {
+    "documentWidth": 631,
+    "visibleViews": [
+      "reviewView"
+    ],
+    "width": 646
+  },
+  "mobile": {
+    "caseButtons": [
+      {
+        "text": "运行箱体尺寸反例",
+        "width": 346.66668701171875
+      },
+      {
+        "text": "运行原摆放改序反例",
+        "width": 346.66668701171875
+      },
+      {
+        "text": "运行易碎禁压反例",
+        "width": 346.66668701171875
+      }
+    ],
+    "documentWidth": 375,
+    "width": 390
+  },
+  "caseToInteractive": "固定装载模式（原坐标冻结） · P1 / 修订1 · 模拟时钟08:00 · 已签收0/3单",
+  "beforeReviewCalculateDisabled": true,
+  "manualCandidate": "待核对P2：安排3单 / 未安排0单，预测迟到45分钟，模拟费用38元（当前38元）。完整仍需独立核对采用。\n\nV1：A → B → C；原摆放核验通过",
+  "adoptDisabledBeforeReview": true,
+  "afterAdoption": "固定装载模式（原坐标冻结） · P2 / 修订3 · 模拟时钟08:00 · 已签收0/3单",
+  "mobileInteractive": {
+    "documentWidth": 375,
+    "visibleViews": [
+      "workbenchView"
+    ],
+    "width": 390
+  },
+  "finalFragile": {
+    "table": "配送顺序\tLAST → FIRST\tFIRST\n安排 / 未安排\t2 / 0\t1 / 1\n模拟运输费\t36元\t34元\n预测迟到\t0分钟\t0分钟\n执行判断\t未核验易碎堆叠，不能据此执行\t仅部分订单通过核验，方案不完整",
+    "blockedStart": true,
+    "checks": "V1: NOT_FOUND\n未安排 LAST：路线/装载有限搜索未找到联合方案；不证明无解，需核查尺寸、规则或换求解器"
+  },
+  "finalChecks": "C/BOX/1：被后送门店挡住卸货通道\nC/BOX/1：原摆放卸货通道被挡住",
+  "finalTable": "配送顺序\tA → C → B\tA → B → C\n安排 / 未安排\t3 / 0\t3 / 0\n模拟运输费\t38元\t38元\n预测迟到\t0分钟\t45分钟\n执行判断\t原摆放不支持此卸货顺序\t当前模型核验通过",
+  "checkedAt": "2026-10-12T04:48:50.952Z",
+  "browser": "existing user Chrome via extension runtime",
+  "keyVerification": "invalid placeholder set/clear only; no real credential or live model call"
+}

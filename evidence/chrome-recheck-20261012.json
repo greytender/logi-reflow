@@ -1,0 +1,17 @@
+{
+  "checked_date": "2026-10-12",
+  "url": "http://asserts.dsdigital.team/static/transfar/transfar-dsgroup-ai-architect-hackathon.html",
+  "browser": "user Chrome extension, Profile 2",
+  "running": true,
+  "extension_enabled": true,
+  "native_host_configuration_valid": true,
+  "tab_read_attempts": 3,
+  "new_profile_window_opened": true,
+  "error": "nodeRepl.fetch request failed",
+  "body_read": false,
+  "submission_guide_reverified": false,
+  "last_valid_submission_guide": "2026-10-10",
+  "existing_logistics_body_record": "2026-10-12",
+  "plugin_reinstalled": false,
+  "next_step": "User reinstalls Browser in Codex plugin UI and opens ChatGPT extension in Chrome; no browser substituted"
+}

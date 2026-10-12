@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "before": {
+    "dispatch_scenes": {
+      "rows": 6,
+      "sha256": "fe2b2eb77f90bc7f5409f694a2dd208d5e0ad003c2f788e045254e09e2cbfdaf"
+    },
+    "meta": {
+      "rows": 1,
+      "sha256": "1b7abb13ee89db5054d886a8b40451e5731be6412d09e9902ea1227ceb849688"
+    },
+    "sessions": {
+      "rows": 1,
+      "sha256": "59f5c3d71f52389e5c252fde931912e097e21ffa0c33323b9262b8fdb3236585"
+    }
+  },
+  "after": {
+    "dispatch_scenes": {
+      "rows": 6,
+      "sha256": "fe2b2eb77f90bc7f5409f694a2dd208d5e0ad003c2f788e045254e09e2cbfdaf"
+    },
+    "meta": {
+      "rows": 1,
+      "sha256": "1b7abb13ee89db5054d886a8b40451e5731be6412d09e9902ea1227ceb849688"
+    },
+    "sessions": {
+      "rows": 1,
+      "sha256": "59f5c3d71f52389e5c252fde931912e097e21ffa0c33323b9262b8fdb3236585"
+    }
+  }
+}

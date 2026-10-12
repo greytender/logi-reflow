@@ -9,9 +9,11 @@ import re
 import socket
 import urllib.request
 import urllib.error
+from time import perf_counter
 import normal
 import urgent
 import timewindow
+from session_keys import current_key
 
 ENDPOINT='https://api.deepseek.com/chat/completions'
 _live_successes=0
@@ -40,7 +42,7 @@ class AIError(Exception):
 
 def status():
     return dict(provider='DeepSeek',model=os.environ.get('LOGISTICS_AI_MODEL','deepseek-flash'),
-                configured=bool(os.environ.get('LOGISTICS_DEEPSEEK_API_KEY')),
+                configured=bool(current_key.get() or os.environ.get('LOGISTICS_DEEPSEEK_API_KEY')),
                 live_verified=_live_successes>0,successful_calls_this_process=_live_successes)
 
 
@@ -87,13 +89,14 @@ def validate_draft(draft,data):
     return dict(ready=True,draft=draft,event={'type':kind,**event},questions=[])
 
 
-def call_api(messages):
-    api_key=os.environ.get('LOGISTICS_DEEPSEEK_API_KEY')
+def call_api(messages,metadata=None,max_tokens=1024):
+    api_key=current_key.get() or os.environ.get('LOGISTICS_DEEPSEEK_API_KEY')
     if not api_key:raise AIError('尚未配置项目DeepSeek密钥；未调用外部API，可继续使用结构化表单试算')
     body=dict(model=status()['model'],messages=messages,response_format={'type':'json_object'},
-              thinking={'type':'disabled'},max_tokens=1024,stream=False)
+              thinking={'type':'disabled'},max_tokens=max_tokens,stream=False)
     request=urllib.request.Request(ENDPOINT,json.dumps(body,ensure_ascii=False).encode(),
         {'Content-Type':'application/json','Authorization':'Bearer '+api_key})
+    started=perf_counter()
     try:
         with urllib.request.urlopen(request,timeout=12) as response:
             raw=response.read(65537)
@@ -102,10 +105,18 @@ def call_api(messages):
         if choice.get('finish_reason')!='stop':raise AIError('AI输出不完整或被截断；请重试，未更新事件')
         content=choice['message']['content']
         if not isinstance(content,str) or not content.strip():raise AIError('AI返回空内容，未更新事件')
-        return strict_json(content)
+        draft=strict_json(content)
+        if metadata is not None:
+            usage=payload.get('usage',{})
+            allowed=('prompt_tokens','completion_tokens','total_tokens','prompt_cache_hit_tokens','prompt_cache_miss_tokens')
+            metadata.update(elapsed_ms=round((perf_counter()-started)*1000,2),
+                usage={k:v for k,v in usage.items() if k in allowed and isinstance(v,int) and not isinstance(v,bool) and v>=0} if isinstance(usage,dict) else {})
+        return draft
     except urllib.error.HTTPError as e:
         messages={401:'密钥认证失败',402:'API余额不足',429:'请求限流',400:'API参数被拒绝'}
-        raise AIError(messages.get(e.code,'API暂时不可用')+'；未更新事件，不自动重试') from None
+        description=messages.get(e.code,'API暂时不可用')
+        e.close()
+        raise AIError(description+'；未更新事件，不自动重试') from None
     except (TimeoutError,socket.timeout):raise AIError('AI请求超时，未更新事件；可手动重试或使用表单') from None
     except urllib.error.URLError:raise AIError('AI网络连接失败，未更新事件') from None
     except (ValueError,KeyError,TypeError,IndexError):raise AIError('AI响应格式错误，未更新事件') from None

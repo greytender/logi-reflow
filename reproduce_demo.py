@@ -12,7 +12,7 @@ from verify_comparison import audit
 def reproduce():
     with TemporaryDirectory() as directory:
         store=DispatchStore(Path(directory)/'demo.sqlite3')
-        scene=store.act('start',dict(data=normal.defaults()))
+        scene=store.act('start',dict(data=normal.defaults(),progress_mode='legacy_eta'))
         def act(action,**extra):
             nonlocal scene
             scene=store.act(action,dict(id=scene['id'],revision=scene['revision'],**extra))

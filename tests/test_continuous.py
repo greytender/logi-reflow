@@ -15,7 +15,7 @@ class ContinuousTests(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
         self.path=Path(self.tmp.name)/'scene.db';self.store=continuous.DispatchStore(self.path)
-        self.state=self.store.act('start',dict(data=normal.defaults()))
+        self.state=self.store.act('start',dict(data=normal.defaults(),progress_mode='legacy_eta'))
 
     def act(self,action,**extra):
         self.state=self.store.act(action,dict(id=self.state['id'],revision=self.state['revision'],**extra));return self.state

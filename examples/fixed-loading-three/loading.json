@@ -1,0 +1,44 @@
+{
+  "schema": "loading_v1",
+  "data_kind": "simulated",
+  "vehicles": [
+    {
+      "id": "V1",
+      "length_cm": 150,
+      "width_cm": 50,
+      "height_cm": 50
+    }
+  ],
+  "items": [
+    {
+      "order": "A",
+      "sku": "BOX",
+      "length_cm": 50,
+      "width_cm": 50,
+      "height_cm": 50,
+      "rotate_base": false,
+      "fragile": false,
+      "max_top_load_kg": 0
+    },
+    {
+      "order": "B",
+      "sku": "BOX",
+      "length_cm": 50,
+      "width_cm": 50,
+      "height_cm": 50,
+      "rotate_base": false,
+      "fragile": false,
+      "max_top_load_kg": 0
+    },
+    {
+      "order": "C",
+      "sku": "BOX",
+      "length_cm": 50,
+      "width_cm": 50,
+      "height_cm": 50,
+      "rotate_base": false,
+      "fragile": false,
+      "max_top_load_kg": 0
+    }
+  ]
+}

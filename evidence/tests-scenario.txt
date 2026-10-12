@@ -1,0 +1,19 @@
+C:\Users\15057\anaconda3\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 401: 'secret-detail'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+C:\Users\15057\anaconda3\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 429: 'secret-detail'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+127.0.0.1 - - [12/Oct/2026 11:14:16] "POST /api/dispatch/interpret HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 11:14:16] "POST /api/dispatch/interpret HTTP/1.1" 409 -
+127.0.0.1 - - [12/Oct/2026 11:14:16] "POST /api/dispatch/interpret HTTP/1.1" 409 -
+127.0.0.1 - - [12/Oct/2026 11:14:17] "GET /api/dispatch/handoff?id=55984c2347944cb18351b04be1abe9d3&revision=0 HTTP/1.1" 409 -
+127.0.0.1 - - [12/Oct/2026 11:14:17] "GET /api/dispatch/handoff?id=55984c2347944cb18351b04be1abe9d3&revision=1 HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 11:14:17] "GET /api/dispatch/handoff?id=55984c2347944cb18351b04be1abe9d3&revision=1&format=csv HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 11:14:22] "POST /api/loading/solve HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 11:14:22] "POST /api/loading/solve HTTP/1.1" 400 -
+127.0.0.1 - - [12/Oct/2026 11:14:29] "GET /api/scenario/sample HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 11:14:29] "POST /api/scenario/run HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2026 11:14:29] "POST /api/scenario/run HTTP/1.1" 400 -
+----------------------------------------------------------------------
+Ran 170 tests in 19.406s
+
+OK

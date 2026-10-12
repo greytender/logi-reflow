@@ -3,11 +3,13 @@ let dispatchReviewed=false,dispatchReviewToken=null,dispatchArchiveSerial=0,disp
 let dispatchHistoryScene=null;
 const dispatchEscape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const dispatchVersionStatus={adopted:'已采用',candidate:'候选',executed:'已有模拟执行',superseded:'候选已失效',discarded:'候选已放弃'};
+function dispatchPickup(id){return id==='W'||id.startsWith('warehouse:');}
+function dispatchRouteLabel(id){return dispatchPickup(id)?(id==='W'?'回仓装货':'回仓装'+id.slice(10)+'（8分钟）'):id;}
 function reviewLocation(value){return value?`${dispatchEscape(value.vehicle)} / ${at(value.eta)}`:'未安排';}
 function reviewWindow(value){return value?`${at(value.open)} / ${at(value.due)} / ${at(value.close)}`:'新增';}
 function reviewDetails(r){
  const rows=r.rows.filter(x=>x.reasons.length);
- return `<p>生成时刻 ${at(r.time)} · 基于${r.base?'P'+r.base:'早上数据'} · 固定${r.frozen_delivery_count}单已交付历史。以下ETA与窗口是该版本生成时的记录，窗口依次为开门 / 承诺 / 截止。</p>`+
+ return `<p>生成时刻 ${at(r.time)} · 基于${r.base?'P'+r.base:'早上数据'} · 固定${r.frozen_delivery_count}单已交付历史。收货判断按${r.window_rule==='finish'?'卸货完成':'到达'}；以下ETA与窗口是该版本生成时的记录，窗口依次为开门 / 承诺 / 截止。</p>`+
  (r.event?`<p>事件：${r.event.kind==='urgent'?'新增紧急单':'收货时间变化'} · ${dispatchEscape(r.event.event.store)} · ${at(r.event.event.time)}发生。</p>`:'')+
  (r.blocked_reason?`<p class="notice">${dispatchEscape(r.blocked_reason)}</p>`:'')+
  '<div class="table-wrap"><table><thead><tr><th>订单 / 变化原因</th><th>父计划 → 此版本 ETA</th><th>收货窗口变化</th><th>事件时货物 / 此版本迟到</th></tr></thead><tbody>'+rows.map(x=>`<tr><td>${dispatchEscape(x.id)} · ${dispatchEscape(x.reasons.join('、'))}</td><td>${reviewLocation(x.before)} → ${reviewLocation(x.after)}</td><td>${reviewWindow(x.old_window)} → ${reviewWindow(x.window)}</td><td>${dispatchEscape(x.cargo_owner==='warehouse'?'仓库':x.cargo_owner==='delivered'?'已交付':x.cargo_owner)} / ${x.after?x.after.late_minutes+'分钟':'未安排'}</td></tr>`).join('')+'</tbody></table></div>'+
@@ -66,7 +68,7 @@ function renderDispatchHistory(){
  if(!dispatchHistoryScene)return;
  const scene=dispatchHistoryScene,number=Number(byId('dispatchHistoryVersions').value),v=scene.versions.find(x=>x.id===number);
  const event=scene.events.find(x=>x.version===number);
- const routes=Object.entries(v.plan.routes).map(([vid,r])=>`<li>${dispatchEscape(vid)}：${r.sequence.map(x=>x==='W'?'回仓装货':dispatchEscape(x)).join(' → ')||'无任务'}；回仓 ${at(r.return_at)}${r.retained_ids?.length?'；原车带回未交付货物：'+dispatchEscape(r.retained_ids.join('、')):''}</li>`).join('');
+ const routes=Object.entries(v.plan.routes).map(([vid,r])=>`<li>${dispatchEscape(vid)}：${r.sequence.map(x=>dispatchEscape(dispatchRouteLabel(x))).join(' → ')||'无任务'}；回仓 ${at(r.return_at)}${r.retained_ids?.length?'；原车带回未交付货物：'+dispatchEscape(r.retained_ids.join('、')):''}</li>`).join('');
  const m=v.plan.metrics;
  byId('dispatchHistoryView').innerHTML=`<h3>只读历史 ${scene.id.slice(0,8)} / P${number} · ${dispatchVersionStatus[v.status]}</h3><p>${m.served}单已安排 · 未安排${m.unserved}单 · 迟到${m.late_minutes}分钟 · 模拟费用${m.cost}元。</p>`+
   (event?`<p>${event.kind==='urgent'?'紧急单':'收货变化'} · ${dispatchEscape(event.event.store)} · ${at(event.event.time)}发生，基于P${v.base}。</p>`:'<p>早上正常计划。</p>')+

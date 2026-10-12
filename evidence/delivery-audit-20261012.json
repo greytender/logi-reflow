@@ -1,0 +1,80 @@
+{
+  "checked_date": "2026-10-12",
+  "local_regression": {
+    "tests": 185,
+    "passed": true,
+    "seconds": 34.282,
+    "evidence": "tests-delivery-20261012.txt"
+  },
+  "package_offline_verification": {
+    "python -m unittest discover -s tests -v": {
+      "passed": true,
+      "summary": "rgentTests.test_modified_quantity_and_bounded_search) ... ok\ntest_oversized_and_unreachable_keep_original_work (test_urgent.UrgentTests.test_oversized_and_unreachable_keep_original_work) ... ok\ntest_pickup_capacity_and_precedence (test_urgent.UrgentTests.test_pickup_capacity_and_precedence) ... ok\n\n----------------------------------------------------------------------\nRan 185 tests in 33.244s\n\nOK\n"
+    },
+    "python reproduce_csv_checkpoint.py": {
+      "passed": true,
+      "summary": "[(3, 5, 15, True, 434.79), (30, 32, 96, True, 14288.88)]\n"
+    },
+    "python fixed_loading_benchmark.py": {
+      "passed": true,
+      "summary": "nce\": [\"A\", \"B\", \"C\"], \"unconstrained_metrics\": {\"served\": 3, \"unserved\": 0, \"late_orders\": 0, \"late_minutes\": 0, \"cost\": 38.0, \"changed_orders\": 2, \"changed_ids\": [\"B\", \"C\"]}, \"constrained_metrics\": {\"served\": 3, \"unserved\": 0, \"late_orders\": 1, \"late_minutes\": 45.0, \"cost\": 38.0, \"changed_orders\": 2, \"changed_ids\": [\"B\", \"C\"]}, \"receipts\": 9, \"returned\": true, \"all_coordinates_unchanged\": true}\n"
+    },
+    "python scenario_demo.py": {
+      "passed": true,
+      "summary": "go_volume_m3\": 0.0, \"cuboid_space_use_percent\": 0.0, \"predicted_cost\": 0, \"predicted_return\": 480}, {\"vehicle\": \"LARGE\", \"sequence\": [\"S01\", \"S02\", \"S06\", \"S05\", \"S04\", \"S03\"], \"boxes\": 12, \"weight_kg\": 48.0, \"weight_use_percent\": 96.0, \"cargo_volume_m3\": 0.288, \"cuboid_space_use_percent\": 30.0, \"predicted_cost\": 108.0, \"predicted_return\": 571.0}], \"signed\": 6, \"receipts\": 18, \"total_ms\": 638.68}\n"
+    },
+    "all_manifest_hashes_match": true
+  },
+  "package_http_verification": {
+    "extracted_package_server_started": true,
+    "static_routes": [
+      {
+        "path": "/",
+        "status": 200
+      },
+      {
+        "path": "/app.css",
+        "status": 200
+      },
+      {
+        "path": "/app-shell.js",
+        "status": 200
+      },
+      {
+        "path": "/workspace.html",
+        "status": 200
+      },
+      {
+        "path": "/cargo.html",
+        "status": 200
+      },
+      {
+        "path": "/normal.html",
+        "status": 200
+      },
+      {
+        "path": "/loading.html",
+        "status": 200
+      },
+      {
+        "path": "/scenario.html",
+        "status": 200
+      }
+    ],
+    "sample_api": 200,
+    "isolated_database": true,
+    "browser_check": false
+  },
+  "staged_review": {
+    "excluded_paths_found": [],
+    "credential_patterns_found": [],
+    "current_doc_links_missing": []
+  },
+  "previous_chrome_checks": {
+    "groups": 13,
+    "rerun_this_turn": false
+  },
+  "chrome_official_body_read_this_turn": false,
+  "csv_formatting": "Normalized duplicate CR in six constructed sample CSV files; fields and values unchanged; extracted regression and scenario replay passed",
+  "final_archive_note": "Final package regenerated after adding this evidence; executable file hashes must match tested manifest. Final SHA256 is in outputs sidecar audit."
+}
