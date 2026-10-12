@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>城配续航｜评委完整演示视频</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f6f2;color:#213c30;font-family:system-ui,"Microsoft YaHei",sans-serif}main{width:min(1280px,100%);margin:auto;padding:24px}a{color:#235d46}h1{font-size:clamp(24px,4vw,38px)}p{line-height:1.8}video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#15281f;border-radius:12px}.chapters{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px;margin:20px 0}button{font:inherit;text-align:left;line-height:1.5;padding:12px;border:1px solid #cbd7cc;border-radius:8px;color:#213c30;background:#fff;cursor:pointer}button:hover,button:focus-visible{background:#e0ece3;outline:2px solid #43785c}footer{font-size:14px;border-top:1px solid #cbd7cc;padding-top:16px}@media(max-width:600px){main{padding:16px}}
+</style>
+<main>
+<a href="/">← 返回城配续航应用</a>
+<h1>完整看一遍：从装车到异常处理与签收</h1>
+<p>实际网页操作画面，配中文合成旁白、画面字幕和鼠标指示。可全屏观看，也可选择章节。所有样例和回执均为构造模拟。</p>
+<video id="video" controls preload="metadata" playsinline src="media/logireflow-walkthrough.mp4"><track kind="subtitles" srclang="zh" label="中文字幕" src="media/logireflow-walkthrough.vtt">浏览器无法播放时，可下载视频。</video>
+<p><a href="media/logireflow-walkthrough.mp4" download>下载完整视频</a> · <a href="media/logireflow-walkthrough.srt" download>下载字幕</a> · <a href="story.html">阅读完整思路、优点与不足</a></p>
+<nav class="chapters" id="chapters" aria-label="视频章节"></nav>
+<p id="status" role="status"></p>
+<footer>画面来自 Tabbit 中实际网页操作的连续标签页录像；章节衔接和静止画面停留按解说节奏编辑，没有使用截图拼接。页面比例保留，画面不包含浏览器栏或桌面。旁白使用本地中文合成语音。画面已带字幕，额外字幕轨可按需开启。算法为有限启发式搜索与独立装载核验，不保证全局最优；视频中的费用差值不能代表真实企业收益。</footer>
+</main>
+<script>
+const video=document.getElementById('video'),status=document.getElementById('status');
+fetch('media/logireflow-walkthrough-chapters.json').then(r=>{if(!r.ok)throw Error('章节尚未就绪');return r.json()}).then(items=>{for(const c of items){const b=document.createElement('button');b.textContent=String(Math.floor(c.start/60)).padStart(2,'0')+':'+String(Math.floor(c.start%60)).padStart(2,'0')+' '+c.title;b.onclick=()=>{video.currentTime=c.start;video.scrollIntoView({block:'center',behavior:'smooth'});video.play().catch(()=>{status.textContent='已定位章节，点击播放即可。'});};document.getElementById('chapters').append(b);}}).catch(()=>{status.textContent='章节暂时不可用，请通过视频进度条观看。'});
+video.addEventListener('error',()=>{status.textContent='视频尚未就绪或无法读取，请确认交付包包含 web/media 文件。'});
+</script>
+</html>

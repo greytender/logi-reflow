@@ -1,5 +1,11 @@
 # 城配续航 LogiReflow
 
+> **给评委：先看完整网页功能演示**
+>
+> **[观看／下载完整演示视频（MP4）](web/media/logireflow-walkthrough.mp4)** · **[分章播放器（启动应用后打开）](http://127.0.0.1:8766/demo-video.html)**
+>
+> 实际网页操作的连续标签页录像，配中文合成旁白、画面字幕和鼠标指示；只包含网页，没有浏览器栏。可按章节跳转。制作方式、演示覆盖与证据边界见 **[视频说明](docs/演示视频说明.md)**；另提供 [SRT 字幕](web/media/logireflow-walkthrough.srt)。
+
 > **第一次看这个项目？先读这里：**
 >
 > **[大白话讲清城配续航：完整思路、最终目标、优点与不足](docs/大白话讲清城配续航.md)**
@@ -23,6 +29,8 @@ python server.py
 ```
 
 应用运行仅需Python标准库，无需npm或第三方Python包；前端使用原生JavaScript与SVG。服务只绑定127.0.0.1。启动器优先打开Chrome；没有Chrome时会按现有逻辑回退系统浏览器，指定Chrome演示请先安装Chrome。官网本轮最终通过本人授权的Tabbit完成正文核查，Chrome连接失败记录保留。
+
+更新代码后，如果 Python 服务已在运行，请重启该服务，让视频章节跳转所需的范围读取生效；运行数据库和已保存历史仍保留。
 
 端口冲突时执行 `python server.py --port 8767`，然后打开对应地址。独立运行可加 `--database outputs/reviewer-test.sqlite3`，避免使用原运行数据库。
 
@@ -71,8 +79,10 @@ python reproduce_csv_checkpoint.py
 
 之前网页改造已有185项回归、13组后台真实Chrome检查通过，见[原验证记录](evidence/网页应用改造验证.md)、[机器记录](evidence/app-browser-verification.json)与`evidence/tests-review-ui.txt`。本轮验证另记[交付验证](evidence/文档恢复与交付验证-20261012.md)，不将旧记录当本轮重跑。
 
+本轮新增完整连续演示视频与分章播放器，23章操作断言、媒体解码、字幕时轴和播放器检查见[视频验证](evidence/完整演示视频验证.md)。为章节跳转补齐视频范围读取后，重新执行 **189项测试（原185项＋4项范围读取测试）全部通过**，见`evidence/tests-video-ranges-20261012.txt`。故事阅读与44项页面布局检查另见对应证据；本轮未重跑此前13组Chrome检查。
+
 真实截图：[首页](evidence/app-home-desktop.png)、[手机](evidence/app-home-mobile.png)、[完整演示](evidence/app-complete-demo.png)、[候选核对](evidence/app-candidate-review.png)。28组构造异常、56份独立核算方案保留无改善、取舍与不完整结果；不证明企业收益或原创算法。
 
 [作品方案](docs/作品方案与评审展示.md)｜[提交清单](docs/提交材料清单.md)｜[方法来源](docs/智能配载方法筛选与实现.md)。带“历史”的记录仅供追溯，其旧入口、数量与未实现状态不作为当前说明。
 
-官网提交指导与物流正文已于2026-10-12用Tabbit实际复核。本人确认截止为当日18:00（北京时间），具体[初赛登记表](https://v.wjx.cn/vm/rmEuv50.aspx#)已由本人提交，本轮通过Tabbit实际读到答卷已提交的完成页；DsChHack/write协作邀请已发送、待接受。官网知识产权归属条款与来源边界见[比赛核对](docs/比赛核对.md)，助手未代点最终提交或独立接受条款。
+官网提交指导与物流正文已于2026-10-12用Tabbit实际复核。本人确认截止为当日18:00（北京时间），具体[初赛登记表](https://v.wjx.cn/vm/rmEuv50.aspx#)已由本人提交，本轮通过Tabbit实际读到答卷已提交的完成页；最新GitHub API已确认DsChHack具有write访问权限，见[评审访问记录](evidence/reviewer-access-20261012.json)。官网知识产权归属条款与来源边界见[比赛核对](docs/比赛核对.md)，助手未代点最终提交或独立接受条款。

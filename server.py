@@ -2,6 +2,7 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 import argparse
 import json
+import re
 import engine
 import normal
 import dynamic
@@ -33,6 +34,46 @@ class Handler(SimpleHTTPRequestHandler):
     def reply(self,result,status=200):
         raw=json.dumps(result,ensure_ascii=False).encode()
         self.send_response(status); self.send_header('Content-Type','application/json; charset=utf-8'); self.send_header('Content-Length',str(len(raw))); self.end_headers(); self.wfile.write(raw)
+    def send_head(self):
+        # Browser seeking needs byte ranges; keep ordinary static/API behavior.
+        self._video_remaining=None
+        if urlsplit(self.path).path!='/media/logireflow-walkthrough.mp4':
+            return super().send_head()
+        path=Path(self.translate_path(self.path))
+        if not path.is_file():return super().send_head()
+        source=path.open('rb');stat=path.stat();size=stat.st_size
+        start,end=0,size-1;requested=self.headers.get('Range')
+        if requested:
+            match=re.fullmatch(r'bytes=(\d*)-(\d*)',requested.strip())
+            try:
+                if not match or not any(match.groups()):raise ValueError()
+                first,last=match.groups()
+                if first:
+                    start=int(first);end=min(int(last),size-1) if last else size-1
+                else:
+                    suffix=int(last)
+                    if suffix<=0:raise ValueError()
+                    start=max(0,size-suffix)
+                if start>=size or end<start:raise ValueError()
+            except ValueError:
+                source.close();self.send_response(416)
+                self.send_header('Content-Range',f'bytes */{size}')
+                self.send_header('Content-Length','0');self.end_headers();return None
+        self.send_response(206 if requested else 200)
+        self.send_header('Content-Type','video/mp4')
+        self.send_header('Accept-Ranges','bytes')
+        self.send_header('Content-Length',str(end-start+1))
+        self.send_header('Last-Modified',self.date_time_string(stat.st_mtime))
+        if requested:self.send_header('Content-Range',f'bytes {start}-{end}/{size}')
+        self.end_headers();source.seek(start);self._video_remaining=end-start+1
+        return source
+    def copyfile(self,source,outputfile):
+        remaining=getattr(self,'_video_remaining',None)
+        if remaining is None:return super().copyfile(source,outputfile)
+        while remaining:
+            chunk=source.read(min(65536,remaining))
+            if not chunk:break
+            outputfile.write(chunk);remaining-=len(chunk)
     def do_GET(self):
         if self.path in ('/api/ai/key/status','/api/ai/status'):
             try:

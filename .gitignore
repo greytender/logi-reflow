@@ -120,3 +120,5 @@ evidence/*
 !evidence/video-verification-20261012.json
 !evidence/tests-story-responsive-20261012.txt
 !evidence/story-package-verification.json
+!evidence/tests-video-ranges-20261012.txt
+!evidence/reviewer-access-20261012.json

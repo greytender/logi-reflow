@@ -1,0 +1,604 @@
+{
+  "date": "2026-10-12",
+  "browser": "Tabbit",
+  "screen_source": "continuous browser-tab MediaRecorder footage; edited chapter transitions and reading holds",
+  "screenshots_used": false,
+  "foreground_activated_for_full_recording": false,
+  "browser_chrome_included": false,
+  "duration_seconds": 833.68,
+  "width": 1920,
+  "height": 1080,
+  "fps": 25,
+  "aspect_ratio_preserved": true,
+  "narration": "local Microsoft Huihui synthesized Chinese speech",
+  "burned_subtitles": true,
+  "chapters": [
+    {
+      "id": "00",
+      "title": "从一个真实业务问题开始",
+      "start": 0.0,
+      "end": 37.88
+    },
+    {
+      "id": "01",
+      "title": "体积够，不代表箱子放得进去",
+      "start": 37.88,
+      "end": 72.44
+    },
+    {
+      "id": "02",
+      "title": "路线更快，不代表按原摆放卸得出",
+      "start": 72.44,
+      "end": 112.36
+    },
+    {
+      "id": "03",
+      "title": "易碎约束不能靠隐藏漏单绕过",
+      "start": 112.36,
+      "end": 148.28
+    },
+    {
+      "id": "04",
+      "title": "开始六店十二箱的完整流程",
+      "start": 148.28,
+      "end": 183.0
+    },
+    {
+      "id": "05",
+      "title": "先把输入讲明白",
+      "start": 183.0,
+      "end": 220.4
+    },
+    {
+      "id": "06",
+      "title": "3D布局跟着卸货进度变化",
+      "start": 220.4,
+      "end": 258.76
+    },
+    {
+      "id": "07",
+      "title": "十八条模拟回执与回仓",
+      "start": 258.76,
+      "end": 294.4
+    },
+    {
+      "id": "08",
+      "title": "异常候选和角色交接",
+      "start": 294.4,
+      "end": 328.68
+    },
+    {
+      "id": "09",
+      "title": "创建自己的固定装载交互",
+      "start": 328.68,
+      "end": 362.44
+    },
+    {
+      "id": "10",
+      "title": "系统明确拒绝尚未实现的功能",
+      "start": 362.44,
+      "end": 395.36
+    },
+    {
+      "id": "11",
+      "title": "核对事件，再生成候选",
+      "start": 395.36,
+      "end": 429.64
+    },
+    {
+      "id": "12",
+      "title": "候选核对后才允许采用",
+      "start": 429.64,
+      "end": 466.2
+    },
+    {
+      "id": "13",
+      "title": "到达、卸货、签收分别确认",
+      "start": 466.2,
+      "end": 502.84
+    },
+    {
+      "id": "14",
+      "title": "完整执行剩余门店",
+      "start": 502.84,
+      "end": 557.88
+    },
+    {
+      "id": "15",
+      "title": "普通CSV模式的仓库急单",
+      "start": 557.88,
+      "end": 594.08
+    },
+    {
+      "id": "23",
+      "title": "两批急单有各自的仓库取货任务",
+      "start": 594.08,
+      "end": 628.16
+    },
+    {
+      "id": "22",
+      "title": "单次故障的独立试算",
+      "start": 628.16,
+      "end": 657.4
+    },
+    {
+      "id": "16",
+      "title": "专业工作台与保存历史",
+      "start": 657.4,
+      "end": 693.0
+    },
+    {
+      "id": "17",
+      "title": "联合装载专业试算",
+      "start": 693.0,
+      "end": 725.24
+    },
+    {
+      "id": "18",
+      "title": "AI连接与明确边界",
+      "start": 725.24,
+      "end": 759.04
+    },
+    {
+      "id": "19",
+      "title": "用故事继续了解整体想法",
+      "start": 759.04,
+      "end": 792.04
+    },
+    {
+      "id": "20",
+      "title": "收束：可执行，而且能解释",
+      "start": 792.04,
+      "end": 833.68
+    }
+  ],
+  "sources": [
+    {
+      "id": "00",
+      "duration": 37.88,
+      "frames": 947,
+      "video_bytes": 419783,
+      "source_sha256": "1984863b322b1af321ded0548c3111e6f0e2ace5141ae0ae019a25de0d57bdf0",
+      "actions": 0,
+      "proof": null
+    },
+    {
+      "id": "01",
+      "duration": 34.56,
+      "frames": 864,
+      "video_bytes": 577123,
+      "source_sha256": "b00e50726e610914beabfe77ea2107e6982d563bfbbf3a7d139c056f686f345a",
+      "actions": 1,
+      "proof": {
+        "baseline": {
+          "executable": false,
+          "metrics": {
+            "cost": 48,
+            "distance": 9,
+            "late_minutes": 0,
+            "late_orders": 0,
+            "served": 2,
+            "unserved": 0
+          },
+          "reason": "仅按重量和总体积排程；基线装载状态见独立检查",
+          "sequence": [
+            "SHOP_B",
+            "SHOP_A"
+          ]
+        },
+        "checked": {
+          "executable": true,
+          "metrics": {
+            "cost": 117,
+            "distance": 9,
+            "late_minutes": 0,
+            "late_orders": 0,
+            "served": 2,
+            "unserved": 0
+          },
+          "reason": "改用可容纳箱体的大车，费用增加是约束代价",
+          "sequence": [
+            "SHOP_A",
+            "SHOP_B"
+          ]
+        }
+      }
+    },
+    {
+      "id": "02",
+      "duration": 39.92,
+      "frames": 998,
+      "video_bytes": 694103,
+      "source_sha256": "c50dc503d846c163fcdff68dc40bcdca2f8f32b88ed160f533549e9e26eaf74d",
+      "actions": 1,
+      "proof": {
+        "baseline": {
+          "executable": false,
+          "metrics": {
+            "changed_ids": [
+              "B",
+              "C"
+            ],
+            "changed_orders": 2,
+            "cost": 38,
+            "late_minutes": 0,
+            "late_orders": 0,
+            "served": 3,
+            "unserved": 0
+          },
+          "reason": "路线试算忽略原摆放，不能沿此顺序直线卸货",
+          "sequence": [
+            "A",
+            "C",
+            "B"
+          ]
+        },
+        "checked": {
+          "executable": true,
+          "metrics": {
+            "changed_ids": [
+              "B",
+              "C"
+            ],
+            "changed_orders": 2,
+            "cost": 38,
+            "late_minutes": 45,
+            "late_orders": 1,
+            "served": 3,
+            "unserved": 0
+          },
+          "reason": "核验出发坐标，保留45分钟预测迟到的可执行候选",
+          "sequence": [
+            "A",
+            "B",
+            "C"
+          ]
+        }
+      }
+    },
+    {
+      "id": "03",
+      "duration": 35.92,
+      "frames": 898,
+      "video_bytes": 740167,
+      "source_sha256": "096d11ccce2e3071ac83c6882221c78800daf072fafd7fd8009a47c4d785fc32",
+      "actions": 1,
+      "proof": {
+        "checked": {
+          "executable": false,
+          "metrics": {
+            "cost": 34,
+            "distance": 2,
+            "late_minutes": 0,
+            "late_orders": 0,
+            "served": 1,
+            "unserved": 1
+          },
+          "reason": "保留未安排订单；部分方案低费用不作降本比较",
+          "sequence": [
+            "FIRST"
+          ]
+        },
+        "unserved": [
+          {
+            "code": "LOADING_OR_ROUTE_SEARCH_NOT_FOUND",
+            "id": "LAST",
+            "reason": "路线/装载有限搜索未找到联合方案；不证明无解，需核查尺寸、规则或换求解器"
+          }
+        ]
+      }
+    },
+    {
+      "id": "04",
+      "duration": 34.72,
+      "frames": 868,
+      "video_bytes": 806255,
+      "source_sha256": "2acd6fab8619ce3adc5d04333b8465d656b47d20d0616852cfb5e9d328ab7ef3",
+      "actions": 1,
+      "proof": {
+        "receipts": 18,
+        "signed": 6
+      }
+    },
+    {
+      "id": "05",
+      "duration": 37.4,
+      "frames": 935,
+      "video_bytes": 477567,
+      "source_sha256": "e02affdc483e1964ffefbfeb5a6d9e0143b18e94fda5439069f5eb05a1e1d8c4",
+      "actions": 1,
+      "proof": null
+    },
+    {
+      "id": "06",
+      "duration": 38.36,
+      "frames": 959,
+      "video_bytes": 573909,
+      "source_sha256": "bbc3e33386b65e04dd9b5517ad050596ea5f85b26928f781088777661883681d",
+      "actions": 2,
+      "proof": null
+    },
+    {
+      "id": "07",
+      "duration": 35.64,
+      "frames": 891,
+      "video_bytes": 600915,
+      "source_sha256": "650a5f29786f06e781ad7fa8b2508f92b4b03bdffa998fa052363d8864a78ed1",
+      "actions": 1,
+      "proof": null
+    },
+    {
+      "id": "08",
+      "duration": 34.28,
+      "frames": 857,
+      "video_bytes": 670736,
+      "source_sha256": "855ffc2e824e8b3f79440edb57fadb6dbfafc375831caee2e996a35dafbaa42c",
+      "actions": 1,
+      "proof": null
+    },
+    {
+      "id": "09",
+      "duration": 33.76,
+      "frames": 844,
+      "video_bytes": 821522,
+      "source_sha256": "8c5b9c9759be66ac0a224729867759a32be98fd2e9199ef4c68b5c6d7776a21f",
+      "actions": 2,
+      "proof": null
+    },
+    {
+      "id": "10",
+      "duration": 32.92,
+      "frames": 823,
+      "video_bytes": 883255,
+      "source_sha256": "8bcec9003ac9cc2eb1daeade23bd7e6e322c0301d44c8abe7c49cea34322330b",
+      "actions": 4,
+      "proof": {
+        "adopted_state_preserved": true,
+        "fixed_new_goods_rejected": true
+      }
+    },
+    {
+      "id": "11",
+      "duration": 34.28,
+      "frames": 857,
+      "video_bytes": 773055,
+      "source_sha256": "7ae930e06143663d00ac60fadee924adce27fa99bcf33c97ff6c93c06cd00fc7",
+      "actions": 3,
+      "proof": null
+    },
+    {
+      "id": "12",
+      "duration": 36.56,
+      "frames": 914,
+      "video_bytes": 741882,
+      "source_sha256": "5f676c384baf7658c0a9a45ef9da01bf5015003dd40ed3d23eaa02b0f136d45a",
+      "actions": 2,
+      "proof": {
+        "coordinates_unchanged_after_adoption": true
+      }
+    },
+    {
+      "id": "13",
+      "duration": 36.64,
+      "frames": 916,
+      "video_bytes": 667128,
+      "source_sha256": "210f7ed3202c31164f5d2b6bb9e0901acddd3ae070969bc43ccfb7a30f68b108",
+      "actions": 4,
+      "proof": {
+        "delivered": 1,
+        "receipts": 3
+      }
+    },
+    {
+      "id": "14",
+      "duration": 55.04,
+      "frames": 1376,
+      "video_bytes": 2875013,
+      "source_sha256": "f609aadf8c26c36d29e3b943edd45dd7b6cfcf39c7baa81fbd0224faf24b6dae",
+      "actions": 22,
+      "proof": {
+        "delivered": 6,
+        "receipts": 18,
+        "returned": true
+      }
+    },
+    {
+      "id": "15",
+      "duration": 36.2,
+      "frames": 905,
+      "video_bytes": 2464530,
+      "source_sha256": "f9ed1754a4f91afd900ad1c95bf5748a124a0d15792e2af414f5d608179932ee",
+      "actions": 7,
+      "proof": {
+        "new_goods_still_in_warehouse": true,
+        "three_dimensional_guarantee": false
+      }
+    },
+    {
+      "id": "23",
+      "duration": 34.08,
+      "frames": 852,
+      "video_bytes": 1475898,
+      "source_sha256": "778dc2dca96026e2e2aa0db74b2509af0f4653adc15730a734975880b8964bd5",
+      "actions": 4,
+      "proof": {
+        "first": "warehouse",
+        "second": "warehouse"
+      }
+    },
+    {
+      "id": "22",
+      "duration": 29.24,
+      "frames": 731,
+      "video_bytes": 1559462,
+      "source_sha256": "40f9f6092bfe8eb68a5a2fabad8e12a106687da1371ec3601780f554a42243b5",
+      "actions": 3,
+      "proof": {
+        "continuous_fault_support": false,
+        "single_failure_comparison_visible": true
+      }
+    },
+    {
+      "id": "16",
+      "duration": 35.6,
+      "frames": 890,
+      "video_bytes": 1916087,
+      "source_sha256": "e4a8edfc24085490ea4ff48ce6153f8543f8bbc05c851b9fa0995a14127d8102",
+      "actions": 4,
+      "proof": {
+        "isolated_qa_database": true,
+        "persisted_csv_import": true
+      }
+    },
+    {
+      "id": "17",
+      "duration": 32.24,
+      "frames": 806,
+      "video_bytes": 1774550,
+      "source_sha256": "04e30a05f38718ecfd18f6b7b4292d3ce6160dc7037eaaedc3bc98af60883c5c",
+      "actions": 4,
+      "proof": {
+        "complete_loading_sample": true,
+        "fixed_coordinates_scene_saved": true,
+        "independent_loading_audit_visible": true
+      }
+    },
+    {
+      "id": "18",
+      "duration": 33.8,
+      "frames": 845,
+      "video_bytes": 581869,
+      "source_sha256": "ecd2cb03c003aeb18f9e500ab67a70662b8b59848f4bfec2e4b2b11ffc83540a",
+      "actions": 1,
+      "proof": {
+        "api_key_entered": false,
+        "paid_model_calls": 0
+      }
+    },
+    {
+      "id": "19",
+      "duration": 33.0,
+      "frames": 825,
+      "video_bytes": 1129020,
+      "source_sha256": "4e7bb824cc90b88f182a2711f225641e42efea5a71ff617ac465ecf49001f79c",
+      "actions": 2,
+      "proof": null
+    },
+    {
+      "id": "20",
+      "duration": 41.64,
+      "frames": 1041,
+      "video_bytes": 893802,
+      "source_sha256": "a8afb09bf7b6f92effd5fad4599174a7d8a7144726888dc97cdd08b87669fe88",
+      "actions": 1,
+      "proof": null
+    }
+  ],
+  "bytes": 23247156,
+  "sha256": "e9578a877b30f79f4a944dd7d9e7f84729f70fef569e3156078c94efc5f6d649",
+  "paid_model_calls": 0,
+  "database": "isolated QA database under outputs/video-qa",
+  "independent_review": {
+    "review_date": "2026-10-12",
+    "result": "pass_with_one_frame_duration_difference",
+    "video_sha256": "e9578a877b30f79f4a944dd7d9e7f84729f70fef569e3156078c94efc5f6d649",
+    "video_bytes": 23247156,
+    "full_video_decode_exit_code": 0,
+    "decoded_video_frames": 20841,
+    "fps": 25,
+    "decoded_video_duration_seconds": 833.64,
+    "declared_chapter_end_seconds": 833.68,
+    "difference_seconds": 0.04,
+    "sampled_final_video_seconds": [
+      539,
+      714,
+      832,
+      833
+    ],
+    "sampled_visual_findings": {
+      "539": "manual receipt confirmation and execution facts visible",
+      "714": "professional joint loading 3D geometry and unloading order visible",
+      "832_and_833": "story reading page visible through ending",
+      "browser_chrome_or_desktop_seen": false,
+      "text_readable": true,
+      "mouse_indicator_visible": true
+    },
+    "subtitle_entries": 98,
+    "subtitle_last_end": "00:13:48,444",
+    "audio_stream": "AAC stereo 48000Hz metadata checked",
+    "content_truncated": false,
+    "limitations": [
+      "Whole video track was decoded for integrity but not watched second by second.",
+      "Audio stream metadata was inspected; complete narration was not listened to.",
+      "Visual synchronization was sampled at the stated timestamps rather than every action.",
+      "Actual decoded video duration is one frame shorter than the chapter endpoint; no narration or subtitle is truncated."
+    ]
+  },
+  "player_verification": {
+    "chapterJumpWorked": true,
+    "desktop": {
+      "chapters": 23,
+      "cues": 98,
+      "documentWidth": 1425,
+      "width": 1440
+    },
+    "errors": [],
+    "foregroundActivated": false,
+    "metadata": {
+      "duration": 833.68,
+      "height": 1080,
+      "width": 1920
+    },
+    "mobile": {
+      "documentWidth": 360,
+      "videoWidth": 328,
+      "width": 375
+    },
+    "muted": true,
+    "playbackAdvanced": true
+  },
+  "background_trial": {
+    "elapsed_seconds": 12.29,
+    "foreground_activated": false,
+    "screenshots_used": false,
+    "source_origin": "http://127.0.0.1:18778",
+    "layout": {
+      "documentWidth": 1249,
+      "late": 45,
+      "viewport": {
+        "height": 671,
+        "width": 1264
+      },
+      "visibility": "visible"
+    }
+  },
+  "full_audio_video_decode": {
+    "exit_code": 0,
+    "errors": "",
+    "final_video": true
+  },
+  "regression_tests": 189,
+  "video_range_tests": 4,
+  "original_service_restarted": false,
+  "player_test_port": 18781,
+  "extracted_package_checks": {
+    "python -m unittest discover -s tests -v": {
+      "passed": true,
+      "summary": "d) ... ok\ntest_complete_and_head (test_video_ranges.VideoRangeTests.test_complete_and_head) ... ok\ntest_invalid_or_outside_range (test_video_ranges.VideoRangeTests.test_invalid_or_outside_range) ... ok\ntest_suffix_and_open_ended (test_video_ranges.VideoRangeTests.test_suffix_and_open_ended) ... ok\n\n----------------------------------------------------------------------\nRan 189 tests in 31.789s\n\nOK\n"
+    },
+    "python reproduce_csv_checkpoint.py": {
+      "passed": true,
+      "summary": "[(3, 5, 15, True, 578.12), (30, 32, 96, True, 14095.43)]\n"
+    },
+    "python fixed_loading_benchmark.py": {
+      "passed": true,
+      "summary": "nce\": [\"A\", \"B\", \"C\"], \"unconstrained_metrics\": {\"served\": 3, \"unserved\": 0, \"late_orders\": 0, \"late_minutes\": 0, \"cost\": 38.0, \"changed_orders\": 2, \"changed_ids\": [\"B\", \"C\"]}, \"constrained_metrics\": {\"served\": 3, \"unserved\": 0, \"late_orders\": 1, \"late_minutes\": 45.0, \"cost\": 38.0, \"changed_orders\": 2, \"changed_ids\": [\"B\", \"C\"]}, \"receipts\": 9, \"returned\": true, \"all_coordinates_unchanged\": true}\n"
+    },
+    "python scenario_demo.py": {
+      "passed": true,
+      "summary": "go_volume_m3\": 0.0, \"cuboid_space_use_percent\": 0.0, \"predicted_cost\": 0, \"predicted_return\": 480}, {\"vehicle\": \"LARGE\", \"sequence\": [\"S01\", \"S02\", \"S06\", \"S05\", \"S04\", \"S03\"], \"boxes\": 12, \"weight_kg\": 48.0, \"weight_use_percent\": 96.0, \"cargo_volume_m3\": 0.288, \"cuboid_space_use_percent\": 30.0, \"predicted_cost\": 108.0, \"predicted_return\": 571.0}], \"signed\": 6, \"receipts\": 18, \"total_ms\": 866.85}\n"
+    },
+    "all_manifest_hashes_match": true
+  },
+  "package_code_changes_after_extracted_checks": false
+}
