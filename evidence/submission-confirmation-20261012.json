@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-12T06:47:09.039Z",
+  "checked_at_beijing": "2026-10-12 14:47:09 +08:00",
+  "source_method": "Tabbit Browser; resumed existing submitted-form tab and read rendered body without navigation or clicking submit",
+  "form_title": "AI重构产业·架构师大赛作品登记",
+  "form_url": "https://v.wjx.cn/vm/rmEuv50.aspx#",
+  "completion_page_path": "https://v.wjx.cn/wjx/join/completemobile2.aspx",
+  "user_reported_submitted": true,
+  "completion_message": "您的答卷已经提交，感谢您的参与！",
+  "submission_platform_success_verified": true,
+  "submitted_by": "user",
+  "assistant_clicked_submit": false,
+  "receipt_identifiers_and_contact_values_retained": false,
+  "judge_invitation": {
+    "account": "DsChHack",
+    "id": 337265455,
+    "permission": "write",
+    "pending": true,
+    "accepted": false,
+    "method": "GitHub collaborators and invitations API"
+  },
+  "organizer_manual_receipt_verified": false,
+  "judging_outcome_verified": false
+}

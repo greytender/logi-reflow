@@ -21,10 +21,15 @@
     "url": "https://v.wjx.cn/vm/rmEuv50.aspx#",
     "title": "AI重构产业·架构师大赛作品登记",
     "filled": true,
-    "submitted": false,
+    "submitted": true,
     "contact": "user entered directly; no value retained in repository",
-    "draft": "docs/初赛表单核对稿.md"
+    "draft": "docs/初赛表单核对稿.md",
+    "submitted_by": "user",
+    "submission_platform_success_verified": true,
+    "submission_success_message": "您的答卷已经提交，感谢您的参与！",
+    "verification_record": "submission-confirmation-20261012.json"
   },
-  "terms_accepted": false,
-  "organizer_receipt_verified": false
+  "organizer_receipt_verified": false,
+  "terms_acceptance_action_by_agent": false,
+  "terms_acceptance_separate_step": "not observed; guide clause presented before user completed final submission"
 }
