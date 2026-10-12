@@ -1,0 +1,23 @@
+{
+  "checked_date": "2026-10-12",
+  "repository": "https://github.com/greytender/logi-reflow",
+  "branch": "main",
+  "verified_delivery_commit": "b933bdc6c162b6dac288e1b0ecb818540b49fa5d",
+  "remote_commit_matches_local": true,
+  "verification_methods": [
+    "GitHub branches API",
+    "git ls-remote refs/heads/main"
+  ],
+  "private": true,
+  "push_permission": true,
+  "sync_method": "single-command proxy http://127.0.0.1:7892 with HTTP/1.1; no force push",
+  "working_tree_clean_at_verification": true,
+  "reviewed_source_files": 246,
+  "credential_pattern_scan_passed": true,
+  "runtime_database_outputs_logs_cache_excluded": true,
+  "judge_invitation_sent": false,
+  "competition_submitted": false,
+  "terms_accepted": false,
+  "official_submission_guide_rechecked": false,
+  "note": "This records the verified application delivery commit. A following evidence-only commit stores this record; its exact HEAD is verified after push and reported in chat/outputs."
+}
