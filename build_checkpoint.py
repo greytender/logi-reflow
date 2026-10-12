@@ -20,8 +20,11 @@ BLOCKED={'data','outputs','.git','node_modules','__pycache__'}
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--verify',action='store_true')
-    parser.add_argument('--output',type=Path);parser.add_argument('--label',default='CSV-AI-20261011-local');args=parser.parse_args()
-    raw=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=ROOT)
+    parser.add_argument('--output',type=Path);parser.add_argument('--label',default='CSV-AI-20261011-local')
+    parser.add_argument('--tracked-only',action='store_true',help='Package reviewed tracked files while unfinished untracked work stays local')
+    args=parser.parse_args()
+    listing=['git','ls-files','--cached','-z'] if args.tracked_only else ['git','ls-files','--cached','--others','--exclude-standard','-z']
+    raw=subprocess.check_output(listing,cwd=ROOT)
     names=sorted({n.decode('utf-8') for n in raw.split(b'\0') if n})
     files=[]
     for name in names:

@@ -119,3 +119,4 @@ evidence/*
 !evidence/responsive-verification-20261012.json
 !evidence/video-verification-20261012.json
 !evidence/tests-story-responsive-20261012.txt
+!evidence/story-package-verification.json
