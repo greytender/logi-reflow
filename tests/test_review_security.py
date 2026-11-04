@@ -88,6 +88,22 @@ class KeyHttpTests(unittest.TestCase):
         code,_,_=self.request('/api/ai/key/status',headers={'Host':'untrusted.example'})
         self.assertEqual(code,403)
 
+    def test_legacy_reads_reject_untrusted_hosts_before_accessing_storage(self):
+        # The legacy stores are deliberately unset here. A rejected request must
+        # never reach them or reveal previously saved dispatcher/session data.
+        routes = ('/api/session', '/api/sessions', '/api/dispatch',
+                  '/api/dispatch/history', '/api/dispatch/history/example',
+                  '/api/dispatch/review', '/api/dispatch/comparison',
+                  '/api/dispatch/handoff?id=example&revision=1')
+        for route in routes:
+            for headers in ({'Host': 'untrusted.example'},
+                            {'Origin': 'https://untrusted.example'},
+                            {'Sec-Fetch-Site': 'cross-site'}):
+                with self.subTest(route=route, headers=headers):
+                    code, _, body = self.request(route, headers=headers)
+                    self.assertEqual(code, 403)
+                    self.assertEqual(set(body), {'error'})
+
     def test_key_uses_opaque_httponly_cookie_and_clear_preserves_local_config(self):
         with patch.dict(os.environ,{'LOGISTICS_DEEPSEEK_API_KEY':'fake-local-config'},clear=True),patch('urllib.request.urlopen') as transport:
             code,headers,body=self.request('/api/ai/key/set',{'api_key':'fake-test-key-browser'}, {'Origin':self.origin()})

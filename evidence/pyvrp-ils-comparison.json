@@ -1,0 +1,5993 @@
+{
+  "data_kind": "simulated",
+  "pyvrp_version": "0.13.1",
+  "search_budget_seconds": 1.0,
+  "seeds": [
+    17,
+    29,
+    41
+  ],
+  "cases": {
+    "geometry": {
+      "input_sha256": "65a063e08421993bc729bf63fd578acca5b61ca8b1cf94a4a3b30e87bb5b02cf",
+      "stores": 8,
+      "fleet": 3,
+      "has_geometry": true,
+      "training_scenarios": [
+        {
+          "S01": {
+            "cartons": 3,
+            "totes": 33
+          }
+        },
+        {
+          "S05": {
+            "cartons": 10,
+            "totes": 24
+          }
+        },
+        {
+          "S04": {
+            "cartons": 9,
+            "totes": 30
+          },
+          "S07": {
+            "cartons": 2,
+            "totes": 22
+          }
+        },
+        {
+          "S07": {
+            "cartons": 4,
+            "totes": 32
+          },
+          "S03": {
+            "cartons": 6,
+            "totes": 29
+          }
+        },
+        {
+          "S02": {
+            "cartons": 4,
+            "totes": 33
+          },
+          "S08": {
+            "cartons": 8,
+            "totes": 30
+          },
+          "S06": {
+            "cartons": 7,
+            "totes": 31
+          }
+        },
+        {
+          "S03": {
+            "cartons": 9,
+            "totes": 19
+          },
+          "S02": {
+            "cartons": 6,
+            "totes": 32
+          },
+          "S08": {
+            "cartons": 10,
+            "totes": 25
+          }
+        }
+      ],
+      "holdout_scenarios": [
+        {
+          "S03": {
+            "cartons": 6,
+            "totes": 20
+          }
+        },
+        {
+          "S07": {
+            "cartons": 7,
+            "totes": 25
+          }
+        },
+        {
+          "S08": {
+            "cartons": 6,
+            "totes": 33
+          },
+          "S01": {
+            "cartons": 8,
+            "totes": 24
+          }
+        },
+        {
+          "S08": {
+            "cartons": 7,
+            "totes": 19
+          },
+          "S04": {
+            "cartons": 7,
+            "totes": 29
+          }
+        },
+        {
+          "S03": {
+            "cartons": 7,
+            "totes": 19
+          },
+          "S01": {
+            "cartons": 3,
+            "totes": 36
+          },
+          "S07": {
+            "cartons": 8,
+            "totes": 27
+          }
+        },
+        {
+          "S06": {
+            "cartons": 2,
+            "totes": 28
+          },
+          "S04": {
+            "cartons": 6,
+            "totes": 22
+          },
+          "S08": {
+            "cartons": 12,
+            "totes": 32
+          }
+        },
+        {
+          "S08": {
+            "cartons": 10,
+            "totes": 28
+          }
+        },
+        {
+          "S07": {
+            "cartons": 4,
+            "totes": 19
+          }
+        },
+        {
+          "S03": {
+            "cartons": 5,
+            "totes": 14
+          },
+          "S07": {
+            "cartons": 6,
+            "totes": 20
+          }
+        },
+        {
+          "S01": {
+            "cartons": 2,
+            "totes": 20
+          },
+          "S02": {
+            "cartons": 3,
+            "totes": 27
+          }
+        },
+        {
+          "S05": {
+            "cartons": 13,
+            "totes": 21
+          },
+          "S07": {
+            "cartons": 3,
+            "totes": 36
+          },
+          "S04": {
+            "cartons": 7,
+            "totes": 32
+          }
+        },
+        {
+          "S08": {
+            "cartons": 12,
+            "totes": 23
+          },
+          "S02": {
+            "cartons": 5,
+            "totes": 27
+          },
+          "S04": {
+            "cartons": 7,
+            "totes": 25
+          }
+        },
+        {
+          "S08": {
+            "cartons": 12,
+            "totes": 21
+          }
+        },
+        {
+          "S05": {
+            "cartons": 12,
+            "totes": 19
+          }
+        },
+        {
+          "S02": {
+            "cartons": 6,
+            "totes": 26
+          },
+          "S07": {
+            "cartons": 3,
+            "totes": 19
+          }
+        },
+        {
+          "S06": {
+            "cartons": 3,
+            "totes": 27
+          },
+          "S01": {
+            "cartons": 4,
+            "totes": 26
+          }
+        },
+        {
+          "S01": {
+            "cartons": 5,
+            "totes": 34
+          },
+          "S04": {
+            "cartons": 12,
+            "totes": 21
+          },
+          "S07": {
+            "cartons": 8,
+            "totes": 20
+          }
+        },
+        {
+          "S04": {
+            "cartons": 8,
+            "totes": 33
+          },
+          "S06": {
+            "cartons": 2,
+            "totes": 31
+          },
+          "S03": {
+            "cartons": 9,
+            "totes": 19
+          }
+        },
+        {
+          "S06": {
+            "cartons": 1,
+            "totes": 22
+          }
+        },
+        {
+          "S06": {
+            "cartons": 5,
+            "totes": 33
+          }
+        },
+        {
+          "S08": {
+            "cartons": 9,
+            "totes": 35
+          },
+          "S02": {
+            "cartons": 4,
+            "totes": 33
+          }
+        },
+        {
+          "S02": {
+            "cartons": 4,
+            "totes": 21
+          },
+          "S06": {
+            "cartons": 4,
+            "totes": 28
+          }
+        },
+        {
+          "S05": {
+            "cartons": 10,
+            "totes": 32
+          },
+          "S04": {
+            "cartons": 11,
+            "totes": 35
+          },
+          "S02": {
+            "cartons": 6,
+            "totes": 32
+          }
+        },
+        {
+          "S05": {
+            "cartons": 11,
+            "totes": 29
+          },
+          "S02": {
+            "cartons": 7,
+            "totes": 20
+          },
+          "S06": {
+            "cartons": 5,
+            "totes": 34
+          }
+        }
+      ],
+      "trials": [
+        {
+          "method": "local",
+          "seed": 17,
+          "search_wall_ms": 242.138,
+          "common_audit_ms": 19.882,
+          "routes": {
+            "T1": [
+              "S05",
+              "S01",
+              "S04",
+              "S07"
+            ],
+            "T2": [
+              "S06",
+              "S03",
+              "S02",
+              "S08"
+            ],
+            "T3": []
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 8,
+            "total_stores": 8,
+            "on_time_signoffs": 8,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 400,
+            "kilometers": 173.227,
+            "mean_departure_volume_pct": 71.667,
+            "mean_departure_weight_pct": 39.626,
+            "held_out": [
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": 19
+        },
+        {
+          "method": "pyvrp_ils",
+          "seed": 17,
+          "search_wall_ms": 1333.178,
+          "common_audit_ms": 20.062,
+          "routes": {
+            "T1": [
+              "S06",
+              "S03",
+              "S02"
+            ],
+            "T2": [
+              "S05",
+              "S08",
+              "S01",
+              "S04",
+              "S07"
+            ],
+            "T3": []
+          },
+          "solver_feasible": true,
+          "nominal_route_verified": true,
+          "common_model_verified": false,
+          "complete_and_on_time": false,
+          "metrics": {
+            "assigned": 8,
+            "total_stores": 8,
+            "on_time_signoffs": 8,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 400,
+            "kilometers": 145.95,
+            "mean_departure_volume_pct": 69.722,
+            "mean_departure_weight_pct": 38.774,
+            "held_out": [
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": null
+        },
+        {
+          "method": "robust_objective_alns",
+          "seed": 17,
+          "search_wall_ms": 1006.944,
+          "common_audit_ms": 11.408,
+          "routes": {
+            "T1": [
+              "S01",
+              "S04",
+              "S07"
+            ],
+            "T2": [
+              "S06",
+              "S03",
+              "S02"
+            ],
+            "T3": [
+              "S05",
+              "S08"
+            ]
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 8,
+            "total_stores": 8,
+            "on_time_signoffs": 8,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 540,
+            "kilometers": 179.057,
+            "mean_departure_volume_pct": 48.519,
+            "mean_departure_weight_pct": 26.742,
+            "held_out": [
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              }
+            ]
+          },
+          "full_scenarios_verified": 24
+        },
+        {
+          "method": "local",
+          "seed": 29,
+          "search_wall_ms": 401.541,
+          "common_audit_ms": 85.653,
+          "routes": {
+            "T1": [
+              "S05",
+              "S01",
+              "S04",
+              "S07"
+            ],
+            "T2": [
+              "S06",
+              "S03",
+              "S02",
+              "S08"
+            ],
+            "T3": []
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 8,
+            "total_stores": 8,
+            "on_time_signoffs": 8,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 400,
+            "kilometers": 173.227,
+            "mean_departure_volume_pct": 71.667,
+            "mean_departure_weight_pct": 39.626,
+            "held_out": [
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": 19
+        },
+        {
+          "method": "pyvrp_ils",
+          "seed": 29,
+          "search_wall_ms": 1021.472,
+          "common_audit_ms": 7.771,
+          "routes": {
+            "T1": [
+              "S06",
+              "S03",
+              "S02"
+            ],
+            "T2": [
+              "S05",
+              "S08",
+              "S01",
+              "S04",
+              "S07"
+            ],
+            "T3": []
+          },
+          "solver_feasible": true,
+          "nominal_route_verified": true,
+          "common_model_verified": false,
+          "complete_and_on_time": false,
+          "metrics": {
+            "assigned": 8,
+            "total_stores": 8,
+            "on_time_signoffs": 8,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 400,
+            "kilometers": 145.95,
+            "mean_departure_volume_pct": 69.722,
+            "mean_departure_weight_pct": 38.774,
+            "held_out": [
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": null
+        },
+        {
+          "method": "robust_objective_alns",
+          "seed": 29,
+          "search_wall_ms": 1016.9,
+          "common_audit_ms": 24.299,
+          "routes": {
+            "T1": [],
+            "T2": [
+              "S06",
+              "S03",
+              "S02",
+              "S07"
+            ],
+            "T3": [
+              "S05",
+              "S01",
+              "S04",
+              "S08"
+            ]
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 8,
+            "total_stores": 8,
+            "on_time_signoffs": 8,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 400,
+            "kilometers": 177.294,
+            "mean_departure_volume_pct": 71.389,
+            "mean_departure_weight_pct": 39.504,
+            "held_out": [
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              }
+            ]
+          },
+          "full_scenarios_verified": 23
+        },
+        {
+          "method": "local",
+          "seed": 41,
+          "search_wall_ms": 292.913,
+          "common_audit_ms": 62.873,
+          "routes": {
+            "T1": [
+              "S05",
+              "S01",
+              "S04",
+              "S07"
+            ],
+            "T2": [
+              "S06",
+              "S03",
+              "S02",
+              "S08"
+            ],
+            "T3": []
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 8,
+            "total_stores": 8,
+            "on_time_signoffs": 8,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 400,
+            "kilometers": 173.227,
+            "mean_departure_volume_pct": 71.667,
+            "mean_departure_weight_pct": 39.626,
+            "held_out": [
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": 19
+        },
+        {
+          "method": "pyvrp_ils",
+          "seed": 41,
+          "search_wall_ms": 1008.041,
+          "common_audit_ms": 21.098,
+          "routes": {
+            "T1": [
+              "S06",
+              "S03",
+              "S02"
+            ],
+            "T2": [
+              "S05",
+              "S08",
+              "S01",
+              "S04",
+              "S07"
+            ],
+            "T3": []
+          },
+          "solver_feasible": true,
+          "nominal_route_verified": true,
+          "common_model_verified": false,
+          "complete_and_on_time": false,
+          "metrics": {
+            "assigned": 8,
+            "total_stores": 8,
+            "on_time_signoffs": 8,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 400,
+            "kilometers": 145.95,
+            "mean_departure_volume_pct": 69.722,
+            "mean_departure_weight_pct": 38.774,
+            "held_out": [
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 7,
+                "requested_stops": 8,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": null
+        },
+        {
+          "method": "robust_objective_alns",
+          "seed": 41,
+          "search_wall_ms": 1028.151,
+          "common_audit_ms": 27.609,
+          "routes": {
+            "T1": [
+              "S01",
+              "S04",
+              "S07"
+            ],
+            "T2": [
+              "S06",
+              "S03",
+              "S02"
+            ],
+            "T3": [
+              "S05",
+              "S08"
+            ]
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 8,
+            "total_stores": 8,
+            "on_time_signoffs": 8,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 540,
+            "kilometers": 179.057,
+            "mean_departure_volume_pct": 48.519,
+            "mean_departure_weight_pct": 26.742,
+            "held_out": [
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 8,
+                "requested_stops": 8,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              }
+            ]
+          },
+          "full_scenarios_verified": 24
+        }
+      ]
+    },
+    "medium": {
+      "input_sha256": "d050b5ab538f96a9f028321dbab252859524a9b00ce5602eb816a600f0d7bd90",
+      "stores": 12,
+      "fleet": 4,
+      "has_geometry": false,
+      "training_scenarios": [
+        {
+          "S04": {
+            "cartons": 13,
+            "totes": 36
+          }
+        },
+        {
+          "S04": {
+            "cartons": 11,
+            "totes": 32
+          }
+        },
+        {
+          "S08": {
+            "cartons": 3,
+            "totes": 27
+          },
+          "S02": {
+            "cartons": 4,
+            "totes": 33
+          }
+        },
+        {
+          "S01": {
+            "cartons": 6,
+            "totes": 27
+          },
+          "S05": {
+            "cartons": 13,
+            "totes": 32
+          }
+        },
+        {
+          "S07": {
+            "cartons": 4,
+            "totes": 22
+          },
+          "S10": {
+            "cartons": 3,
+            "totes": 22
+          },
+          "S02": {
+            "cartons": 7,
+            "totes": 34
+          }
+        },
+        {
+          "S04": {
+            "cartons": 11,
+            "totes": 26
+          },
+          "S05": {
+            "cartons": 11,
+            "totes": 20
+          },
+          "S09": {
+            "cartons": 1,
+            "totes": 31
+          }
+        }
+      ],
+      "holdout_scenarios": [
+        {
+          "S09": {
+            "cartons": 7,
+            "totes": 36
+          }
+        },
+        {
+          "S01": {
+            "cartons": 6,
+            "totes": 18
+          }
+        },
+        {
+          "S04": {
+            "cartons": 9,
+            "totes": 31
+          },
+          "S08": {
+            "cartons": 6,
+            "totes": 17
+          }
+        },
+        {
+          "S09": {
+            "cartons": 1,
+            "totes": 31
+          },
+          "S06": {
+            "cartons": 10,
+            "totes": 35
+          }
+        },
+        {
+          "S01": {
+            "cartons": 8,
+            "totes": 31
+          },
+          "S10": {
+            "cartons": 3,
+            "totes": 32
+          },
+          "S07": {
+            "cartons": 5,
+            "totes": 25
+          }
+        },
+        {
+          "S05": {
+            "cartons": 9,
+            "totes": 36
+          },
+          "S06": {
+            "cartons": 9,
+            "totes": 30
+          },
+          "S11": {
+            "cartons": 9,
+            "totes": 21
+          }
+        },
+        {
+          "S03": {
+            "cartons": 8,
+            "totes": 21
+          }
+        },
+        {
+          "S01": {
+            "cartons": 5,
+            "totes": 25
+          }
+        },
+        {
+          "S11": {
+            "cartons": 9,
+            "totes": 27
+          },
+          "S07": {
+            "cartons": 8,
+            "totes": 29
+          }
+        },
+        {
+          "S04": {
+            "cartons": 11,
+            "totes": 24
+          },
+          "S03": {
+            "cartons": 3,
+            "totes": 28
+          }
+        },
+        {
+          "S06": {
+            "cartons": 10,
+            "totes": 26
+          },
+          "S05": {
+            "cartons": 13,
+            "totes": 23
+          },
+          "S12": {
+            "cartons": 8,
+            "totes": 36
+          }
+        },
+        {
+          "S07": {
+            "cartons": 5,
+            "totes": 30
+          },
+          "S10": {
+            "cartons": 2,
+            "totes": 24
+          },
+          "S02": {
+            "cartons": 4,
+            "totes": 28
+          }
+        },
+        {
+          "S03": {
+            "cartons": 9,
+            "totes": 32
+          }
+        },
+        {
+          "S07": {
+            "cartons": 7,
+            "totes": 22
+          }
+        },
+        {
+          "S04": {
+            "cartons": 14,
+            "totes": 22
+          },
+          "S01": {
+            "cartons": 8,
+            "totes": 19
+          }
+        },
+        {
+          "S06": {
+            "cartons": 11,
+            "totes": 29
+          },
+          "S05": {
+            "cartons": 10,
+            "totes": 33
+          }
+        },
+        {
+          "S04": {
+            "cartons": 12,
+            "totes": 29
+          },
+          "S02": {
+            "cartons": 5,
+            "totes": 28
+          },
+          "S11": {
+            "cartons": 9,
+            "totes": 27
+          }
+        },
+        {
+          "S09": {
+            "cartons": 3,
+            "totes": 33
+          },
+          "S11": {
+            "cartons": 7,
+            "totes": 25
+          },
+          "S08": {
+            "cartons": 5,
+            "totes": 21
+          }
+        },
+        {
+          "S02": {
+            "cartons": 7,
+            "totes": 23
+          }
+        },
+        {
+          "S11": {
+            "cartons": 12,
+            "totes": 21
+          }
+        },
+        {
+          "S11": {
+            "cartons": 9,
+            "totes": 31
+          },
+          "S10": {
+            "cartons": 4,
+            "totes": 25
+          }
+        },
+        {
+          "S01": {
+            "cartons": 6,
+            "totes": 25
+          },
+          "S02": {
+            "cartons": 1,
+            "totes": 19
+          }
+        },
+        {
+          "S05": {
+            "cartons": 14,
+            "totes": 32
+          },
+          "S01": {
+            "cartons": 2,
+            "totes": 29
+          },
+          "S11": {
+            "cartons": 8,
+            "totes": 20
+          }
+        },
+        {
+          "S04": {
+            "cartons": 11,
+            "totes": 19
+          },
+          "S03": {
+            "cartons": 9,
+            "totes": 19
+          },
+          "S02": {
+            "cartons": 3,
+            "totes": 22
+          }
+        }
+      ],
+      "trials": [
+        {
+          "method": "local",
+          "seed": 17,
+          "search_wall_ms": 48.772,
+          "common_audit_ms": 5.253,
+          "routes": {
+            "T1": [],
+            "T2": [
+              "S03",
+              "S11",
+              "S05"
+            ],
+            "T3": [
+              "S04",
+              "S08",
+              "S06",
+              "S12",
+              "S09"
+            ],
+            "T4": [
+              "S10",
+              "S01",
+              "S07",
+              "S02"
+            ]
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 600,
+            "kilometers": 230.258,
+            "mean_departure_volume_pct": 84.815,
+            "mean_departure_weight_pct": 47.113,
+            "held_out": [
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              }
+            ]
+          },
+          "full_scenarios_verified": 19
+        },
+        {
+          "method": "pyvrp_ils",
+          "seed": 17,
+          "search_wall_ms": 1007.919,
+          "common_audit_ms": 3.007,
+          "routes": {
+            "T1": [
+              "S04",
+              "S02"
+            ],
+            "T2": [
+              "S07",
+              "S01",
+              "S10",
+              "S08",
+              "S05"
+            ],
+            "T3": [
+              "S11",
+              "S06",
+              "S12",
+              "S09",
+              "S03"
+            ],
+            "T4": []
+          },
+          "solver_feasible": true,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 600,
+            "kilometers": 197.904,
+            "mean_departure_volume_pct": 87.222,
+            "mean_departure_weight_pct": 48.168,
+            "held_out": [
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              }
+            ]
+          },
+          "full_scenarios_verified": 15
+        },
+        {
+          "method": "robust_objective_alns",
+          "seed": 17,
+          "search_wall_ms": 1005.851,
+          "common_audit_ms": 3.951,
+          "routes": {
+            "T1": [
+              "S07",
+              "S01",
+              "S10",
+              "S08"
+            ],
+            "T2": [
+              "S05",
+              "S02",
+              "S04"
+            ],
+            "T3": [
+              "S11",
+              "S06",
+              "S12",
+              "S09",
+              "S03"
+            ],
+            "T4": []
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 600,
+            "kilometers": 203.514,
+            "mean_departure_volume_pct": 87.037,
+            "mean_departure_weight_pct": 48.087,
+            "held_out": [
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              }
+            ]
+          },
+          "full_scenarios_verified": 19
+        },
+        {
+          "method": "local",
+          "seed": 29,
+          "search_wall_ms": 52.773,
+          "common_audit_ms": 6.948,
+          "routes": {
+            "T1": [],
+            "T2": [
+              "S03",
+              "S11",
+              "S05"
+            ],
+            "T3": [
+              "S04",
+              "S08",
+              "S06",
+              "S12",
+              "S09"
+            ],
+            "T4": [
+              "S10",
+              "S01",
+              "S07",
+              "S02"
+            ]
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 600,
+            "kilometers": 230.258,
+            "mean_departure_volume_pct": 84.815,
+            "mean_departure_weight_pct": 47.113,
+            "held_out": [
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              }
+            ]
+          },
+          "full_scenarios_verified": 19
+        },
+        {
+          "method": "pyvrp_ils",
+          "seed": 29,
+          "search_wall_ms": 1009.366,
+          "common_audit_ms": 4.676,
+          "routes": {
+            "T1": [
+              "S11",
+              "S06",
+              "S12",
+              "S09",
+              "S03"
+            ],
+            "T2": [
+              "S07",
+              "S01",
+              "S10",
+              "S08",
+              "S05"
+            ],
+            "T3": [
+              "S04",
+              "S02"
+            ],
+            "T4": []
+          },
+          "solver_feasible": true,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 600,
+            "kilometers": 197.904,
+            "mean_departure_volume_pct": 87.222,
+            "mean_departure_weight_pct": 48.168,
+            "held_out": [
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              }
+            ]
+          },
+          "full_scenarios_verified": 15
+        },
+        {
+          "method": "robust_objective_alns",
+          "seed": 29,
+          "search_wall_ms": 1000.915,
+          "common_audit_ms": 4.186,
+          "routes": {
+            "T1": [
+              "S05",
+              "S02"
+            ],
+            "T2": [
+              "S11",
+              "S06",
+              "S12",
+              "S09",
+              "S03"
+            ],
+            "T3": [],
+            "T4": [
+              "S10",
+              "S01",
+              "S07",
+              "S08",
+              "S04"
+            ]
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 600,
+            "kilometers": 207.045,
+            "mean_departure_volume_pct": 84.259,
+            "mean_departure_weight_pct": 46.87,
+            "held_out": [
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              }
+            ]
+          },
+          "full_scenarios_verified": 21
+        },
+        {
+          "method": "local",
+          "seed": 41,
+          "search_wall_ms": 53.706,
+          "common_audit_ms": 5.579,
+          "routes": {
+            "T1": [],
+            "T2": [
+              "S03",
+              "S11",
+              "S05"
+            ],
+            "T3": [
+              "S04",
+              "S08",
+              "S06",
+              "S12",
+              "S09"
+            ],
+            "T4": [
+              "S10",
+              "S01",
+              "S07",
+              "S02"
+            ]
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 600,
+            "kilometers": 230.258,
+            "mean_departure_volume_pct": 84.815,
+            "mean_departure_weight_pct": 47.113,
+            "held_out": [
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              }
+            ]
+          },
+          "full_scenarios_verified": 19
+        },
+        {
+          "method": "pyvrp_ils",
+          "seed": 41,
+          "search_wall_ms": 1007.339,
+          "common_audit_ms": 5.022,
+          "routes": {
+            "T1": [
+              "S11",
+              "S06",
+              "S12",
+              "S09",
+              "S03"
+            ],
+            "T2": [
+              "S07",
+              "S01",
+              "S10",
+              "S08",
+              "S05"
+            ],
+            "T3": [
+              "S04",
+              "S02"
+            ],
+            "T4": []
+          },
+          "solver_feasible": true,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 600,
+            "kilometers": 197.904,
+            "mean_departure_volume_pct": 87.222,
+            "mean_departure_weight_pct": 48.168,
+            "held_out": [
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              }
+            ]
+          },
+          "full_scenarios_verified": 15
+        },
+        {
+          "method": "robust_objective_alns",
+          "seed": 41,
+          "search_wall_ms": 1025.94,
+          "common_audit_ms": 6.757,
+          "routes": {
+            "T1": [
+              "S07",
+              "S01",
+              "S10",
+              "S08"
+            ],
+            "T2": [
+              "S05",
+              "S04",
+              "S02"
+            ],
+            "T3": [
+              "S11",
+              "S06",
+              "S12",
+              "S09",
+              "S03"
+            ],
+            "T4": []
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 600,
+            "kilometers": 203.197,
+            "mean_departure_volume_pct": 87.037,
+            "mean_departure_weight_pct": 48.087,
+            "held_out": [
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              }
+            ]
+          },
+          "full_scenarios_verified": 19
+        }
+      ]
+    },
+    "alternate_port": {
+      "input_sha256": "49fced83d3e942704fbc3629c95ffbb59deb9d009122ad99356b8ecd8cce2c1c",
+      "stores": 12,
+      "fleet": 4,
+      "has_geometry": false,
+      "training_scenarios": [
+        {
+          "S05": {
+            "cartons": 7,
+            "totes": 25
+          }
+        },
+        {
+          "S03": {
+            "cartons": 1,
+            "totes": 27
+          }
+        },
+        {
+          "S08": {
+            "cartons": 7,
+            "totes": 33
+          },
+          "S10": {
+            "cartons": 9,
+            "totes": 25
+          }
+        },
+        {
+          "S11": {
+            "cartons": 4,
+            "totes": 20
+          },
+          "S01": {
+            "cartons": 11,
+            "totes": 14
+          }
+        },
+        {
+          "S03": {
+            "cartons": 6,
+            "totes": 24
+          },
+          "S05": {
+            "cartons": 10,
+            "totes": 30
+          },
+          "S10": {
+            "cartons": 10,
+            "totes": 27
+          }
+        },
+        {
+          "S03": {
+            "cartons": 4,
+            "totes": 21
+          },
+          "S07": {
+            "cartons": 7,
+            "totes": 25
+          },
+          "S12": {
+            "cartons": 14,
+            "totes": 26
+          }
+        }
+      ],
+      "holdout_scenarios": [
+        {
+          "S09": {
+            "cartons": 9,
+            "totes": 27
+          }
+        },
+        {
+          "S10": {
+            "cartons": 6,
+            "totes": 34
+          }
+        },
+        {
+          "S04": {
+            "cartons": 12,
+            "totes": 19
+          },
+          "S08": {
+            "cartons": 10,
+            "totes": 32
+          }
+        },
+        {
+          "S03": {
+            "cartons": 5,
+            "totes": 18
+          },
+          "S05": {
+            "cartons": 5,
+            "totes": 24
+          }
+        },
+        {
+          "S06": {
+            "cartons": 5,
+            "totes": 25
+          },
+          "S09": {
+            "cartons": 8,
+            "totes": 24
+          },
+          "S02": {
+            "cartons": 7,
+            "totes": 24
+          }
+        },
+        {
+          "S12": {
+            "cartons": 12,
+            "totes": 27
+          },
+          "S09": {
+            "cartons": 12,
+            "totes": 21
+          },
+          "S03": {
+            "cartons": 5,
+            "totes": 20
+          }
+        },
+        {
+          "S10": {
+            "cartons": 5,
+            "totes": 23
+          }
+        },
+        {
+          "S09": {
+            "cartons": 12,
+            "totes": 35
+          }
+        },
+        {
+          "S04": {
+            "cartons": 12,
+            "totes": 13
+          },
+          "S06": {
+            "cartons": 6,
+            "totes": 14
+          }
+        },
+        {
+          "S12": {
+            "cartons": 11,
+            "totes": 19
+          },
+          "S10": {
+            "cartons": 9,
+            "totes": 29
+          }
+        },
+        {
+          "S01": {
+            "cartons": 9,
+            "totes": 28
+          },
+          "S02": {
+            "cartons": 5,
+            "totes": 27
+          },
+          "S06": {
+            "cartons": 4,
+            "totes": 19
+          }
+        },
+        {
+          "S05": {
+            "cartons": 5,
+            "totes": 19
+          },
+          "S10": {
+            "cartons": 6,
+            "totes": 35
+          },
+          "S01": {
+            "cartons": 10,
+            "totes": 24
+          }
+        },
+        {
+          "S11": {
+            "cartons": 4,
+            "totes": 29
+          }
+        },
+        {
+          "S12": {
+            "cartons": 10,
+            "totes": 17
+          }
+        },
+        {
+          "S11": {
+            "cartons": 7,
+            "totes": 21
+          },
+          "S03": {
+            "cartons": 3,
+            "totes": 32
+          }
+        },
+        {
+          "S01": {
+            "cartons": 9,
+            "totes": 21
+          },
+          "S10": {
+            "cartons": 9,
+            "totes": 36
+          }
+        },
+        {
+          "S08": {
+            "cartons": 6,
+            "totes": 19
+          },
+          "S01": {
+            "cartons": 11,
+            "totes": 20
+          },
+          "S06": {
+            "cartons": 5,
+            "totes": 16
+          }
+        },
+        {
+          "S12": {
+            "cartons": 9,
+            "totes": 15
+          },
+          "S03": {
+            "cartons": 7,
+            "totes": 15
+          },
+          "S07": {
+            "cartons": 12,
+            "totes": 18
+          }
+        },
+        {
+          "S08": {
+            "cartons": 10,
+            "totes": 31
+          }
+        },
+        {
+          "S04": {
+            "cartons": 8,
+            "totes": 15
+          }
+        },
+        {
+          "S10": {
+            "cartons": 9,
+            "totes": 30
+          },
+          "S04": {
+            "cartons": 11,
+            "totes": 16
+          }
+        },
+        {
+          "S01": {
+            "cartons": 10,
+            "totes": 30
+          },
+          "S03": {
+            "cartons": 4,
+            "totes": 15
+          }
+        },
+        {
+          "S07": {
+            "cartons": 8,
+            "totes": 16
+          },
+          "S08": {
+            "cartons": 11,
+            "totes": 31
+          },
+          "S11": {
+            "cartons": 3,
+            "totes": 25
+          }
+        },
+        {
+          "S12": {
+            "cartons": 14,
+            "totes": 30
+          },
+          "S10": {
+            "cartons": 5,
+            "totes": 36
+          },
+          "S01": {
+            "cartons": 9,
+            "totes": 20
+          }
+        }
+      ],
+      "trials": [
+        {
+          "method": "local",
+          "seed": 17,
+          "search_wall_ms": 41.367,
+          "common_audit_ms": 4.517,
+          "routes": {
+            "T1": [
+              "S06",
+              "S01",
+              "S07",
+              "S04",
+              "S10",
+              "S09"
+            ],
+            "T2": [
+              "S05",
+              "S08",
+              "S11",
+              "S03",
+              "S02",
+              "S12"
+            ],
+            "T3": [],
+            "T4": []
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 1006.9488,
+            "kilometers": 189.562,
+            "mean_departure_volume_pct": 83.523,
+            "mean_departure_weight_pct": 70.122,
+            "held_out": [
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": 0
+        },
+        {
+          "method": "pyvrp_ils",
+          "seed": 17,
+          "search_wall_ms": 1008.805,
+          "common_audit_ms": 4.205,
+          "routes": {
+            "T1": [
+              "S10",
+              "S04",
+              "S01",
+              "S07",
+              "S03",
+              "S12"
+            ],
+            "T2": [],
+            "T3": [],
+            "T4": [
+              "S06",
+              "S09",
+              "S11",
+              "S08",
+              "S05",
+              "S02"
+            ]
+          },
+          "solver_feasible": true,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 808.1664,
+            "kilometers": 169.594,
+            "mean_departure_volume_pct": 83.144,
+            "mean_departure_weight_pct": 69.843,
+            "held_out": [
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": 0
+        },
+        {
+          "method": "robust_objective_alns",
+          "seed": 17,
+          "search_wall_ms": 1001.057,
+          "common_audit_ms": 6.36,
+          "routes": {
+            "T1": [
+              "S12",
+              "S10",
+              "S04"
+            ],
+            "T2": [
+              "S01",
+              "S07",
+              "S05",
+              "S02"
+            ],
+            "T3": [],
+            "T4": [
+              "S06",
+              "S09",
+              "S11",
+              "S03",
+              "S08"
+            ]
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 762.0,
+            "kilometers": 222.485,
+            "mean_departure_volume_pct": 54.167,
+            "mean_departure_weight_pct": 45.635,
+            "held_out": [
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": 17
+        },
+        {
+          "method": "local",
+          "seed": 29,
+          "search_wall_ms": 50.216,
+          "common_audit_ms": 5.768,
+          "routes": {
+            "T1": [
+              "S06",
+              "S01",
+              "S07",
+              "S04",
+              "S10",
+              "S09"
+            ],
+            "T2": [
+              "S05",
+              "S08",
+              "S11",
+              "S03",
+              "S02",
+              "S12"
+            ],
+            "T3": [],
+            "T4": []
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 1006.9488,
+            "kilometers": 189.562,
+            "mean_departure_volume_pct": 83.523,
+            "mean_departure_weight_pct": 70.122,
+            "held_out": [
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": 0
+        },
+        {
+          "method": "pyvrp_ils",
+          "seed": 29,
+          "search_wall_ms": 1009.238,
+          "common_audit_ms": 5.993,
+          "routes": {
+            "T1": [
+              "S06",
+              "S09",
+              "S11",
+              "S08",
+              "S05",
+              "S02"
+            ],
+            "T2": [],
+            "T3": [
+              "S10",
+              "S04",
+              "S01",
+              "S07",
+              "S03",
+              "S12"
+            ],
+            "T4": []
+          },
+          "solver_feasible": true,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 808.1664,
+            "kilometers": 169.594,
+            "mean_departure_volume_pct": 87.5,
+            "mean_departure_weight_pct": 73.043,
+            "held_out": [
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": 0
+        },
+        {
+          "method": "robust_objective_alns",
+          "seed": 29,
+          "search_wall_ms": 1001.472,
+          "common_audit_ms": 8.908,
+          "routes": {
+            "T1": [
+              "S12",
+              "S10",
+              "S04"
+            ],
+            "T2": [
+              "S01",
+              "S07",
+              "S05",
+              "S02"
+            ],
+            "T3": [],
+            "T4": [
+              "S06",
+              "S09",
+              "S11",
+              "S03",
+              "S08"
+            ]
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 762.0,
+            "kilometers": 222.485,
+            "mean_departure_volume_pct": 54.167,
+            "mean_departure_weight_pct": 45.635,
+            "held_out": [
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": 17
+        },
+        {
+          "method": "local",
+          "seed": 41,
+          "search_wall_ms": 55.896,
+          "common_audit_ms": 5.532,
+          "routes": {
+            "T1": [
+              "S06",
+              "S01",
+              "S07",
+              "S04",
+              "S10",
+              "S09"
+            ],
+            "T2": [
+              "S05",
+              "S08",
+              "S11",
+              "S03",
+              "S02",
+              "S12"
+            ],
+            "T3": [],
+            "T4": []
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 1006.9488,
+            "kilometers": 189.562,
+            "mean_departure_volume_pct": 83.523,
+            "mean_departure_weight_pct": 70.122,
+            "held_out": [
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": 0
+        },
+        {
+          "method": "pyvrp_ils",
+          "seed": 41,
+          "search_wall_ms": 1010.835,
+          "common_audit_ms": 5.151,
+          "routes": {
+            "T1": [
+              "S06",
+              "S09",
+              "S11",
+              "S08",
+              "S05",
+              "S02"
+            ],
+            "T2": [
+              "S10",
+              "S04",
+              "S01",
+              "S07",
+              "S03",
+              "S12"
+            ],
+            "T3": [],
+            "T4": []
+          },
+          "solver_feasible": true,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 2,
+            "structural_violations": 0,
+            "freight_estimate": 808.1664,
+            "kilometers": 169.594,
+            "mean_departure_volume_pct": 83.902,
+            "mean_departure_weight_pct": 70.4,
+            "held_out": [
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 9,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 0,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": 3
+        },
+        {
+          "method": "robust_objective_alns",
+          "seed": 41,
+          "search_wall_ms": 1000.701,
+          "common_audit_ms": 5.192,
+          "routes": {
+            "T1": [
+              "S10",
+              "S01",
+              "S07"
+            ],
+            "T2": [
+              "S12",
+              "S06",
+              "S02",
+              "S05",
+              "S04"
+            ],
+            "T3": [
+              "S09",
+              "S08",
+              "S11",
+              "S03"
+            ],
+            "T4": []
+          },
+          "solver_feasible": null,
+          "nominal_route_verified": true,
+          "common_model_verified": true,
+          "complete_and_on_time": true,
+          "metrics": {
+            "assigned": 12,
+            "total_stores": 12,
+            "on_time_signoffs": 12,
+            "used_vehicles": 3,
+            "structural_violations": 0,
+            "freight_estimate": 943.6032,
+            "kilometers": 218.862,
+            "mean_departure_volume_pct": 56.439,
+            "mean_departure_weight_pct": 47.304,
+            "held_out": [
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 12,
+                "requested_stops": 12,
+                "complete_recovery_routes": 3,
+                "complete_all_stops": true
+              },
+              {
+                "recovered_stops": 11,
+                "requested_stops": 12,
+                "complete_recovery_routes": 2,
+                "complete_all_stops": false
+              },
+              {
+                "recovered_stops": 10,
+                "requested_stops": 12,
+                "complete_recovery_routes": 1,
+                "complete_all_stops": false
+              }
+            ]
+          },
+          "full_scenarios_verified": 15
+        }
+      ]
+    }
+  }
+}

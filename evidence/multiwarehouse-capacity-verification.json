@@ -1,0 +1,43 @@
+{
+  "data_kind": "simulated",
+  "warehouses": 8,
+  "tasks": 96,
+  "available_vehicles": 32,
+  "directed_legs": 1248,
+  "audit": {
+    "passed": true,
+    "warehouses": 8,
+    "served": 96,
+    "unserved": 0
+  },
+  "summary": {
+    "baseline": {
+      "served": 96,
+      "unserved": 0,
+      "trips": 24,
+      "cost": 4800,
+      "distance_km": 424.0,
+      "late_orders": 0,
+      "weight_utilization": 0.466667,
+      "volume_utilization": 0.664615
+    },
+    "optimized": {
+      "served": 96,
+      "unserved": 0,
+      "trips": 24,
+      "cost": 4800,
+      "distance_km": 408.0,
+      "late_orders": 0,
+      "weight_utilization": 0.466667,
+      "volume_utilization": 0.664615
+    }
+  },
+  "create_ms": 86.86,
+  "solve_and_persist_ms": 889.75,
+  "confirmed_locally": true,
+  "boundaries": [
+    "仅构造数据合同边界验证",
+    "非企业全量、吞吐基准或人力节省验证",
+    "每仓仍为分仓启发式求解，非跨仓全局优化"
+  ]
+}

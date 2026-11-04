@@ -1,0 +1,361 @@
+{
+  "schema_version": "logireflow.multiwarehouse.v1",
+  "warehouses": [
+    {
+      "id": "WH_1",
+      "name": "长沙北仓（模拟）",
+      "settings": {
+        "data_kind": "simulated",
+        "depot_id": "WH_1",
+        "travel_source": "多仓闭环构造道路，仅供模拟演练",
+        "window_rule": "finish"
+      },
+      "business": {
+        "tariff": {
+          "mode": "incremental",
+          "base": 140,
+          "included_km": 100,
+          "per_km": 2,
+          "per_stop": 15
+        },
+        "packaging": {
+          "carton_weight_kg": 0.4,
+          "carton_flat_m3": 0.003,
+          "tote_weight_kg": 1.5,
+          "tote_first_m3": 0.06,
+          "tote_nested_m3": 0.012
+        }
+      }
+    },
+    {
+      "id": "WH_2",
+      "name": "长沙南仓（模拟）",
+      "settings": {
+        "data_kind": "simulated",
+        "depot_id": "WH_2",
+        "travel_source": "多仓闭环构造道路，仅供模拟演练",
+        "window_rule": "finish"
+      },
+      "business": {
+        "tariff": {
+          "mode": "incremental",
+          "base": 140,
+          "included_km": 100,
+          "per_km": 2,
+          "per_stop": 15
+        },
+        "packaging": {
+          "carton_weight_kg": 0.4,
+          "carton_flat_m3": 0.003,
+          "tote_weight_kg": 1.5,
+          "tote_first_m3": 0.06,
+          "tote_nested_m3": 0.012
+        }
+      }
+    }
+  ],
+  "orders": [
+    {
+      "id": "WH_1_STORE_001",
+      "lines": [
+        {
+          "sku": "STANDARD_BOX",
+          "quantity": 12,
+          "unit_weight_kg": 7.0,
+          "unit_volume_m3": 0.072
+        }
+      ],
+      "open": 510,
+      "due": 1080,
+      "close": 1080,
+      "service_minutes": 8.0,
+      "allowed_vehicles": [
+        "WH_1_TRUCK_1",
+        "WH_1_TRUCK_2"
+      ],
+      "quantity": 1,
+      "unit_weight_kg": 84.0,
+      "unit_volume_m3": 0.8639999999999999,
+      "pickup": {
+        "cartons": 20,
+        "totes": 3
+      },
+      "warehouse_id": "WH_1"
+    },
+    {
+      "id": "WH_1_STORE_002",
+      "lines": [
+        {
+          "sku": "STANDARD_BOX",
+          "quantity": 18,
+          "unit_weight_kg": 7.0,
+          "unit_volume_m3": 0.072
+        }
+      ],
+      "open": 510,
+      "due": 1080,
+      "close": 1080,
+      "service_minutes": 8.0,
+      "allowed_vehicles": [
+        "WH_1_TRUCK_1",
+        "WH_1_TRUCK_2"
+      ],
+      "quantity": 1,
+      "unit_weight_kg": 126.0,
+      "unit_volume_m3": 1.2959999999999998,
+      "pickup": {
+        "cartons": 20,
+        "totes": 3
+      },
+      "warehouse_id": "WH_1"
+    },
+    {
+      "id": "WH_1_STORE_003",
+      "lines": [
+        {
+          "sku": "STANDARD_BOX",
+          "quantity": 10,
+          "unit_weight_kg": 7.0,
+          "unit_volume_m3": 0.072
+        }
+      ],
+      "open": 510,
+      "due": 1080,
+      "close": 1080,
+      "service_minutes": 8.0,
+      "allowed_vehicles": [
+        "WH_1_TRUCK_1",
+        "WH_1_TRUCK_2"
+      ],
+      "quantity": 1,
+      "unit_weight_kg": 70.0,
+      "unit_volume_m3": 0.72,
+      "pickup": {
+        "cartons": 20,
+        "totes": 3
+      },
+      "warehouse_id": "WH_1"
+    },
+    {
+      "id": "WH_2_STORE_001",
+      "lines": [
+        {
+          "sku": "STANDARD_BOX",
+          "quantity": 12,
+          "unit_weight_kg": 7.0,
+          "unit_volume_m3": 0.072
+        }
+      ],
+      "open": 510,
+      "due": 1080,
+      "close": 1080,
+      "service_minutes": 8.0,
+      "allowed_vehicles": [
+        "WH_2_TRUCK_1",
+        "WH_2_TRUCK_2"
+      ],
+      "quantity": 1,
+      "unit_weight_kg": 84.0,
+      "unit_volume_m3": 0.8639999999999999,
+      "pickup": {
+        "cartons": 20,
+        "totes": 3
+      },
+      "warehouse_id": "WH_2"
+    },
+    {
+      "id": "WH_2_STORE_002",
+      "lines": [
+        {
+          "sku": "STANDARD_BOX",
+          "quantity": 18,
+          "unit_weight_kg": 7.0,
+          "unit_volume_m3": 0.072
+        }
+      ],
+      "open": 510,
+      "due": 1080,
+      "close": 1080,
+      "service_minutes": 8.0,
+      "allowed_vehicles": [
+        "WH_2_TRUCK_1",
+        "WH_2_TRUCK_2"
+      ],
+      "quantity": 1,
+      "unit_weight_kg": 126.0,
+      "unit_volume_m3": 1.2959999999999998,
+      "pickup": {
+        "cartons": 20,
+        "totes": 3
+      },
+      "warehouse_id": "WH_2"
+    },
+    {
+      "id": "WH_2_STORE_003",
+      "lines": [
+        {
+          "sku": "STANDARD_BOX",
+          "quantity": 10,
+          "unit_weight_kg": 7.0,
+          "unit_volume_m3": 0.072
+        }
+      ],
+      "open": 510,
+      "due": 1080,
+      "close": 1080,
+      "service_minutes": 8.0,
+      "allowed_vehicles": [
+        "WH_2_TRUCK_1",
+        "WH_2_TRUCK_2"
+      ],
+      "quantity": 1,
+      "unit_weight_kg": 70.0,
+      "unit_volume_m3": 0.72,
+      "pickup": {
+        "cartons": 20,
+        "totes": 3
+      },
+      "warehouse_id": "WH_2"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "WH_1_TRUCK_1",
+      "max_weight_kg": 200.0,
+      "max_volume_m3": 2.0,
+      "fixed_cost": 40.0,
+      "cost_per_km": 2.0,
+      "shift_start": 510,
+      "shift_end": 1080,
+      "warehouse_id": "WH_1"
+    },
+    {
+      "id": "WH_1_TRUCK_2",
+      "max_weight_kg": 350.0,
+      "max_volume_m3": 3.5,
+      "fixed_cost": 50.0,
+      "cost_per_km": 2.0,
+      "shift_start": 510,
+      "shift_end": 1080,
+      "warehouse_id": "WH_1"
+    },
+    {
+      "id": "WH_2_TRUCK_1",
+      "max_weight_kg": 200.0,
+      "max_volume_m3": 2.0,
+      "fixed_cost": 40.0,
+      "cost_per_km": 2.0,
+      "shift_start": 510,
+      "shift_end": 1080,
+      "warehouse_id": "WH_2"
+    },
+    {
+      "id": "WH_2_TRUCK_2",
+      "max_weight_kg": 350.0,
+      "max_volume_m3": 3.5,
+      "fixed_cost": 50.0,
+      "cost_per_km": 2.0,
+      "shift_start": 510,
+      "shift_end": 1080,
+      "warehouse_id": "WH_2"
+    }
+  ],
+  "legs": {
+    "WH_1>WH_1_STORE_001": {
+      "distance_km": 1.0,
+      "travel_minutes": 3.0
+    },
+    "WH_1>WH_1_STORE_002": {
+      "distance_km": 2.0,
+      "travel_minutes": 4.0
+    },
+    "WH_1>WH_1_STORE_003": {
+      "distance_km": 3.0,
+      "travel_minutes": 5.0
+    },
+    "WH_1_STORE_001>WH_1": {
+      "distance_km": 4.0,
+      "travel_minutes": 6.0
+    },
+    "WH_1_STORE_001>WH_1_STORE_002": {
+      "distance_km": 5.0,
+      "travel_minutes": 7.0
+    },
+    "WH_1_STORE_001>WH_1_STORE_003": {
+      "distance_km": 6.0,
+      "travel_minutes": 8.0
+    },
+    "WH_1_STORE_002>WH_1": {
+      "distance_km": 7.0,
+      "travel_minutes": 9.0
+    },
+    "WH_1_STORE_002>WH_1_STORE_001": {
+      "distance_km": 8.0,
+      "travel_minutes": 10.0
+    },
+    "WH_1_STORE_002>WH_1_STORE_003": {
+      "distance_km": 9.0,
+      "travel_minutes": 11.0
+    },
+    "WH_1_STORE_003>WH_1": {
+      "distance_km": 10.0,
+      "travel_minutes": 12.0
+    },
+    "WH_1_STORE_003>WH_1_STORE_001": {
+      "distance_km": 11.0,
+      "travel_minutes": 13.0
+    },
+    "WH_1_STORE_003>WH_1_STORE_002": {
+      "distance_km": 12.0,
+      "travel_minutes": 14.0
+    },
+    "WH_2>WH_2_STORE_001": {
+      "distance_km": 1.0,
+      "travel_minutes": 3.0
+    },
+    "WH_2>WH_2_STORE_002": {
+      "distance_km": 2.0,
+      "travel_minutes": 4.0
+    },
+    "WH_2>WH_2_STORE_003": {
+      "distance_km": 3.0,
+      "travel_minutes": 5.0
+    },
+    "WH_2_STORE_001>WH_2": {
+      "distance_km": 4.0,
+      "travel_minutes": 6.0
+    },
+    "WH_2_STORE_001>WH_2_STORE_002": {
+      "distance_km": 5.0,
+      "travel_minutes": 7.0
+    },
+    "WH_2_STORE_001>WH_2_STORE_003": {
+      "distance_km": 6.0,
+      "travel_minutes": 8.0
+    },
+    "WH_2_STORE_002>WH_2": {
+      "distance_km": 7.0,
+      "travel_minutes": 9.0
+    },
+    "WH_2_STORE_002>WH_2_STORE_001": {
+      "distance_km": 8.0,
+      "travel_minutes": 10.0
+    },
+    "WH_2_STORE_002>WH_2_STORE_003": {
+      "distance_km": 9.0,
+      "travel_minutes": 11.0
+    },
+    "WH_2_STORE_003>WH_2": {
+      "distance_km": 10.0,
+      "travel_minutes": 12.0
+    },
+    "WH_2_STORE_003>WH_2_STORE_001": {
+      "distance_km": 11.0,
+      "travel_minutes": 13.0
+    },
+    "WH_2_STORE_003>WH_2_STORE_002": {
+      "distance_km": 12.0,
+      "travel_minutes": 14.0
+    }
+  }
+}

@@ -80,9 +80,10 @@ def score(routes):
             round(sum(r['cost'] for r in routes.values()),4))
 
 
-def solve(data, *, validator=None, evaluator=None, search_rounds=8):
+def solve(data, *, validator=None, evaluator=None, search_rounds=8, scorer=None):
     started=perf_counter(); data=deepcopy(data); (validator or validate)(data)
     evaluate = evaluator or route
+    rank = scorer or score
     orders={o['id']:o for o in data['orders']}; vehicles=data['vehicles']; candidates=[]
     by_due=sorted(orders,key=lambda x:(orders[x]['due'],x))
     by_size=sorted(orders,key=lambda x:(-orders[x]['quantity']*orders[x]['unit_volume_m3'],x))
@@ -97,13 +98,13 @@ def solve(data, *, validator=None, evaluator=None, search_rounds=8):
                 for pos in range(len(old)+1):
                     trial=evaluate(old[:pos]+[oid]+old[pos:],v,orders)
                     if trial is None: continue
-                    key=score({**routes,vid:trial})
+                    key=rank({**routes,vid:trial})
                     if best is None or key<best[0]: best=(key,vid,trial)
             if best is None: unserved.append(oid)
             else: routes[best[1]]=best[2]
         # Bounded local improvement: move one order between/within vehicles.
         for _ in range(search_rounds):
-            best=None; oldscore=score(routes)
+            best=None; oldscore=rank(routes)
             for source in vehicles:
                 sid=source['id']; original=routes[sid]['sequence']
                 for oid in original:
@@ -116,7 +117,7 @@ def solve(data, *, validator=None, evaluator=None, search_rounds=8):
                         for pos in range(len(base)+1):
                             trial=evaluate(base[:pos]+[oid]+base[pos:],dest,orders)
                             if trial is None: continue
-                            proposal={**routes,sid:removed,did:trial}; key=score(proposal)
+                            proposal={**routes,sid:removed,did:trial}; key=rank(proposal)
                             if key<oldscore and (best is None or key<best[0]): best=(key,proposal)
             if best is None: break
             routes=best[1]
@@ -127,10 +128,10 @@ def solve(data, *, validator=None, evaluator=None, search_rounds=8):
                 vid=v['id']; seq=routes[vid]['sequence']
                 for pos in range(len(seq)+1):
                     trial=evaluate(seq[:pos]+[oid]+seq[pos:],v,orders)
-                    if trial: options.append((score({**routes,vid:trial}),vid,trial))
+                    if trial: options.append((rank({**routes,vid:trial}),vid,trial))
             if options:
                 _,vid,trial=min(options,key=lambda x:x[0]); routes[vid]=trial; unserved.remove(oid)
-        candidates.append((len(unserved),score(routes),routes,unserved))
+        candidates.append((len(unserved),rank(routes),routes,unserved))
     _,_,routes,unserved=min(candidates,key=lambda x:x[:2])
     rejected=[]
     for oid in sorted(unserved):

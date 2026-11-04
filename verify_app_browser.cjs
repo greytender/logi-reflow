@@ -11,7 +11,7 @@ const evidence=path.resolve('evidence');
   page.on('pageerror',e=>results.console_errors.push(e.message));
   page.on('dialog',d=>d.dismiss());
   const waitLive=()=>page.waitForFunction(()=>live&&!liveBusy);
-  await page.goto(base+'/');await page.waitForFunction(()=>proof&&!proofBusy);
+  await page.goto(base+'/index.html');await page.waitForFunction(()=>proof&&!proofBusy);
   assert.strictEqual(await page.locator('#proofMetrics strong').count(),4);
   await page.screenshot({path:path.join(evidence,'app-home-desktop.png'),fullPage:true});
   for(const name of ['geometry','fixed_route','fragile']){

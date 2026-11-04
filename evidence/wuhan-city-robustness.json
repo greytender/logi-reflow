@@ -1,0 +1,2675 @@
+{
+  "scope": "public geography, simulated operations",
+  "waves_per_city": 3,
+  "time_cap_seconds": 1.5,
+  "evaluation_scenarios_per_wave": 24,
+  "sources": {
+    "wuhan": {
+      "source": "https://data.mendeley.com/datasets/gsnndmbyzc/1",
+      "source_sha256": "5db989682c83694de0d8bd9958e7ab8cf57b59f45890e06e15e8cc6eefef96d7",
+      "node_indices": [
+        0,
+        23,
+        24,
+        174,
+        143,
+        78,
+        1,
+        121,
+        163,
+        145,
+        139,
+        5,
+        124,
+        149,
+        146,
+        173,
+        151,
+        164,
+        17,
+        51,
+        36,
+        84,
+        157,
+        102,
+        123,
+        67,
+        116,
+        155,
+        33,
+        69,
+        114,
+        52,
+        144,
+        6,
+        65,
+        20,
+        142,
+        161,
+        76,
+        105,
+        162,
+        107,
+        74,
+        48,
+        99,
+        55,
+        138,
+        152,
+        165
+      ]
+    }
+  },
+  "results": [
+    {
+      "city": "wuhan",
+      "wave": 1,
+      "source_rows": {
+        "DEPOT": "0",
+        "S01": "1",
+        "S02": "149",
+        "S03": "139",
+        "S04": "105",
+        "S05": "51",
+        "S06": "74",
+        "S07": "67",
+        "S08": "99"
+      },
+      "input_sha256": "9b716eb48bf36be16a9214fa98a8683e6a4a448aa3bb4d921aa382642dcc086d",
+      "baseline": {
+        "metrics": {
+          "served": 8,
+          "unserved": 0,
+          "late_orders": 0,
+          "late_minutes": 0,
+          "cost": 532.51,
+          "distance": 99.61,
+          "used_vehicles": 2,
+          "average_volume_utilization": 0.888889,
+          "average_weight_utilization": 0.8,
+          "nominal_pickup_units": 73,
+          "scenario_failed_route_stops": 44,
+          "scenario_total_route_stops": 192,
+          "scenario_full_completions": 15,
+          "scenario_count": 24
+        },
+        "routes": {
+          "T1": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "T2": [
+            "S07",
+            "S06",
+            "S05",
+            "S08"
+          ]
+        },
+        "search_ms": 29.465,
+        "load_by_vehicle": {
+          "T1": [
+            0.8888888888888888,
+            0.8
+          ],
+          "T2": [
+            0.8888888888888888,
+            0.8
+          ]
+        },
+        "fee_threshold_sensitivity": {
+          "0.9": 551.55,
+          "1.1": 513.47
+        }
+      },
+      "trials": [
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 7.462,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "local",
+          "seed": 17,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 6.928,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "robust_local",
+          "seed": 17,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 1500.662,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "robust_objective_alns",
+          "seed": 17,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 1462.869,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "robust_objective_alns",
+          "seed": 29,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 1475.241,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "robust_objective_alns",
+          "seed": 41,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 3.908,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "local",
+          "seed": 17,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 5.042,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "robust_local",
+          "seed": 17,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 1500.483,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "robust_objective_alns",
+          "seed": 17,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 1484.842,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "robust_objective_alns",
+          "seed": 29,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 1506.193,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "robust_objective_alns",
+          "seed": 41,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 10.897,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "local",
+          "seed": 17,
+          "max_load_drop": 0.05
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 9.254,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "robust_local",
+          "seed": 17,
+          "max_load_drop": 0.05
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 1500.5,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "robust_objective_alns",
+          "seed": 17,
+          "max_load_drop": 0.05
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 1343.446,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "robust_objective_alns",
+          "seed": 29,
+          "max_load_drop": 0.05
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 532.51,
+            "distance": 99.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.888889,
+            "average_weight_utilization": 0.8,
+            "nominal_pickup_units": 73,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 15,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S07",
+              "S06",
+              "S05",
+              "S08"
+            ]
+          },
+          "search_ms": 1380.113,
+          "load_by_vehicle": {
+            "T1": [
+              0.8888888888888888,
+              0.8
+            ],
+            "T2": [
+              0.8888888888888888,
+              0.8
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 551.55,
+            "1.1": 513.47
+          },
+          "method": "robust_objective_alns",
+          "seed": 41,
+          "max_load_drop": 0.05
+        }
+      ]
+    },
+    {
+      "city": "wuhan",
+      "wave": 2,
+      "source_rows": {
+        "DEPOT": "0",
+        "S01": "23",
+        "S02": "143",
+        "S03": "163",
+        "S04": "124",
+        "S05": "139",
+        "S06": "146",
+        "S07": "155",
+        "S08": "105",
+        "S09": "84",
+        "S10": "65",
+        "S11": "152",
+        "S12": "138"
+      },
+      "input_sha256": "e65bf11a3c8ab34c00aff335b65ef9d03267b846193664ab287e41e376eab4c7",
+      "baseline": {
+        "metrics": {
+          "served": 12,
+          "unserved": 0,
+          "late_orders": 0,
+          "late_minutes": 0,
+          "cost": 801.5,
+          "distance": 133.23,
+          "used_vehicles": 3,
+          "average_volume_utilization": 0.916667,
+          "average_weight_utilization": 0.825,
+          "nominal_pickup_units": 106,
+          "scenario_failed_route_stops": 52,
+          "scenario_total_route_stops": 288,
+          "scenario_full_completions": 13,
+          "scenario_count": 24
+        },
+        "routes": {
+          "T1": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "T2": [
+            "S05",
+            "S06",
+            "S07",
+            "S08"
+          ],
+          "T3": [
+            "S09",
+            "S10",
+            "S11",
+            "S12"
+          ]
+        },
+        "search_ms": 19.609,
+        "load_by_vehicle": {
+          "T1": [
+            0.9166666666666666,
+            0.825
+          ],
+          "T2": [
+            0.9166666666666666,
+            0.825
+          ],
+          "T3": [
+            0.9166666666666666,
+            0.825
+          ]
+        },
+        "fee_threshold_sensitivity": {
+          "0.9": 820.54,
+          "1.1": 782.46
+        }
+      },
+      "trials": [
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 801.5,
+            "distance": 133.23,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 52,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 8.519,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 820.54,
+            "1.1": 782.46
+          },
+          "method": "local",
+          "seed": 17,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 801.5,
+            "distance": 138.4,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 80,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 10,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S03",
+              "S02",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 8.374,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 820.54,
+            "1.1": 782.46
+          },
+          "method": "robust_local",
+          "seed": 17,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 788.26,
+            "distance": 130.25,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 80,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 10,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S03",
+              "S04",
+              "S06"
+            ],
+            "T2": [
+              "S02",
+              "S05",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 1500.411,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 807.3,
+            "1.1": 769.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 17,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 788.26,
+            "distance": 130.25,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 80,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 10,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S03",
+              "S04",
+              "S06"
+            ],
+            "T2": [
+              "S02",
+              "S05",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 1500.407,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 807.3,
+            "1.1": 769.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 29,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 788.26,
+            "distance": 130.25,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 80,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 10,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S03",
+              "S04",
+              "S06"
+            ],
+            "T2": [
+              "S02",
+              "S05",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 1500.721,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 807.3,
+            "1.1": 769.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 41,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 801.5,
+            "distance": 133.23,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 52,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 13.381,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 820.54,
+            "1.1": 782.46
+          },
+          "method": "local",
+          "seed": 17,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 801.5,
+            "distance": 138.4,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 80,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 10,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S03",
+              "S02",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 17.941,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 820.54,
+            "1.1": 782.46
+          },
+          "method": "robust_local",
+          "seed": 17,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 788.26,
+            "distance": 130.25,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 80,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 10,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S03",
+              "S04",
+              "S06"
+            ],
+            "T2": [
+              "S02",
+              "S05",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 1500.68,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 807.3,
+            "1.1": 769.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 17,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 788.26,
+            "distance": 130.25,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 80,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 10,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S03",
+              "S04",
+              "S06"
+            ],
+            "T2": [
+              "S02",
+              "S05",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 1500.465,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 807.3,
+            "1.1": 769.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 29,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 788.26,
+            "distance": 130.25,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 80,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 10,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S03",
+              "S04",
+              "S06"
+            ],
+            "T2": [
+              "S02",
+              "S05",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 1500.459,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 807.3,
+            "1.1": 769.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 41,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 801.5,
+            "distance": 133.23,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 52,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 8.382,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 820.54,
+            "1.1": 782.46
+          },
+          "method": "local",
+          "seed": 17,
+          "max_load_drop": 0.05
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 801.5,
+            "distance": 138.4,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 80,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 10,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S03",
+              "S02",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 8.833,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 820.54,
+            "1.1": 782.46
+          },
+          "method": "robust_local",
+          "seed": 17,
+          "max_load_drop": 0.05
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 788.26,
+            "distance": 130.25,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 80,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 10,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S03",
+              "S04",
+              "S06"
+            ],
+            "T2": [
+              "S02",
+              "S05",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 1500.407,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 807.3,
+            "1.1": 769.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 17,
+          "max_load_drop": 0.05
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 788.26,
+            "distance": 130.25,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 80,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 10,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S03",
+              "S04",
+              "S06"
+            ],
+            "T2": [
+              "S02",
+              "S05",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 1500.673,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 807.3,
+            "1.1": 769.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 29,
+          "max_load_drop": 0.05
+        },
+        {
+          "metrics": {
+            "served": 12,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 788.26,
+            "distance": 130.25,
+            "used_vehicles": 3,
+            "average_volume_utilization": 0.916667,
+            "average_weight_utilization": 0.825,
+            "nominal_pickup_units": 106,
+            "scenario_failed_route_stops": 80,
+            "scenario_total_route_stops": 288,
+            "scenario_full_completions": 10,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S03",
+              "S04",
+              "S06"
+            ],
+            "T2": [
+              "S02",
+              "S05",
+              "S07",
+              "S08"
+            ],
+            "T3": [
+              "S09",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "search_ms": 1501.663,
+          "load_by_vehicle": {
+            "T1": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T2": [
+              0.9166666666666666,
+              0.825
+            ],
+            "T3": [
+              0.9166666666666666,
+              0.825
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 807.3,
+            "1.1": 769.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 41,
+          "max_load_drop": 0.05
+        }
+      ]
+    },
+    {
+      "city": "wuhan",
+      "wave": 3,
+      "source_rows": {
+        "DEPOT": "0",
+        "S01": "24",
+        "S02": "174",
+        "S03": "102",
+        "S04": "6",
+        "S05": "69",
+        "S06": "105",
+        "S07": "114",
+        "S08": "162"
+      },
+      "input_sha256": "e14a29780d6bdbc6c52de7f12f39e1c6553aa03ff01bd95112c83a0b3f82728c",
+      "baseline": {
+        "metrics": {
+          "served": 8,
+          "unserved": 0,
+          "late_orders": 0,
+          "late_minutes": 0,
+          "cost": 565.74,
+          "distance": 106.04,
+          "used_vehicles": 2,
+          "average_volume_utilization": 0.861111,
+          "average_weight_utilization": 0.775,
+          "nominal_pickup_units": 66,
+          "scenario_failed_route_stops": 16,
+          "scenario_total_route_stops": 192,
+          "scenario_full_completions": 20,
+          "scenario_count": 24
+        },
+        "routes": {
+          "T1": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "T2": [
+            "S05",
+            "S06",
+            "S08",
+            "S07"
+          ]
+        },
+        "search_ms": 25.148,
+        "load_by_vehicle": {
+          "T1": [
+            0.8611111111111112,
+            0.775
+          ],
+          "T2": [
+            0.8611111111111112,
+            0.775
+          ]
+        },
+        "fee_threshold_sensitivity": {
+          "0.9": 575.26,
+          "1.1": 556.22
+        }
+      },
+      "trials": [
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.04,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 16,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 20,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 3.837,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "local",
+          "seed": 17,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S02",
+              "S01",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 9.071,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "robust_local",
+          "seed": 17,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S02",
+              "S01",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 1491.89,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 17,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S02",
+              "S01",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 1500.505,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 29,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S02",
+              "S01",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 1385.803,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 41,
+          "max_load_drop": 0
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.04,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 16,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 20,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 5.185,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "local",
+          "seed": 17,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S02",
+              "S01",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 6.238,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "robust_local",
+          "seed": 17,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S02",
+              "S01",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 1500.281,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 17,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S02",
+              "S01",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 1500.42,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 29,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S02",
+              "S01",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 1500.765,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 41,
+          "max_load_drop": 0.02
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.04,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 16,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 20,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S01",
+              "S02",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 8.293,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "local",
+          "seed": 17,
+          "max_load_drop": 0.05
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S02",
+              "S01",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 12.821,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "robust_local",
+          "seed": 17,
+          "max_load_drop": 0.05
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S02",
+              "S01",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 1500.791,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 17,
+          "max_load_drop": 0.05
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S02",
+              "S01",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 1500.512,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 29,
+          "max_load_drop": 0.05
+        },
+        {
+          "metrics": {
+            "served": 8,
+            "unserved": 0,
+            "late_orders": 0,
+            "late_minutes": 0,
+            "cost": 565.74,
+            "distance": 106.61,
+            "used_vehicles": 2,
+            "average_volume_utilization": 0.861111,
+            "average_weight_utilization": 0.775,
+            "nominal_pickup_units": 66,
+            "scenario_failed_route_stops": 44,
+            "scenario_total_route_stops": 192,
+            "scenario_full_completions": 13,
+            "scenario_count": 24
+          },
+          "routes": {
+            "T1": [
+              "S02",
+              "S01",
+              "S03",
+              "S04"
+            ],
+            "T2": [
+              "S05",
+              "S06",
+              "S08",
+              "S07"
+            ]
+          },
+          "search_ms": 1500.738,
+          "load_by_vehicle": {
+            "T1": [
+              0.8611111111111112,
+              0.775
+            ],
+            "T2": [
+              0.8611111111111112,
+              0.775
+            ]
+          },
+          "fee_threshold_sensitivity": {
+            "0.9": 575.26,
+            "1.1": 556.22
+          },
+          "method": "robust_objective_alns",
+          "seed": 41,
+          "max_load_drop": 0.05
+        }
+      ]
+    }
+  ],
+  "spatial_input_sha256": "03bd5e22794c5431ec08bf613695ea12afbb6d46d99758795af46b152bd5aabc"
+}

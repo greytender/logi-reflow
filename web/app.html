@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>城配续航 · 配送任务工作台</title>
+  <link rel="stylesheet" href="application.css">
+  <script src="application.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到任务工作区</a>
+  <header class="app-header">
+    <a href="/" class="brand" aria-label="城配续航任务首页">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect x="1" y="1" width="34" height="34" rx="9"/><path d="M8 24V12l10-5 10 5v12l-10 5zM8 12l10 6 10-6M18 18v11"/></svg>
+      <span>城配续航<small>LogiReflow</small></span>
+    </a>
+    <nav aria-label="应用导航"><a href="/">多仓工作台</a><span aria-current="page">原单仓任务</span><a href="/intake.html">原始表格核对</a></nav>
+    <span class="local-label">本机试算 · 尚未接入云载</span>
+  </header>
+  <div class="app-layout">
+    <aside class="task-sidebar" aria-label="配送任务列表">
+      <div class="sidebar-heading"><h2>我的任务</h2><button id="refreshTasks" class="quiet">刷新列表</button></div>
+      <button id="newTask" class="primary new-task">用三店样例新建任务</button>
+      <details class="import-section"><summary>导入自己的CSV任务</summary>
+        <p>选择同批orders.csv、vehicles.csv、travel.csv、settings.json。本轮最多12店、4车。</p>
+        <label for="importFiles">四份输入文件</label><input id="importFiles" type="file" accept=".csv,.json" multiple>
+        <button id="importTask">导入并保存任务</button>
+        <a href="/api/dispatch/sample-files" target="_blank" rel="noopener">查看CSV示例内容</a>
+      </details>
+      <div id="taskList" class="task-list" aria-live="polite"></div>
+      <div class="sidebar-foot"><p>任务、输入和方案保存在此电脑，刷新或重启服务后可继续。</p><p>可试算分段运费及空包装逐站容量。任务JSON含输入、规则和历史方案，可导出留档。</p></div>
+    </aside>
+    <main id="main">
+      <div id="notice" role="status" aria-live="polite" class="notice" hidden></div>
+      <section id="welcome" class="welcome">
+        <svg class="welcome-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 15h28v34H12zM20 25h12M20 33h12M20 41h7M40 34h9l7 8v7H40M44 42h11"/><circle cx="22" cy="50" r="4"/><circle cx="47" cy="50" r="4"/></svg>
+        <h1>从一批订单，开始安排配送。</h1>
+        <p>新建任务，核对货量与车辆，运行算法。确认的方案会保存下来，下一次可以接着处理。</p>
+        <button id="startSample" class="primary">开始三店小任务</button>
+        <div class="welcome-scope"><h2>这次可以完成</h2><ol><li>编辑三家门店、两辆车、分段运费与回收预测</li><li>联合排线，核对分项费用和逐站装载变化</li><li>确认方案、逐店记录签收与回收、回仓交接并导出</li></ol><p>内置样例为构造数据。计费、纸箱压平和周转箱套叠参数仍待业务确认；支持人工/模拟执行记录；支持同车剩余改序候选及人工采用；冷链、3D、换车补车与Agent尚未接入。</p></div>
+      </section>
+      <div id="taskWorkspace" hidden>
+        <div class="task-heading"><div><h1 id="taskTitle"></h1><p id="taskMeta"></p></div><span id="saveState" class="save-state"></span></div>
+        <div class="task-toolbar">
+          <div class="tabs" role="group" aria-label="任务工作区"><button id="inputTab" aria-pressed="true">输入与规则</button><button id="resultTab" aria-pressed="false">方案与确认</button></div>
+          <div class="toolbar-actions"><button id="saveTask">保存输入</button><button id="solveTask" class="primary">保存并计算方案</button></div>
+        </div>
+        <section id="inputPanel">
+          <form id="taskEditor" autocomplete="off"></form>
+        </section>
+        <section id="resultPanel" hidden>
+          <div id="resultEmpty" class="result-empty"><h2>先计算一份配送方案</h2><p>核对输入后点击“保存并计算方案”。计算结果会保留，确认前可继续修改和重新试算。</p></div>
+          <div id="planContent"></div>
+          <section id="executionPanel" class="editor-section" hidden></section>
+        </section>
+        <section class="task-export"><div><h2>保存与交接</h2><p id="exportHint">配送CSV保留出发前预测；记录与剩余预测分开导出。交接包仅供本地核对，企业字段待映射，未连接或发送到云载。</p></div><div class="export-actions"><a id="exportJson" class="button" download>导出任务JSON</a><a id="exportCsv" class="button" download>导出已确认配送CSV</a><a id="exportRemaining" class="button" download>导出剩余预测CSV</a><a id="exportReceipts" class="button" download>导出执行记录CSV</a><a id="exportHandoff" class="button" download>导出本地交接包（未发送）</a></div></section>
+      </div>
+      <footer><span>城配续航 · 配送任务工作台</span><span>候选计算与确认分开 · 预测时间不代表真实签收</span></footer>
+    </main>
+  </div>
+  <dialog id="discardDialog" class="editor-section" aria-labelledby="discardTitle" aria-describedby="discardDescription" style="margin:auto;max-width:min(480px,calc(100vw - 32px))">
+    <form method="dialog">
+      <h2 id="discardTitle">有未保存的填写</h2>
+      <p id="discardDescription">继续会丢弃尚未保存的输入或执行记录填写。选择“保留填写”返回当前页面，先保存需要的记录。</p>
+      <div class="export-actions">
+        <button id="keepDraft" value="keep" autofocus>保留填写</button>
+        <button value="discard">丢弃填写并继续</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-02",
+  "url": "http://127.0.0.1:18778/",
+  "environment": "isolated SQLite files under outputs/multiwarehouse-qa",
+  "observed_checks": [
+    "Created editable dual-warehouse batch",
+    "Changed SKU quantity from12 to13 and computed updated utilization",
+    "Reversed WH_1 sequence and generated audited manual candidate",
+    "Human confirmation checkbox required",
+    "Recorded six simulated stop receipts and two return receipts",
+    "Completed batch persisted after reload",
+    "Created fresh batch after completed batch; save and solve remained enabled",
+    "Platform local workflow generated a real candidate without adopting it",
+    "Model request textarea disabled; no model connected",
+    "Risk workflow reported physical-loading/GPS/live-road/goods-return/labor-evidence gaps",
+    "Per-stop receipt history showed actual12 cartons and2 totes after save"
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "document": 1440
+    },
+    {
+      "width": 390,
+      "document": 390
+    }
+  ],
+  "console_errors": [],
+  "last_batch_meta": "2个仓库 · 6个配送任务 · 模拟数据 · 执行记录中",
+  "not_verified": [
+    "real enterprise dispatch",
+    "external model/provider",
+    "actual GPS/live roads",
+    "physical loading",
+    "human labor savings"
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "base": "http://127.0.0.1:18805",
+  "model_calls": 0,
+  "checks": [
+    "route motion enabled, system reduced motion respected",
+    "homepage, mobile navigation",
+    "sample, compute, select vehicle, preserve unsent composer",
+    "explicit confirmation, simulated receipt, input lock, reload persistence",
+    "real local risk-tool output renders in agent conversation; no provider call",
+    "mobile workspace and agent toggle",
+    "all website, intake and legacy entries load without JavaScript errors"
+  ],
+  "layouts": [
+    {
+      "name": "home-desktop",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "small": [],
+      "font": "\"Resource Han Rounded\", YouYuan, \"Microsoft YaHei UI\", sans-serif",
+      "loadedFonts": [
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "400 550"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "600 900"
+        }
+      ],
+      "brokenImages": []
+    },
+    {
+      "name": "home-mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "small": [],
+      "font": "\"Resource Han Rounded\", YouYuan, \"Microsoft YaHei UI\", sans-serif",
+      "loadedFonts": [
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "400 550"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "600 900"
+        }
+      ],
+      "brokenImages": []
+    },
+    {
+      "name": "workspace-desktop",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "small": [],
+      "font": "\"Resource Han Rounded\", YouYuan, \"Microsoft YaHei UI\", sans-serif",
+      "loadedFonts": [
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "400 550"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "600 900"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "400 550"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "600 900"
+        }
+      ],
+      "brokenImages": []
+    },
+    {
+      "name": "workspace-execution",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "small": [],
+      "font": "\"Resource Han Rounded\", YouYuan, \"Microsoft YaHei UI\", sans-serif",
+      "loadedFonts": [
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "400 550"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "600 900"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "400 550"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "600 900"
+        }
+      ],
+      "brokenImages": []
+    },
+    {
+      "name": "agent-conversation-desktop",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "small": [],
+      "font": "\"Resource Han Rounded\", YouYuan, \"Microsoft YaHei UI\", sans-serif",
+      "loadedFonts": [
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "400 550"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "600 900"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "400 550"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "600 900"
+        }
+      ],
+      "brokenImages": []
+    },
+    {
+      "name": "workspace-mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "small": [],
+      "font": "\"Resource Han Rounded\", YouYuan, \"Microsoft YaHei UI\", sans-serif",
+      "loadedFonts": [
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "400 550"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "600 900"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "400 550"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "600 900"
+        }
+      ],
+      "brokenImages": []
+    },
+    {
+      "name": "agent-mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "small": [],
+      "font": "\"Resource Han Rounded\", YouYuan, \"Microsoft YaHei UI\", sans-serif",
+      "loadedFonts": [
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "400 550"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "600 900"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "400 550"
+        },
+        {
+          "family": "Resource Han Rounded",
+          "status": "loaded",
+          "weight": "600 900"
+        }
+      ],
+      "brokenImages": []
+    }
+  ],
+  "errors": [],
+  "automated_tests": {
+    "passed": 349,
+    "elapsed_seconds": 50.53,
+    "scope": "complete unittest discovery at final backend state"
+  },
+  "independent_core_review": {
+    "targeted_tests_passed": 24,
+    "input_and_scenario_fingerprints_reconstructed": 256,
+    "blocking_findings": []
+  },
+  "visual_review": {
+    "disposition": "ship",
+    "screenshots_reviewed": 6,
+    "material_findings": [],
+    "scope": "static screenshot and source review"
+  },
+  "capacity_check": {
+    "data_kind": "simulated",
+    "warehouses": 8,
+    "tasks": 96,
+    "available_vehicles": 32,
+    "directed_legs": 1248,
+    "audit": {
+      "passed": true,
+      "warehouses": 8,
+      "served": 96,
+      "unserved": 0
+    },
+    "summary": {
+      "baseline": {
+        "served": 96,
+        "unserved": 0,
+        "trips": 24,
+        "cost": 4800,
+        "distance_km": 424.0,
+        "late_orders": 0,
+        "weight_utilization": 0.466667,
+        "volume_utilization": 0.664615
+      },
+      "optimized": {
+        "served": 96,
+        "unserved": 0,
+        "trips": 24,
+        "cost": 4800,
+        "distance_km": 408.0,
+        "late_orders": 0,
+        "weight_utilization": 0.466667,
+        "volume_utilization": 0.664615
+      }
+    },
+    "create_ms": 86.86,
+    "solve_and_persist_ms": 889.75,
+    "confirmed_locally": true,
+    "boundaries": [
+      "仅构造数据合同边界验证",
+      "非企业全量、吞吐基准或人力节省验证",
+      "每仓仍为分仓启发式求解，非跨仓全局优化"
+    ]
+  },
+  "source_xlsx_unchanged": true,
+  "boundary": "Simulated QA only; no paid model request or enterprise dispatch. No full transparent-layer contrast certification, screen-reader or mobile-keyboard test.",
+  "clean_staging_checkout": {
+    "passed": 349,
+    "elapsed_seconds": 48.633,
+    "initial_attempt": "one WinError 10053 local HTTP connection abort",
+    "followup_targeted_tests_passed": 10,
+    "implementation_changed_to_retry": false
+  }
+}

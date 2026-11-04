@@ -12,6 +12,7 @@ from copy import deepcopy
 from pathlib import Path
 from time import perf_counter
 import normal
+import business
 
 MAX_STOPS = 40
 MAX_VEHICLES = 10
@@ -121,6 +122,8 @@ def load_bundle(directory):
 
 
 def validate(data):
+    if 'business' in data:
+        business.validate(data['business'], data['orders'])
     if not 1 <= len(data['orders']) <= MAX_STOPS or not 1 <= len(data['vehicles']) <= MAX_VEHICLES:
         raise ValueError('离线试算支持1–40个门店、1–10辆车；这不是生产规模承诺')
     nodes = {o['id'] for o in data['orders']}; depot = data['settings']['depot_id']
@@ -152,10 +155,11 @@ def evaluator(data):
         if seq:
             leg=legs[prev+'>'+depot]; km+=leg['distance_km']; t+=leg['travel_minutes']
             if t > v['shift_end']+1e-8: return None
-        return dict(sequence=list(seq),stops=stops,weight_kg=round(w,4),volume_m3=round(vol,6),
+        result = dict(sequence=list(seq),stops=stops,weight_kg=round(w,4),volume_m3=round(vol,6),
             distance=round(km,4),return_at=round(t,4),wait_minutes=round(wait,4),
             cost=round(v['fixed_cost']+km*v['cost_per_km'],4) if seq else 0,
             late_orders=sum(x>1e-6 for x in late),late_minutes=round(sum(late),4))
+        return business.apply(data, result, v, orders, km)
     return route
 
 
@@ -187,6 +191,8 @@ def audit(data, result):
             leg=data['legs'][previous+'>'+data['settings']['depot_id']]
             km+=leg['distance_km']; time+=leg['travel_minutes']; check(time<=v['shift_end']+1e-8,'超过收班')
         cost=(v['fixed_cost']+km*v['cost_per_km']) if seq else 0
+        if 'business' in data:
+            cost=business.audit_route(data, r, v, orders, km)
         equal(km,r['distance'],'道路里程'); equal(cost,r['cost'],'费用'); equal(time,r['return_at'],'回仓时间')
         equal(waiting,r['wait_minutes'],'总等待'); equal(sum(delays),r['late_minutes'],'路线迟到')
         check(sum(x>1e-6 for x in delays)==r['late_orders'],'路线迟到单数')
@@ -199,7 +205,8 @@ def audit(data, result):
     equal(sum(all_late),m['late_minutes'],'总迟到',.011)
     check(m['late_orders']==sum(x>1e-6 for x in all_late),'总迟到单数')
     return dict(passed=True,checked_stops=len(assigned),unserved=len(rejected),
-        checks=['SKU汇总载重与体积','车辆准入','有向道路时间','卸货与窗口','班次回仓','费用','迟到','完整且唯一归属'])
+        checks=['SKU汇总载重与体积','车辆准入','有向道路时间','卸货与窗口','班次回仓','费用','迟到','完整且唯一归属']+
+            (['逐站先卸后收容量','纸箱压平与周转箱套叠估算','分项运费与回收不重复收费'] if 'business' in data else []))
 
 
 def baseline(data):
@@ -219,10 +226,13 @@ def baseline(data):
 
 def compare(data):
     validate(data); base=baseline(data)
-    plan=normal.solve(data,validator=validate,evaluator=evaluator(data),search_rounds=2)
+    # When tariff kilometres are included in a base price, break fee ties by
+    # road distance rather than letting insertion order choose longer routes.
+    rank = (lambda routes: normal.score(routes)+(round(sum(r['distance'] for r in routes.values()),4),)) if 'business' in data else normal.score
+    plan=normal.solve(data,validator=validate,evaluator=evaluator(data),search_rounds=2,scorer=rank)
     plan.pop('data'); plan['simulated']=data['settings']['data_kind']=='simulated'
-    search_key=(plan['metrics']['unserved'],normal.score(plan['routes']))
-    base_key=(base['metrics']['unserved'],normal.score(base['routes']))
+    search_key=(plan['metrics']['unserved'],rank(plan['routes']))
+    base_key=(base['metrics']['unserved'],rank(base['routes']))
     if base_key < search_key:
         search_ms=plan['solve_ms']; plan=deepcopy(base)
         plan.update(solve_ms=search_ms,method='有限搜索不如简单追加，保留简单追加结果',
@@ -236,8 +246,9 @@ def compare(data):
             item.update(code='NO_ELIGIBLE_CAPACITY',reason='可到店车辆无法装下整次门店配送；不拆单',
                         action='调度员核对车辆准入和SKU数量，联系合适车辆或确认分批规则')
         elif not any(ev([o['id']],v,orders) is not None for v in fit):
-            item.update(code='SINGLE_STOP_TIME_INFEASIBLE',reason='可用车辆单独配送也无法满足窗口及回仓班次',
-                        action='联系门店协商窗口或核对班次；系统不自动修改承诺')
+            item.update(code='SINGLE_STOP_RULE_INFEASIBLE' if 'business' in data else 'SINGLE_STOP_TIME_INFEASIBLE',
+                        reason='可用车辆单独执行也不满足回收容量、窗口或回仓班次' if 'business' in data else '可用车辆单独配送也无法满足窗口及回仓班次',
+                        action='核对回收数量、压缩参数、运力及窗口；系统不丢弃回收，也不自动修改承诺')
         else:
             item.update(code='SEARCH_NOT_FOUND',reason='有限搜索没有安排；尚未证明无解',
                         action='人工复核剩余运力、尝试不同分单或求解方法')
@@ -253,7 +264,10 @@ def compare(data):
             '3D装载、易碎堆叠、冷链、司机执行回执未实现',
             'CSV已接通连续紧急单和收货变化；连续故障尚未接入',
             '简单追加基线不是企业人工排程；无企业收益或全局最优证明',
-            '费用仅出车固定费与道路公里费，不含等待工资、加班、货损、装卸人工费'])
+            '费用为选定计费分支的道路公里试算；不是TMS结算或GPS实绩' if 'business' in data else
+            '费用仅出车固定费与道路公里费，不含等待工资、加班、货损、装卸人工费']+
+            (['回收为出发前预测，逐站先卸后收；每店独立套叠，不跨店合并套叠',
+              '仅核验重量和体积，不证明箱体摆放、倒货步骤或到店实际可行'] if 'business' in data else []))
 
 
 def export(result, directory):
