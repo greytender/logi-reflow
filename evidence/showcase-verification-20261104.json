@@ -270,5 +270,32 @@
     "initial_attempt": "one WinError 10053 local HTTP connection abort",
     "followup_targeted_tests_passed": 10,
     "implementation_changed_to_retry": false
+  },
+  "batch_list_followup": {
+    "reason": "user screenshot showed compressed cards overlapping other rows and sample entry",
+    "rows_per_viewport": 12,
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        1280,
+        650
+      ],
+      [
+        960,
+        600
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "row_overlap": false,
+    "text_overflow": false,
+    "page_horizontal_overflow": false,
+    "data_source": "browser route-mocked synthetic batch list; no task writes",
+    "checks": "stable row height, 2-line title limit, scrollable sidebar, sample entry follows list"
   }
 }

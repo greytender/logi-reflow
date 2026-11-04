@@ -18,7 +18,7 @@ async function run(work){
  }
 }
 function setTask(result){task=result.task;state=result.state;draft=copy(task.data);dirty=false;localStorage.setItem('logireflow.multiwarehouse.active',task.id);render();}
-async function refresh(){const data=await api('tasks');$('batches').innerHTML=data.tasks.length?data.tasks.map(t=>`<button data-open="${esc(t.id)}" ${t.id===task?.id?'aria-current="true"':''}><strong>${esc(t.name)}</strong><span>${t.warehouses}仓 · ${t.orders}个任务</span><small>${esc(t.status)}</small></button>`).join(''):'<p class="muted">尚无批次</p>';}
+async function refresh(){const data=await api('tasks');$('batches').innerHTML=data.tasks.length?data.tasks.map(t=>`<button data-open="${esc(t.id)}" title="${esc(t.name)} · ${esc(t.status)}" ${t.id===task?.id?'aria-current="true"':''}><strong>${esc(t.name)}</strong><span>${t.warehouses}仓 · ${t.orders}单</span><small>${esc(t.status)}</small></button>`).join(''):'<p class="muted">尚无批次</p>';}
 function leaveDraft(){return !dirty||confirm('当前修改尚未保存。离开后会丢失这些修改，是否继续？');}
 function pathValue(path){return path.reduce((o,k)=>o?.[k],draft);}
 function input(path,label,type='number',extra=''){const v=pathValue(path);return `<input aria-label="${esc(label)}" data-path="${esc(JSON.stringify(path))}" data-kind="${type}" type="${type==='clock'?'time':type}" value="${esc(type==='clock'?time(v):v)}" ${type==='number'?'step="any" min="0"':''} ${extra}>`;}
