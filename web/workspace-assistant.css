@@ -1,9 +1,0 @@
-.agent-composer-shell .agent-shortcuts { gap: 6px; margin: 0 0 9px; }
-.agent-composer-shell .agent-shortcuts button { font-size: 13px; min-height: 34px; padding: 4px 9px; }
-.workspace-body .agent-composer #agentMode {
-  width: auto; max-width: 150px; min-height: 36px;
-  margin: 0; padding: 4px 23px 4px 8px; font-size: 14px;
-}
-.workspace-body .agent-composer textarea { min-height: 60px; }
-.agent-composer .composer-bottom { margin-top: 5px; }
-.workspace-body .composer-bottom #composerActions { margin-left: auto; }

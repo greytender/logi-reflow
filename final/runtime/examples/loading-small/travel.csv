@@ -1,7 +1,0 @@
-from_id,to_id,distance_km,travel_minutes
-WH,SHOP_A,3,10
-SHOP_A,WH,3,10
-WH,SHOP_B,4,12
-SHOP_B,WH,4,12
-SHOP_A,SHOP_B,2,6
-SHOP_B,SHOP_A,2,6

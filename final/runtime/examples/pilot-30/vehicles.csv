@@ -1,6 +1,0 @@
-﻿vehicle_id,max_weight_kg,max_volume_m3,fixed_cost,cost_per_km,shift_start,shift_end
-TRUCK_1,800,5,50,2.0,08:00,16:00
-TRUCK_2,1000,6,60,2.2,08:00,16:00
-TRUCK_3,1200,7,70,2.4,08:00,16:00
-TRUCK_4,1400,8,80,2.6,08:00,16:00
-TRUCK_5,1600,9,90,2.8,08:00,16:00

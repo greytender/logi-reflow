@@ -1,6 +1,0 @@
-{
-  "depot_id": "WH",
-  "data_kind": "simulated",
-  "travel_source": "固定随机种子的构造有向路程与行驶时间；不是实际地图或企业数据",
-  "window_rule": "finish"
-}

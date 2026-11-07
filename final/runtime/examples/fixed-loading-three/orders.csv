@@ -1,4 +1,0 @@
-stop_id,sku,quantity,unit_weight_kg,unit_volume_m3,open,due,close,service_minutes,allowed_vehicles
-A,BOX,1,5,0.125,08:00,08:10,08:10,5,V1
-B,BOX,1,5,0.125,08:00,08:20,08:20,5,V1
-C,BOX,1,5,0.125,08:00,09:30,11:30,5,V1
