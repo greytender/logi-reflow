@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const context={window:{},document:{currentScript:{src:'http://localhost/spatial3d.js'}},URL,location:{href:'http://localhost/spatial.html'}};
+vm.runInNewContext(fs.readFileSync('web/spatial3d.js','utf8'),context);
+const {frameChanges,displayNames,normalize}=context.window.LogiSpatial3D;
+const box={id:'COLD/shared',kind:'cold_box',orders:['STORE_B','STORE_A'],remaining_content_weight_kg:3,dx:60,dy:40,dz:45};
+const before={boxes:[box,{id:'delivery',kind:'regular',weight_kg:7}]};
+const after={boxes:[{...box,remaining_content_weight_kg:2},{id:'tote',kind:'recovery_tote',weight_kg:2}]};
+const delta=frameChanges(before,after);
+assert.deepEqual(Array.from(delta.removed,b=>b.id),['delivery']);assert.deepEqual(Array.from(delta.added,b=>b.id),['tote']);assert.equal(delta.cold[0].before,3);assert.equal(delta.cold[0].after,2);
+const payload={display_names:{orders:{STORE_A:'门店1',STORE_B:'门店2'},vehicles:{TRUCK_2:'车辆2'}},scene:{routes:[{vehicle_id:'TRUCK_2',boxes:[box],frames:[before,after]}]}};
+const names=displayNames(payload);assert.equal(names.orders.STORE_A,'门店1');assert.equal(names.orders.STORE_B,'门店2');assert.equal(names.vehicles.TRUCK_2,'车辆2');assert.equal(normalize(payload).routes[0].frames.length,2);
+assert.equal(frameChanges(after,after).cold.length,0);assert.equal(frameChanges(null,{boxes:[]}).added.length,0);
+console.log('Spatial view checks passed: persistent cold shell, changes, global labels, frame preservation.');

@@ -13,6 +13,7 @@ import multiwarehouse as mw
 import agent_actions
 from platform_agent import AgentWorkflow
 from agent_control import WorkflowCancelled
+from local_dispatch_agent import LocalDispatchPlanner
 from store import Conflict
 
 ACTIVE = {'queued','running','cancelling','committing'}
@@ -90,7 +91,7 @@ class JobRegistry:
             self._append(job,'committing','正在保存核验结果');self._write(job)
 
     def start(self,task_id,revision,message,*,planner,selection=None,request_id=None):
-        if planner is None: raise ValueError('请先配置 DeepSeek API 密钥，再发送助手请求。')
+        if planner is None: planner=LocalDispatchPlanner()
         if not isinstance(message,str) or not 1<=len(message.strip())<=2000: raise ValueError('请求需要1—2000字')
         if request_id is not None and (not isinstance(request_id,str) or not 1<=len(request_id)<=100):
             raise ValueError('请求编号格式无效')
@@ -107,6 +108,7 @@ class JobRegistry:
             token=token_urlsafe(32); job_id=uuid4().hex
             job=dict(id=job_id,task_id=task_id,input_revision=revision,status='queued',created_at=app.now(),
                 updated_at=app.now(),cursor=0,events=[],request_id=request_id,
+                mode='local' if getattr(planner,'is_local',False) else 'model',
                 token_hash=sha256(token.encode()).hexdigest())
             self._append(job,'queued','请求已接收');self._write(job);self.stops[job_id]=Event()
             thread=Thread(target=self._run,args=(job_id,task_id,revision,message,selection,planner),daemon=True)

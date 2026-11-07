@@ -19,7 +19,7 @@ async function intakeWork(action,message) {
 }
 async function refreshIntakeList() {
   const records=(await intakeApi('list')).documents;
-  $('intakeList').innerHTML=records.length?records.map(d=>`<button data-intake="${escapeText(d.id)}" aria-current="${d.id===intakeDocument?.id}"><strong>${escapeText(d.name)}</strong><small>${d.record_rows==null?'记录行待人工映射':d.record_rows+' 条识别记录'} · ${d.sheets} 个工作表</small><small>${escapeText(d.status)}</small></button>`).join(''):'<p class="list-empty">暂无原始核对资料。可先载入构造样例。</p>';
+  $('intakeList').innerHTML=records.length?records.map(d=>`<button data-intake="${escapeText(d.id)}" aria-current="${d.id===intakeDocument?.id}"><strong>${escapeText(d.name)}</strong><small>${d.record_rows==null?'待对应表头':d.record_rows+' 条订单行'}</small></button>`).join(''):'<p class="list-empty">暂无订单表</p>';
 }
 async function showIntake(document) {
   const reviewOpened=await window.intakeReview.open(document);
@@ -28,12 +28,14 @@ async function showIntake(document) {
     return false;
   }
   intakeDocument=document;sheetIndex=0;rowPage=0;
+  $('intakeWorkspace').classList.toggle('central-orders',document.sha256==='40849d76aceaf3589ac68fdad258c847ed0bbf464e65b76a468258bc36726587');
   $('intakeWelcome').hidden=true;$('intakeWorkspace').hidden=false;
   $('intakeTitle').textContent=document.name;
-  $('intakeMeta').textContent=`${document.filename} · ${document.sheets.length} 个工作表 · ${document.size_bytes} 字节 · 待人工核对`;
+  $('intakeMeta').textContent=`${document.filename} · ${document.audit.record_rows??'待识别'} 条订单行`;
   $('exportIntake').href='/api/intake/export?id='+encodeURIComponent(document.id);
-  $('intakeAuditSummary').textContent=document.audit.summary||'原始行已保存，尚不能直接求解。';
-  $('intakeIssues').innerHTML=`<p>识别记录 ${document.audit.record_rows==null?'待人工映射':document.audit.record_rows+' 条'} · 核对提示 ${document.audit.issues.length} 项 · 数据状态：不可直接求解</p>
+  $('downloadOriginal').href='/api/intake/original?id='+encodeURIComponent(document.id);
+  $('intakeAuditSummary').textContent=`${document.audit.issues.length} 项`;
+  $('intakeIssues').innerHTML=`<p>${escapeText(document.audit.summary||'请核对表头和单位。')}</p>
     <details class="receipt-history"><summary>查看文件内容指纹</summary><p class="intake-hash">SHA256 ${escapeText(document.sha256)}</p></details>
     ${document.audit.issues.map(issue=>`<details class="intake-issue"><summary>${escapeText(issue.message)}</summary><p>工作表：${escapeText(issue.sheet||'全表')} · 原始行：${escapeText((issue.rows||[]).join(', ')||'见表格')} · 单元格：${escapeText((issue.cells||[]).join(', ')||'见原行')}</p><small>${escapeText(issue.code)}</small></details>`).join('')}`;
   $('intakeSheet').innerHTML=document.sheets.map((s,i)=>`<option value="${i}">${escapeText(s.name)} · ${s.rows.length} 个原始行${s.state!=='visible'?' · 隐藏工作表（'+escapeText(s.state)+'）':''}</option>`).join('');
@@ -55,8 +57,8 @@ function renderIntakeRows() {
 }
 $('sampleIntake').addEventListener('click',()=>intakeWork(async()=>{
   if(!(await window.intakeReview.canLeave()))return;
-  const data=await intakeApi('create',{sample:true,name:'构造订单表格核对'});const opened=await showIntake(data.document);await refreshIntakeList();if(opened)intakeMessage('构造资料已保存。请查看空白冷链、单位与合并来源提示；尚未创建配送任务。');
-},'正在保存构造核对样例…'));
+  const data=await intakeApi('create',{sample:true,name:'订单核对练习'});const opened=await showIntake(data.document);await refreshIntakeList();if(opened)intakeMessage('练习表格已打开。');
+},'正在打开练习表格…'));
 $('uploadIntake').addEventListener('click',()=>intakeWork(async()=>{
   if(!(await window.intakeReview.canLeave()))return;
   const file=$('intakeFile').files[0];if(!file||!file.name.toLowerCase().endsWith('.xlsx'))throw new Error('请选择XLSX文件，不支持宏工作簿或旧XLS格式');
@@ -65,8 +67,15 @@ $('uploadIntake').addEventListener('click',()=>intakeWork(async()=>{
   for(let offset=0;offset<bytes.length;offset+=16384)binary+=String.fromCharCode(...bytes.subarray(offset,offset+16384));
   const name=$('intakeName').value.trim()||file.name;
   const data=await intakeApi('create',{name,filename:file.name,content_base64:btoa(binary)});
-  const opened=await showIntake(data.document);await refreshIntakeList();if(opened)intakeMessage('原始资料已保存；核对提示不等于错误已修复。未补造缺项，也未自动排车。');
-},'正在本机解析并保存原始行…'));
+  const opened=await showIntake(data.document);await refreshIntakeList();if(opened){intakeMessage('订单表已导入，可用 Agent 整理字段。');$('organizeWithDeepSeek')?.focus();}
+},'正在读取订单…'));
+$('chooseIntake').addEventListener('click',()=>$('intakeFile').click());
+$('openCentralOrders').addEventListener('click',()=>intakeWork(async()=>{
+  if(!(await window.intakeReview.canLeave()))return;
+  const data=await intakeApi('create',{central:true});
+  await showIntake(data.document);await refreshIntakeList();
+  intakeMessage('订单已按中央仓规则整理，确认后进入排车。');
+},'正在整理中央仓订单…'));
 $('intakeList').addEventListener('click',event=>{const button=event.target.closest('[data-intake]');if(!button)return;intakeWork(async()=>{
   if(!(await window.intakeReview.canLeave()))return;
   const opened=await showIntake((await intakeApi('document?id='+encodeURIComponent(button.dataset.intake))).document);await refreshIntakeList();if(opened)intakeMessage('已恢复保存的原始核对资料。');

@@ -1,0 +1,8 @@
+.tech-top nav a.doc-entry{display:inline-flex;align-items:center;justify-content:center;border:1px solid #b9cec0;border-radius:8px;padding:8px 13px;background:#e5efe4;color:#214d38;white-space:nowrap;font-size:12px;min-height:34px}
+.tech-top nav a.doc-entry:hover{background:#d8e7d5}
+.doc-intro{font-size:13px;line-height:1.8;color:#496750;margin:18px 0 0}
+.doc-intro a{margin-left:9px;color:#215d3f;text-decoration:underline;text-underline-offset:4px}
+.presenting .doc-intro{display:none}
+@media(max-width:740px){.tech-top nav a.doc-entry{display:inline-flex;padding:7px 9px;font-size:11px}.doc-intro{font-size:12px}}
+@media(max-width:520px){.tech-top{height:auto;min-height:66px;flex-wrap:wrap;padding:10px 14px;gap:9px}.tech-top nav{width:100%;justify-content:flex-end;gap:8px}.doc-intro a{display:inline-block}}
+@media print{.doc-intro{display:none}}

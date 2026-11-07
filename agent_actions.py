@@ -25,6 +25,10 @@ def selected_context(task, selection=None):
                 result['order'] = {k: row[k] for k in ('id', 'warehouse_id', 'open', 'due', 'close', 'service_minutes', 'allowed_vehicles')}
                 result['order'].update(weight_kg=sum(l['quantity']*l['unit_weight_kg'] for l in row['lines']),
                     volume_m3=sum(l['quantity']*l['unit_volume_m3'] for l in row['lines']), pickup=deepcopy(row.get('pickup')))
+    selected_warehouse = result.get('warehouse_id')
+    for key in ('vehicle', 'order'):
+        if selected_warehouse and result.get(key, {}).get('warehouse_id', selected_warehouse) != selected_warehouse:
+            raise ValueError('选中的仓库、车辆和门店不属于同一仓，请重新选择')
     plan = mw.current_plan(task)
     if plan:
         result['candidate_metrics'] = deepcopy(plan['summary']['optimized'])
@@ -84,18 +88,26 @@ def reorder(task, actions):
         warehouse=next(w for w in task['data']['warehouses'] if w['id']==wid)
         if 'loading_profile' in warehouse:
             routes=warehouse_loading.manual(part,warehouse['loading_profile'],routes)
+        if 'operational_policy' in warehouse:
+            routes=warehouse_loading.operational_manual(part,routes,warehouse['operational_policy'],
+                compact=warehouse.get('planning_mode') == 'fleet')
         score=app.normal.score(routes)
         optimized=dict(routes=routes,unserved=[],metrics=dict(served=len(orders),unserved=0,late_orders=score[0],
             late_minutes=round(score[1],2),cost=round(score[2],2),distance=round(sum(r['distance'] for r in routes.values()),2)))
         checked=pilot.audit(part,optimized)
         results[wid].update(optimized=optimized,audit={**results[wid]['audit'],'optimized':checked})
+        if 'operational_policy' in warehouse:
+            import operational_constraints
+            results[wid]['operational_verification']=operational_constraints.evaluate_plan(part,optimized,warehouse['operational_policy'],
+                compact=warehouse.get('planning_mode') == 'fleet', reuse_checked=True,
+                layout=operational_constraints.FLEET_LAYOUT if warehouse.get('planning_mode') == 'fleet' else None)
         if 'loading_profile' in warehouse:
             previous=results[wid].get('loading_verification',{})
             previous.pop('work',None)
             results[wid]['loading_verification']={**previous,'status':'VERIFIED_WITHIN_MODEL','source':'agent_candidate_revalidation'}
     candidate=dict(id=uuid4().hex,parent_plan_id=plan['id'],method='agent_adjustment',created_at=app.now(),
         input_revision=task['input_revision'],input_sha256=app.fingerprint(task['data']),warehouses=results,
-        audit=mw.audit(task['data'],results),summary={mode:mw.metrics(results,mode) for mode in ('baseline','optimized')})
+        audit=mw.audit(task['data'],results,reuse_checked=True),**mw.summarize(task['data'],results))
     task['plans'].append(candidate); task.update(adopted_plan_id=None,execution_tasks={})
     return dict(plan_id=candidate['id'],actions=deepcopy(actions),before=deepcopy(plan['summary']['optimized']),
         after=deepcopy(candidate['summary']['optimized']),audit=candidate['audit'],status='candidate_requires_review')

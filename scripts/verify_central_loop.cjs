@@ -1,0 +1,61 @@
+// Isolated local QA. Browser plugin bootstrap failed on this host.
+const {chromium}=require('../outputs/browser-tools/node_modules/playwright-core');
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const base=process.env.CENTRAL_QA_URL||'http://127.0.0.1:18806';
+const out=path.resolve('outputs/central-loop');
+(async()=>{
+ const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+ const result={checks:[],errors:[]};
+ try{
+  const context=await browser.newContext({viewport:{width:1440,height:1000}});
+  const page=await context.newPage();page.on('pageerror',e=>result.errors.push(e.message));
+  await page.goto(base+'/intake.html');
+  await page.locator('#openCentralOrders').click();
+  await page.waitForFunction(()=>document.querySelector('#previewAllCount')?.textContent==='116');
+  assert.equal(await page.locator('#previewIssueCount').innerText(),'0');
+  assert.equal(await page.locator('#intakeAgent').isVisible(),false);
+  result.checks.push('116 rows retained; confirmed defaults applied without repeated questions');
+  await page.screenshot({path:path.join(out,'orders.png'),fullPage:false});
+  await page.locator('#reviewSave').click();
+  await page.waitForFunction(()=>document.querySelector('#dispatchResult')?.innerText.includes('资料齐全'),null,{timeout:30000});
+  assert((await page.locator('#dispatchResult').innerText()).includes('103'));
+  await page.locator('#createDispatch').click();
+  await page.waitForURL('**/workspace.html?task=*');
+  await page.locator('#solveBatch').click();
+  await page.waitForFunction(()=>typeof task!=='undefined'&&task?.plans?.length&&typeof planNow==='function'&&planNow(),null,{timeout:90000});
+  await page.waitForFunction(()=>typeof activeJob==='undefined'||!activeJob||['completed','failed'].includes(activeJob.status),null,{timeout:90000});
+  let first=await page.evaluate(()=>({taskId:task.id,plan:planNow().id,summary:planNow().summary.optimized,audit:planNow().audit.passed}));
+  assert.equal(first.summary.served,103);assert.equal(first.summary.unserved,0);assert(first.audit);
+  result.first=first;result.checks.push('full central-warehouse solve and independent verification');
+  await page.locator('[data-step="plan"]').click();
+  await page.locator('#openConditions').click();
+  await page.locator('#conditionTotes').fill('2');
+  await page.locator('#conditionForm').getByRole('button',{name:'查看变化影响'}).click();
+  await page.locator('#reviewCondition').waitFor();
+  assert((await page.locator('#conditionImpact').innerText()).includes('车辆'));
+  assert.equal(await page.evaluate(()=>planNow().id),first.plan);
+  await page.locator('#reviewCondition').check();await page.locator('#applyCondition').click();
+  await page.waitForFunction(old=>typeof task!=='undefined'&&planNow()?.id!==old&&!!planNow()?.condition_change_id,first.plan,{timeout:90000});
+  await page.waitForFunction(()=>!activeJob||['completed','failed'].includes(activeJob.status),null,{timeout:90000});
+  const second=await page.evaluate(()=>({plan:planNow().id,parent:planNow().parent_plan_id,summary:planNow().summary.optimized,
+    audit:planNow().audit.passed,changes:task.condition_changes,confirmed:state.confirmed,plans:task.plans.length}));
+  assert.equal(second.parent,first.plan);assert(second.audit);assert.equal(second.summary.served,103);
+  assert.equal(second.confirmed,false);assert.equal(second.plans,2);
+  result.second=second;result.checks.push('change preview does not mutate; apply recalculates, preserves old plan and requires new confirmation');
+  await page.locator('[data-step="plan"]').click();
+  await page.locator('#reviewPlan').check();await page.locator('#adoptBatch').click();
+  await page.waitForFunction(()=>state?.confirmed===true);
+  const csv=await context.request.get(base+'/api/multiwarehouse/export?'+new URLSearchParams(await page.evaluate(()=>({id:task.id,revision:task.revision,format:'csv'}))));
+  assert.equal(csv.status(),200);assert((await csv.text()).split('\n').length>=104);
+  await page.screenshot({path:path.join(out,'plan-desktop.png'),fullPage:false});
+  await page.reload();await page.waitForFunction(()=>task&&state.confirmed===true);
+  assert.equal(await page.evaluate(()=>task.intake_source.rows.length),116);
+  result.checks.push('human confirmation, 103-stop export and refresh recovery');
+  await page.setViewportSize({width:390,height:844});
+  const layout=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));
+  assert(layout.scroll<=layout.width+1,JSON.stringify(layout));result.mobile=layout;
+  await page.screenshot({path:path.join(out,'plan-mobile.png'),fullPage:false});
+  result.url=page.url();result.passed=true;assert.equal(result.errors.length,0);
+ }finally{fs.writeFileSync(path.join(out,'browser.json'),JSON.stringify(result,null,2));await browser.close();}
+ console.log(JSON.stringify(result));
+})().catch(e=>{console.error(e);process.exitCode=1;});

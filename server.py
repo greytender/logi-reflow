@@ -39,7 +39,7 @@ multiwarehouse_store=None
 intake_store=None
 workspace=scenario_workspace.Workspace()
 key_vault=session_keys.KeyVault()
-PRODUCT_BUILD='20261104-rounded-fit-v1'
+PRODUCT_BUILD='20261106-portable-demo-v1'
 class LocalHTTPServer(ThreadingHTTPServer):
     # On Windows, SO_REUSEADDR can let an old and new server share one port.
     allow_reuse_address=False
@@ -112,7 +112,8 @@ class Handler(SimpleHTTPRequestHandler):
         if self.path == '/api/product/status':
             try:
                 self.check_local()
-                self.reply(dict(product='LogiReflow', build=PRODUCT_BUILD, home='/home.html', workspace='/workspace.html'))
+                self.reply(dict(product='LogiReflow', build=PRODUCT_BUILD, instance_root=str(ROOT.resolve()),
+                    home='/home.html', workspace='/workspace.html'))
             except ValueError as error:
                 self.reply(dict(error=str(error)), 403)
             return
@@ -251,6 +252,14 @@ class Handler(SimpleHTTPRequestHandler):
         if (require_origin and not origin) or (origin is not None and origin!='http://'+host):
             raise ValueError('仅接受本机页面的同源请求')
         if self.headers.get('Sec-Fetch-Site') in ('cross-site','same-site'):
+            # An address-bar/extension navigation may retain a cross-site
+            # initiator. Only public HTML entry pages may be opened that way;
+            # task data, APIs, subresources and every write remain same-origin.
+            public_pages = {'/', '/home.html', '/workspace.html', '/spatial.html', '/journey.html', '/guide.html', '/solutions.html', '/scenarios.html'}
+            if (self.command == 'GET' and urlsplit(self.path).path in public_pages
+                    and self.headers.get('Sec-Fetch-Mode') == 'navigate'
+                    and self.headers.get('Sec-Fetch-Dest') == 'document'):
+                return
             raise ValueError('拒绝跨来源请求')
 
     def multiwarehouse_get(self, url):
@@ -263,11 +272,19 @@ class Handler(SimpleHTTPRequestHandler):
                 cursor=query.get('after', ['0'])[0]
                 if not cursor.isdecimal(): raise ValueError('事件游标无效')
                 self.reply(agent_registry().get(query.get('job_id', [''])[0], self.headers.get('X-Agent-Job-Token'), after=int(cursor)))
-            elif operation == 'tasks': self.reply(dict(tasks=multiwarehouse_store.list()))
+            elif operation == 'tasks': self.reply(dict(tasks=multiwarehouse_store.list(query.get('lifecycle', ['active'])[0])))
             elif operation == 'agent-status':
                 with key_vault.using(self.headers.get('Cookie')):
                     self.reply(platform_agent.status(deepseek_agent.status()))
-            elif operation == 'sample': self.reply(dict(data=multiwarehouse.sample(physical_loading=query.get('physical', ['0'])[0] == '1')))
+            elif operation == 'sample':
+                data = multiwarehouse.operational_sample() if query.get('operational', ['0'])[0] == '1' else multiwarehouse.sample(physical_loading=query.get('physical', ['0'])[0] == '1')
+                self.reply(dict(data=data))
+            elif operation == 'spatial':
+                task = multiwarehouse_store.read(query.get('id', [''])[0])
+                self.reply(multiwarehouse.spatial_view(task, query.get('warehouse_id', [''])[0], query.get('vehicle_id', [''])[0], query.get('plan_id', [''])[0]))
+            elif operation == 'journey':
+                task = multiwarehouse_store.read(query.get('id', [''])[0])
+                self.reply(multiwarehouse.journey_view(task, query.get('warehouse_id', [''])[0], query.get('vehicle_id', [''])[0], query.get('plan_id', [''])[0]))
             elif operation == 'task':
                 task = multiwarehouse_store.read(query.get('id', [''])[0])
                 self.reply(dict(task=task, state=multiwarehouse.view(task)))
@@ -297,8 +314,14 @@ class Handler(SimpleHTTPRequestHandler):
             if not isinstance(body, dict): raise ValueError('请求必须是对象')
             operation = self.path.rsplit('/', 1)[-1]
             if self.path == '/api/multiwarehouse/agent/start':
+                mode = body.get('mode')
+                if mode not in (None, 'local', 'model'):
+                    raise ValueError('请选择本机工具或已连接的模型')
+                planner = None if mode == 'local' else deepseek_agent.planner()
+                if mode == 'model' and planner is None:
+                    raise ValueError('模型还未连接。可用本机工具继续处理。')
                 self.reply(agent_registry().start(body['id'], body['revision'], body.get('message'),
-                    planner=deepseek_agent.planner(), selection=body.get('selection'), request_id=body.get('request_id')))
+                    planner=planner, selection=body.get('selection'), request_id=body.get('request_id')))
                 return
             if self.path == '/api/multiwarehouse/agent/cancel':
                 self.reply(agent_registry().cancel(body.get('job_id'), body.get('job_token')))
@@ -316,18 +339,29 @@ class Handler(SimpleHTTPRequestHandler):
             if operation == 'validate':
                 self.reply(dict(data=multiwarehouse.canonicalize(body.get('data'))))
                 return
+            if operation in ('conditions-preview','conditions-apply'):
+                import decision_changes
+                current=multiwarehouse_store.read(body['id'])
+                multiwarehouse_store.guard(current,body['revision'])
+                proposal=decision_changes.preview(current,body)
+                if operation=='conditions-preview':
+                    self.reply(dict(impact=proposal['impact']));return
+                if body.get('reviewed') is not True:raise ValueError('请先核对变化影响')
+                task=multiwarehouse_store.save(body['id'],body['revision'],current['name'],proposal['data'])
+                self.reply(dict(task=task,state=multiwarehouse.view(task)));return
             if operation == 'agent':
                 planner = deepseek_agent.planner() if body.get('workflow') == 'request' else None
                 task, result = platform_agent.AgentWorkflow(multiwarehouse_store, planner).run(body['id'], body['revision'], body.get('workflow'), body.get('message'))
                 self.reply(dict(task=task, state=multiwarehouse.view(task), agent_run=result))
                 return
             if operation == 'create': task = multiwarehouse_store.create(body.get('name'), body.get('data'))
+            elif operation == 'organize': task = multiwarehouse_store.organize(body['id'], body['revision'], body.get('action'))
             elif operation == 'save': task = multiwarehouse_store.save(body['id'], body['revision'], body.get('name'), body.get('data'))
             elif operation == 'solve': task = multiwarehouse_store.solve(body['id'], body['revision'])
             elif operation == 'manual': task = multiwarehouse_store.manual(body['id'], body['revision'], body.get('sequences'))
             elif operation == 'adopt': task = multiwarehouse_store.adopt(body['id'], body['revision'], body.get('plan_id'), body.get('reviewed'))
-            elif operation in ('receipt', 'observe', 'replan', 'adopt-remaining'):
-                payload = body.get('receipt') if operation == 'receipt' else body.get('observation') if operation == 'observe' else body.get('candidate_id')
+            elif operation in ('receipt', 'observe', 'temperature', 'replan', 'adopt-remaining'):
+                payload = body.get('receipt') if operation == 'receipt' else body.get('observation') if operation == 'observe' else body.get('temperature') if operation == 'temperature' else body.get('candidate_id')
                 task = multiwarehouse_store.action(body['id'], body['revision'], body.get('warehouse_id'), operation, payload, body.get('reviewed'))
             else: self.send_error(404); return
             self.reply(dict(task=task, state=multiwarehouse.view(task)))
@@ -413,11 +447,41 @@ class Handler(SimpleHTTPRequestHandler):
             if url.path=='/api/intake/list':
                 self.reply(dict(documents=intake_store.list()));return
             query=parse_qs(url.query)
-            if url.path in ('/api/intake/review','/api/intake/review-export'):
+            if url.path=='/api/intake/original':
+                document_id=query.get('id',[''])[0]
+                document=intake_store.read(document_id)
+                with intake_store.connect() as connection:
+                    row=connection.execute('SELECT source FROM intake_documents WHERE id=?',(document_id,)).fetchone()
+                from hashlib import sha256
+                from urllib.parse import quote
+                raw=bytes(row[0])
+                if sha256(raw).hexdigest()!=document['sha256']:raise ValueError('原文件校验失败，请检查资料备份')
+                self.send_response(200)
+                self.send_header('Content-Type','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+                self.send_header('Content-Disposition',"attachment; filename=orders.xlsx; filename*=UTF-8''"+quote(document['filename']))
+                self.send_header('Content-Length',str(len(raw)));self.end_headers();self.wfile.write(raw);return
+            if url.path=='/api/intake/central-parameters':
+                import intake_review, central_orders, intake_dispatch
+                reviews=intake_review.ReviewStore(intake_store.path,intake_store)
+                revision=query.get('revision',[''])[0]
+                if not revision.isdecimal():raise ValueError('请先保存订单')
+                document,review=intake_dispatch.snapshot(reviews,query.get('id',[''])[0],int(revision))
+                self.reply(dict(parameters=central_orders.parameters(document,review)));return
+            if url.path=='/api/intake/agent-job':
+                import intake_agent
+                self.reply(dict(job=intake_agent.registry(intake_store).read(
+                    query.get('id',[''])[0],query.get('job_id',[None])[0])));return
+            if url.path in ('/api/intake/review','/api/intake/review-export','/api/intake/dispatch-template'):
                 import intake_review
                 reviews=intake_review.ReviewStore(intake_store.path,intake_store)
                 document_id=query.get('id',[''])[0]
-                if url.path.endswith('/review'):
+                if url.path.endswith('/dispatch-template'):
+                    import intake_dispatch
+                    revision=query.get('revision',[''])[0]
+                    if not revision.isdecimal():raise ValueError('请提供当前核对版本')
+                    document,review=intake_dispatch.snapshot(reviews,document_id,int(revision))
+                    self.reply(intake_dispatch.template(document,review))
+                elif url.path.endswith('/review'):
                     self.reply(dict(review=reviews.read(document_id)))
                 else:
                     revision=query.get('revision',[''])[0]
@@ -444,17 +508,38 @@ class Handler(SimpleHTTPRequestHandler):
     def intake_post(self):
         try:
             if intake_store is None:raise ValueError('原始表格核对存储尚未初始化')
-            if self.path not in ('/api/intake/create','/api/intake/review'):self.send_error(404);return
+            if self.path not in ('/api/intake/create','/api/intake/review','/api/intake/dispatch-preview','/api/intake/dispatch',
+                    '/api/intake/agent-start','/api/intake/agent-apply'):self.send_error(404);return
             if self.headers.get('Content-Type','').split(';')[0]!='application/json':raise ValueError('需要JSON请求')
             length=int(self.headers.get('Content-Length','0'))
             if not 0<length<=3_000_000:raise ValueError('上传请求不能超过3MB')
             body=json.loads(self.rfile.read(length),parse_constant=lambda x: (_ for _ in ()).throw(ValueError('不允许非有限数字')))
             if not isinstance(body,dict):raise ValueError('上传格式无效')
+            if self.path in ('/api/intake/agent-start','/api/intake/agent-apply'):
+                import intake_agent
+                agent=intake_agent.registry(intake_store)
+                if self.path.endswith('/agent-start'):
+                    planner=deepseek_agent.planner() if body.get('mode','model')=='model' else None
+                    self.reply(dict(job=agent.start(body,planner)))
+                else:self.reply(dict(review=agent.apply(body)))
+                return
+            if self.path in ('/api/intake/dispatch-preview','/api/intake/dispatch'):
+                import intake_dispatch
+                import intake_review
+                if multiwarehouse_store is None:raise ValueError('配送任务存储尚未初始化')
+                reviews=intake_review.ReviewStore(intake_store.path,intake_store)
+                result,status=intake_dispatch.dispatch_request(
+                    reviews,multiwarehouse_store,body,create=self.path.endswith('/dispatch'))
+                self.reply(result,status);return
             if self.path=='/api/intake/review':
                 import intake_review
                 reviews=intake_review.ReviewStore(intake_store.path,intake_store)
                 self.reply(dict(review=reviews.save(body.get('id'),body.get('revision'),body.get('config'))));return
-            if body.get('sample') is True:
+            if body.get('central') is True:
+                raw=(ROOT/'docs/reference-materials/单日城配托运单信息（10月）.xlsx').read_bytes()
+                filename='单日城配托运单信息（10月）.xlsx'
+                name='中央仓配送订单'
+            elif body.get('sample') is True:
                 import intake
                 raw=intake.sample_xlsx();filename='intake-simulated.xlsx'
                 name=body.get('name','构造表格核对样例')

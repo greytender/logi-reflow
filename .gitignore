@@ -1,4 +1,7 @@
 # Local runtime and credentials
+.codex-artifacts/
+final/runtime/data/
+final/.impeccable/
 .impeccable/review/
 .impeccable/mocks/
 __pycache__/
@@ -145,3 +148,9 @@ evidence/*
 !evidence/showcase-verification-20261104.json
 !evidence/showcase-home-20261104.png
 !evidence/showcase-workspace-20261104.png
+
+# Immutable demo baseline; live records remain excluded.
+!final/demo/*.sqlite3
+!final/runtime/docs/reference-materials/
+!final/runtime/docs/reference-materials/*.xlsx
+!final/runtime/docs/reference-materials/*.json

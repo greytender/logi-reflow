@@ -24,7 +24,7 @@ from store import Conflict
 
 ROOT = Path(__file__).resolve().parent
 FILES = ('orders.csv', 'vehicles.csv', 'travel.csv', 'settings.json')
-MAX_ORDERS, MAX_VEHICLES = 12, 4
+MAX_ORDERS, MAX_VEHICLES = 24, 8
 
 
 def now():
@@ -41,7 +41,7 @@ def fingerprint(data):
     return sha256(encode(payload).encode('utf-8')).hexdigest()
 
 
-def load_files(files):
+def load_files(files, *, limits=(MAX_ORDERS, MAX_VEHICLES)):
     if not isinstance(files, dict) or set(files) != set(FILES):
         raise ValueError('需要orders.csv、vehicles.csv、travel.csv、settings.json四份文件')
     if any(not isinstance(v, str) for v in files.values()):
@@ -51,9 +51,7 @@ def load_files(files):
     with TemporaryDirectory() as directory:
         for name, value in files.items():
             (Path(directory) / name).write_text(value, encoding='utf-8')
-        data = pilot.load_bundle(directory)
-    if len(data['orders']) > MAX_ORDERS or len(data['vehicles']) > MAX_VEHICLES:
-        raise ValueError('本轮小任务支持1—12个门店、1—4辆车；请明确选择较小批次，不会截取或丢弃订单')
+        data = pilot.load_bundle(directory, limits=limits)
     return data
 
 
@@ -63,17 +61,18 @@ def clock(value):
     return f'{int(value)//60:02}:{int(value)%60:02}'
 
 
-def canonicalize(raw):
+def canonicalize(raw, *, limits=(MAX_ORDERS, MAX_VEHICLES)):
     """Validate all editable fields through the original CSV input contract.
 
     Derived totals and source hashes are recomputed, never trusted from clients.
     """
     if not isinstance(raw, dict) or not isinstance(raw.get('settings'), dict):
         raise ValueError('缺少任务设置')
-    if not isinstance(raw.get('orders'), list) or not 1 <= len(raw['orders']) <= MAX_ORDERS:
-        raise ValueError('请填写1—12个门店')
-    if not isinstance(raw.get('vehicles'), list) or not 1 <= len(raw['vehicles']) <= MAX_VEHICLES:
-        raise ValueError('请填写1—4辆车')
+    max_orders, max_vehicles = limits
+    if not isinstance(raw.get('orders'), list) or not 1 <= len(raw['orders']) <= max_orders:
+        raise ValueError(f'请填写1—{max_orders}个门店')
+    if not isinstance(raw.get('vehicles'), list) or not 1 <= len(raw['vehicles']) <= max_vehicles:
+        raise ValueError(f'请填写1—{max_vehicles}辆车')
     if not isinstance(raw.get('legs'), dict):
         raise ValueError('缺少有向道路数据')
     if not isinstance(raw['settings'].get('travel_source'), str) or len(raw['settings']['travel_source']) > 500:
@@ -135,7 +134,7 @@ def canonicalize(raw):
         normal.numeric(leg.get('travel_minutes'), '行驶分钟', 0, 1440)
         legs.append(dict(from_id=a, to_id=b, **leg))
     table('travel.csv', pilot.TRAVEL_FIELDS, legs)
-    result = load_files(files)
+    result = load_files(files, limits=limits)
     if 'business' in raw:
         result['business'] = business.validate(raw['business'], raw['orders'])
         pickups = {order['id']: order['pickup'] for order in raw['orders']}

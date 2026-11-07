@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0"
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0app-launch.ps1"
+call "%~dp0final\打开城配续航.cmd" %*
 if errorlevel 1 pause

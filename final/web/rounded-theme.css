@@ -1,0 +1,8 @@
+@font-face{font-family:'Resource Han Rounded';src:url('fonts/resource-han-rounded-450.woff2') format('woff2');font-style:normal;font-weight:400 550;font-display:swap}
+@font-face{font-family:'Resource Han Rounded';src:url('fonts/resource-han-rounded-650.woff2') format('woff2');font-style:normal;font-weight:600 900;font-display:swap}
+:root{--round-font:'Resource Han Rounded','YouYuan','Microsoft YaHei UI',sans-serif;--forest:#173f35;--green:#28644e;--ink:#193d34;--muted:#536e64;--canvas:#edf4ef;--paper:#fff;--lime:#d8edb9;--line:#ccded4;--glass:rgba(255,255,255,.7);--glass-line:rgba(255,255,255,.92);--glass-shadow:0 18px 48px -22px rgba(31,77,59,.24);--radius-control:15px;--radius-panel:26px}
+::selection{background:#cae7cf;color:#173f35}
+:focus-visible{outline:3px solid #46876a;outline-offset:4px}
+input,textarea{caret-color:#28644e}
+*{scrollbar-width:thin;scrollbar-color:#b8cec1 transparent}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

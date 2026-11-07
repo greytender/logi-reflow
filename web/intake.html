@@ -2,39 +2,49 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>原始表格核对 · 城配续航</title>
-  <link rel="stylesheet" href="application.css"><script src="intake-review.js" defer></script><script src="intake.js" defer></script>
+  <title>订单入库 · 城配续航</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="application.css"><link rel="stylesheet" href="rounded-theme.css"><link rel="stylesheet" href="intake.css">
+  <script src="intake-review.js" defer></script><script src="intake-agent.js" defer></script><script src="intake-dispatch.js" defer></script><script src="intake.js" defer></script>
 </head>
-<body>
+<body class="intake-body">
   <a class="skip-link" href="#main">跳到表格核对区</a>
-  <header class="app-header"><a href="/" class="brand">城配续航<small>LogiReflow</small></a><nav aria-label="应用导航"><a href="/">配送任务</a><span aria-current="page">原始表格核对</span><a href="/index.html">演示与方法</a></nav><span class="local-label">本机保存 · 不自动排车</span></header>
+  <header class="app-header"><a href="/" class="brand">城配续航<small>LogiReflow</small></a><nav aria-label="应用导航"><a href="/workspace.html">调度台</a><span aria-current="page">订单入库</span></nav><span class="local-label">本机保存</span></header>
   <div class="app-layout">
     <aside class="task-sidebar" aria-label="原始表格列表">
-      <div class="sidebar-heading"><h2>原始表格</h2><button id="refreshIntakes" class="quiet">刷新列表</button></div>
-      <button id="sampleIntake" class="primary new-task">载入构造核对样例</button>
-      <section class="import-section"><h3>上传订单XLSX</h3><p>保留原行、单元格来源和合并范围。当前文件上限2MB，不截取超出配送算法上限的行。</p>
-        <label for="intakeName">核对任务名称</label><input id="intakeName" maxlength="80" placeholder="例如：某批次原始订单核对">
-        <label for="intakeFile">选择原始表格</label><input id="intakeFile" type="file" accept=".xlsx">
-        <button id="uploadIntake">导入并保存原始表格</button>
+      <div class="sidebar-heading"><h2>订单表</h2><button id="refreshIntakes" class="quiet" aria-label="刷新订单列表">刷新</button></div>
+      <section class="import-section">
+        <label for="intakeFile">选择订单 Excel</label><input id="intakeFile" type="file" accept=".xlsx" aria-describedby="uploadHint"><small id="uploadHint">.xlsx · 最大 2 MB</small>
+        <button id="uploadIntake" class="primary">导入订单</button>
+        <details><summary>填写批次名称</summary><input id="intakeName" maxlength="80" aria-label="批次名称" placeholder="例如：长沙仓早班"></details>
       </section>
       <div id="intakeList" class="task-list" aria-live="polite"></div>
-      <div class="sidebar-foot"><p>独立保存原始核对资料，刷新和服务重启后可恢复。不会自动创建配送任务、合并门店或补造仓库道路。</p></div>
+      <details class="intake-example"><summary>其他示例</summary><button id="sampleIntake" type="button">打开示例表格</button></details>
     </aside>
     <main id="main">
       <div id="intakeNotice" role="status" aria-live="polite" hidden class="notice"></div>
-      <section id="intakeWelcome" class="welcome"><h1>先看清原始数据，再安排配送。</h1><p>上传XLSX，逐行查看原值与来源，定位缺项、公式缓存及单位冲突。这里保留待核对信息，不能直接视为可求解订单。</p></section>
+      <section id="intakeWelcome" class="intake-welcome">
+        <svg aria-hidden="true" width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="5" width="32" height="38" rx="5" stroke="currentColor" stroke-width="2"/><path d="M14 16h20M14 23h20M14 30h20M22 16v14m7-14v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <h1>订单入库</h1>
+        <ol class="intake-steps" aria-label="订单入库流程"><li aria-current="step">导入 Excel</li><li>Agent 整理与核对</li><li>建立配送任务</li></ol>
+        <button class="primary" id="openCentralOrders" type="button">打开中央仓订单</button>
+        <button id="chooseIntake" type="button">选择其他订单 Excel</button>
+        <p>支持 .xlsx，最大 2 MB。</p>
+      </section>
       <section id="intakeWorkspace" hidden>
-        <div class="task-heading"><div><h1 id="intakeTitle"></h1><p id="intakeMeta"></p></div><a id="exportIntake" class="button" download>导出原始核对JSON</a></div>
-        <p class="boundary">来源文件仅在本机解析，不上传外部模型或地图。合并继承值保留来源，不把原始空白改成零；同名不自动归店。公式仅展示原式及文件中的缓存，不执行公式或访问外链。下方可保存字段与单位核对草稿；尚未自动完成门店主数据、车辆道路配置或配送求解。</p>
-        <section class="editor-section"><h2>需要核对的内容</h2><p id="intakeAuditSummary"></p><div id="intakeIssues"></div></section>
+        <div class="task-heading"><div><h1 id="intakeTitle"></h1><p id="intakeMeta"></p></div><div class="export-actions"><a id="downloadOriginal" class="button" download>下载原始 Excel</a><a id="exportIntake" class="button" download>导出核对记录</a></div></div>
+        <ol class="intake-steps" aria-label="订单入库流程"><li>Excel 已导入</li><li aria-current="step" id="intakeReviewStep">整理与核对</li><li id="intakeDispatchStep">建立配送任务</li></ol>
+        <section id="intakeAgent" class="intake-agent" aria-labelledby="intakeAgentTitle" hidden></section>
         <section id="intakeReview" class="editor-section" hidden></section>
-        <section class="editor-section intake-preview"><div class="section-intro"><h2>原始行与来源</h2><p>每页显示30个原始行，可翻页查看全部。单元格列出地址、原值与合并继承来源；导出的JSON包含完整资料。</p></div>
+        <details id="intakeDispatchSection" class="editor-section intake-dispatch-stage"><summary><strong>补齐配送资料，建立任务</strong><span id="dispatchStageHint">先整理并保存订单</span></summary><section id="intakeDispatch" class="intake-dispatch" hidden></section></details>
+        <details class="editor-section intake-audit"><summary><strong>原表检查记录</strong><span id="intakeAuditSummary"></span></summary><div id="intakeIssues"></div></details>
+        <details id="intakeSourceTable" class="editor-section intake-preview"><summary><strong>查看原表</strong></summary>
           <label for="intakeSheet">工作表<select id="intakeSheet"></select></label>
           <div class="table-scroll" id="intakeTable"></div>
           <div class="intake-pager"><button id="previousRows">上一页</button><span id="intakePage" aria-live="polite"></span><button id="nextRows">下一页</button></div>
-        </section>
+        </details>
       </section>
-      <footer><span>城配续航 · 原始表格核对</span><span>原始资料与可求解任务分开保存</span></footer>
+      <footer><span>城配续航 · 订单入库</span><a href="/workspace.html">返回调度台</a></footer>
     </main>
   </div>
 </body>

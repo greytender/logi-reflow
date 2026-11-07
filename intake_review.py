@@ -7,6 +7,7 @@ import json
 from math import isfinite
 from pathlib import Path
 import sqlite3
+import central_orders
 
 from store import Conflict
 
@@ -15,7 +16,7 @@ FIELDS=('order_id','store_id','store_name','address','regular_quantity','regular
 UNIT_OPTIONS={'regular_weight':('kg','g'),'regular_volume':('m3','L','cm3'),
               'cold_weight':('kg','g'),'cold_volume':('m3','L','cm3')}
 TOP_KEYS={'sheet_index','rows','fields','units','identities','batch_id','delivery_date','note'}
-IDENTITY_KEYS={'order_id','store_id','batch_id','note'}
+IDENTITY_KEYS={'order_id','store_id','store_name','address','batch_id','note'}
 MAX_VERSIONS=50
 
 
@@ -38,8 +39,9 @@ def default_config(document):
     else:
         rows=[r['row'] for r in document['sheets'][0]['rows'] if any(c.get('value') is not None or c.get('formula') is not None for c in r['cells'])]
         fields={field:None for field in FIELDS}
-    return dict(sheet_index=index,rows=rows,fields=fields,units={k:None for k in UNIT_OPTIONS},
-                identities={},batch_id='',delivery_date='',note='')
+    config = dict(sheet_index=index,rows=rows,fields=fields,units={k:None for k in UNIT_OPTIONS},
+                  identities={},batch_id='',delivery_date='',note='')
+    return central_orders.configure(document, config)
 
 
 def validate(document,raw):
@@ -68,7 +70,8 @@ def validate(document,raw):
         if not isinstance(row,str) or not row.isdecimal() or str(int(row))!=row or int(row) not in source_rows:
             raise ValueError('身份草稿需引用当前工作表的原行号')
         if not isinstance(identity,dict) or not set(identity)<=IDENTITY_KEYS:raise ValueError('身份草稿包含未知字段')
-        identities[row]={k:text(identity.get(k,''),'备注' if k=='note' else k,500 if k=='note' else 120) for k in IDENTITY_KEYS}
+        identities[row]={k:text(identity.get(k,''),'备注' if k=='note' else k,
+                                500 if k in ('note','address') else 120) for k in IDENTITY_KEYS}
     config['batch_id']=text(config['batch_id'],'批次编号')
     delivery=text(config['delivery_date'],'配送日期',10)
     if delivery:
@@ -112,8 +115,7 @@ def assess(document,config):
             value=mapped(field,True)
             return '' if value is None else str(value).strip()
         identity=dict(order_id=identity_text('order_id'),store_id=identity_text('store_id'),
-            store_name='' if mapped('store_name') is None else str(mapped('store_name')).strip(),
-            address='' if mapped('address') is None else str(mapped('address')).strip(),
+            store_name=identity_text('store_name'),address=identity_text('address'),
             batch_id=saved.get('batch_id') or config['batch_id'],delivery_date=config['delivery_date'])
         for field,label in [('order_id','订单ID'),('store_id','门店ID'),('store_name','门店名称'),('address','地址'),('batch_id','批次'),('delivery_date','配送日期')]:
             if not identity[field]:missing.append(label)
@@ -145,7 +147,9 @@ def assess(document,config):
             row_issues.append(issue('cold_unknown','冷链字段未知或尚未确认单位，不按0处理',[number],['cold_quantity','cold_weight','cold_volume']))
         if row.get('hidden'):row_issues.append(issue('hidden_source_row','选中了原始隐藏行，需人工核对',[number]))
         item=dict(source_row=number,source_refs=refs,identity=identity,normalized=normalized,
+            manual_identity_fields=[field for field in ('order_id','store_id','store_name','address','batch_id') if saved.get(field)],
             missing=missing,issues=row_issues,status='待人工核对' if missing or row_issues else '映射字段已补充，仍不能求解')
+        item=central_orders.normalize(document,config,item)
         result.append(item)
         if identity['order_id']:source_ids[identity['order_id']].append(number)
         if identity['store_id']:stores[identity['store_id']].append((number,identity['address']))
@@ -201,15 +205,28 @@ class ReviewStore:
         if result['revision'] and (not history or history[-1]['revision']!=result['revision']):
             raise Conflict('当前映射修订与历史不一致，请保留资料并核查存储')
         if include_versions:result['versions']=history
+        result['business_rules']=central_orders.summary(source,result['config'])
         return result
 
     def read(self,document_id):return self._snapshot(document_id)
 
-    def save(self,document_id,revision,config):
+    @contextmanager
+    def confirm_current(self, document_id, revision, source_sha256):
+        with self.connect() as connection:
+            connection.execute('BEGIN IMMEDIATE')
+            current = connection.execute('SELECT revision,document FROM intake_review_current WHERE document_id=?',
+                                         (document_id,)).fetchone()
+            if current is None or current[0] != revision or json.loads(current[1])['source_sha256'] != source_sha256:
+                raise Conflict('核对版本已更新，请刷新后再建任务')
+            yield connection
+
+    def save(self,document_id,revision,config,*,agent_provenance=None):
         if type(revision) is not int or revision<0:raise Conflict('映射修订号无效，请刷新资料')
         source=self.source(document_id);config=validate(source,config)
         result=dict(document_id=document_id,revision=revision+1,source_sha256=source['sha256'],
             saved_at=timestamp(),config=config,assessment=assess(source,config))
+        if agent_provenance is not None:
+            result['agent_provenance']=deepcopy(agent_provenance)
         payload=json.dumps(result,ensure_ascii=False,allow_nan=False)
         with self.connect() as connection:
             existing=connection.execute('SELECT revision,document FROM intake_review_current WHERE document_id=?',(document_id,)).fetchone()

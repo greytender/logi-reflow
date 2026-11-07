@@ -1,6 +1,7 @@
-﻿param([int]$Port = 8766, [switch]$NoBrowser)
+﻿param([int]$Port = 8766, [switch]$NoBrowser, [ValidatePattern('^[a-zA-Z0-9_./?=&%-]*$')][string]$OpenPath = '')
 $ErrorActionPreference = 'Stop'
-$expectedBuild = '20261104-rounded-fit-v1'
+$expectedBuild = '20261106-portable-demo-v1'
+$expectedRoot = [IO.Path]::GetFullPath($PSScriptRoot).TrimEnd([IO.Path]::DirectorySeparatorChar)
 $siteUrl = "http://127.0.0.1:$Port/"
 $ready = $false
 $selectedPort = $null
@@ -15,7 +16,7 @@ for ($candidatePort = $Port; $candidatePort -lt $Port + 10; $candidatePort++) {
     try {
         $response = Invoke-WebRequest -Uri "$($candidateUrl)api/product/status" -UseBasicParsing -TimeoutSec 2
         $productState = $response.Content | ConvertFrom-Json
-        if ($productState.build -eq $expectedBuild) { $selectedPort = $candidatePort; $ready = $true; break }
+        if ($productState.build -eq $expectedBuild -and $productState.instance_root -eq $expectedRoot) { $selectedPort = $candidatePort; $ready = $true; break }
     } catch { }
     $listener = Test-LocalPort $candidatePort
     if (-not $listener) { $selectedPort = $candidatePort; break }
@@ -31,13 +32,14 @@ if (-not $ready) {
     $startupArgs = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', ('"' + (Join-Path $PSScriptRoot 'start.ps1') + '"'), '-Port', $Port)
     $runtimeLogs = Join-Path $PSScriptRoot 'outputs/app-runtime'
     [IO.Directory]::CreateDirectory($runtimeLogs) | Out-Null
-    Start-Process -FilePath powershell.exe -ArgumentList $startupArgs -WorkingDirectory $PSScriptRoot -WindowStyle Hidden -RedirectStandardOutput (Join-Path $runtimeLogs "server-$Port.log") -RedirectStandardError (Join-Path $runtimeLogs "error-$Port.log")
+    $runtimeShell = if (Get-Command pwsh.exe -ErrorAction SilentlyContinue) { 'pwsh.exe' } else { 'powershell.exe' }
+    Start-Process -FilePath $runtimeShell -ArgumentList $startupArgs -WorkingDirectory $PSScriptRoot -WindowStyle Hidden -RedirectStandardOutput (Join-Path $runtimeLogs "server-$Port.log") -RedirectStandardError (Join-Path $runtimeLogs "error-$Port.log")
     for ($attempt = 0; $attempt -lt 40; $attempt++) {
         Start-Sleep -Milliseconds 250
         try {
             $response = Invoke-WebRequest -Uri "$($siteUrl)api/product/status" -UseBasicParsing -TimeoutSec 2
             $productState = $response.Content | ConvertFrom-Json
-            if ($response.StatusCode -eq 200 -and $productState.build -eq $expectedBuild) { $ready = $true; break }
+            if ($response.StatusCode -eq 200 -and $productState.build -eq $expectedBuild -and $productState.instance_root -eq $expectedRoot) { $ready = $true; break }
         } catch { }
     }
     if (-not $ready) { throw '服务未成功启动。请在项目目录执行 python server.py 查看错误。' }
@@ -46,6 +48,7 @@ $runtimeLogs = Join-Path $PSScriptRoot 'outputs/app-runtime'
 [IO.Directory]::CreateDirectory($runtimeLogs) | Out-Null
 $siteUrl | Set-Content -LiteralPath (Join-Path $runtimeLogs 'active-url.txt') -Encoding UTF8
 if ($NoBrowser) { Write-Output $siteUrl; exit 0 }
+if ($OpenPath) { $siteUrl += $OpenPath.TrimStart('/') }
 $chromePath = Join-Path $env:ProgramFiles 'Google/Chrome/Application/chrome.exe'
 if (Test-Path -LiteralPath $chromePath) { Start-Process -FilePath $chromePath -ArgumentList $siteUrl }
 else { Start-Process $siteUrl }

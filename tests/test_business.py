@@ -32,6 +32,10 @@ class BusinessTests(unittest.TestCase):
                 result=pilot.compare(data)
                 route=result['optimized']['routes']['TRUCK_2']
                 self.assertEqual(route['cost'], expected)
+                charged = 0 if km <= 100 else (km-100 if mode == 'incremental' else km)
+                self.assertEqual(route['fee']['chargeable_km'], charged)
+                self.assertEqual(route['fee']['included_km'], 100)
+                self.assertEqual(route['fee']['stop_count'], 1)
                 self.assertEqual(route['fee']['pickup_extra'], 0)
                 self.assertIsNone(route['fee']['tms_billing_km'])
                 self.assertIsNone(route['fee']['actual_gps_km'])

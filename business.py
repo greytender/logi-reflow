@@ -68,17 +68,24 @@ def apply(data, route, vehicle, orders, exact_km):
                     pickup_volume_m3=round(pv, 6), onboard_weight_kg=round(loaded_w, 6),
                     onboard_volume_m3=round(loaded_v, 6))
     km = exact_km
-    base = distance_fee = stop_fee = 0
-    if route['sequence']:
-        if tariff['mode'] == 'linear':
-            base = vehicle['fixed_cost']; distance_fee = km*vehicle['cost_per_km']
+    base = distance_fee = stop_fee = charged = 0
+    linear = tariff['mode'] == 'linear'
+    included = 0 if linear else tariff['included_km']
+    per_km = vehicle['cost_per_km'] if linear else tariff['per_km']
+    per_stop = 0 if linear else tariff['per_stop']
+    stop_count = len(route['sequence'])
+    if stop_count:
+        if linear:
+            base = vehicle['fixed_cost']; charged = km
         else:
-            base = tariff['base']; stop_fee = len(route['sequence'])*tariff['per_stop']
-            charged = max(0, km-tariff['included_km']) if tariff['mode']=='incremental' else (km if km>tariff['included_km'] else 0)
-            distance_fee = charged*tariff['per_km']
+            base = tariff['base']; stop_fee = stop_count*per_stop
+            charged = max(0, km-included) if tariff['mode']=='incremental' else (km if km>included else 0)
+        distance_fee = charged*per_km
     route.update(cost=round(base+distance_fee+stop_fee, 4),
                  fee=dict(mode=tariff['mode'], base=round(base, 4), distance=round(distance_fee, 4),
                           stops=round(stop_fee, 4), pickup_extra=0,
+                          included_km=included, chargeable_km=round(charged, 4), per_km=per_km,
+                          stop_count=stop_count, per_stop=per_stop,
                           estimated_billing_km=round(km, 4), tms_billing_km=None, actual_gps_km=None),
                  peak_weight_kg=round(peak_w, 6), peak_volume_m3=round(peak_v, 6),
                  return_pickup_weight_kg=round(collected_w, 6), return_pickup_volume_m3=round(collected_v, 6))
@@ -113,20 +120,31 @@ def audit_route(data, route, vehicle, orders, exact_km):
                              ('onboard_weight_kg', loaded_w), ('onboard_volume_m3', loaded_v)]:
             equal(stop.get(field), value, field)
         peak_w, peak_v = max(peak_w, loaded_w), max(peak_v, loaded_v)
-    base = mileage = stores = 0
+    base = mileage = stores = charged = 0
     if seq:
         if t['mode'] == 'linear':
             base, mileage = vehicle['fixed_cost'], exact_km*vehicle['cost_per_km']
+            charged = exact_km
         else:
             base, stores = t['base'], len(seq)*t['per_stop']
             if exact_km > t['included_km']:
-                mileage = (exact_km-t['included_km'] if t['mode']=='incremental' else exact_km)*t['per_km']
+                charged = exact_km-t['included_km'] if t['mode']=='incremental' else exact_km
+                mileage = charged*t['per_km']
     fee = route.get('fee', {})
     if fee.get('mode') != t['mode'] or fee.get('tms_billing_km') is not None or fee.get('actual_gps_km') is not None:
         raise ValueError('独立复核失败：计费口径或里程来源')
     for field, value in [('base', base), ('distance', mileage), ('stops', stores),
                          ('pickup_extra', 0), ('estimated_billing_km', exact_km)]:
         equal(fee.get(field), value, '费用明细 '+field)
+    # Previously saved plans predate the billing breakdown. Verify the full
+    # breakdown when present without invalidating those older plans.
+    linear = t['mode'] == 'linear'
+    breakdown = dict(included_km=0 if linear else t['included_km'], chargeable_km=charged,
+                     per_km=vehicle['cost_per_km'] if linear else t['per_km'],
+                     stop_count=len(seq), per_stop=0 if linear else t['per_stop'])
+    if fee.keys() & breakdown.keys():
+        for field, value in breakdown.items():
+            equal(fee.get(field), value, '费用明细 '+field)
     for field, value in [('peak_weight_kg', peak_w), ('peak_volume_m3', peak_v),
                          ('return_pickup_weight_kg', pickups_w), ('return_pickup_volume_m3', pickups_v)]:
         equal(route.get(field), value, field)

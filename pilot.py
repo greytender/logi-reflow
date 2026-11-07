@@ -60,7 +60,7 @@ VEHICLE_FIELDS = ('vehicle_id','max_weight_kg','max_volume_m3','fixed_cost',
 TRAVEL_FIELDS = ('from_id','to_id','distance_km','travel_minutes')
 
 
-def load_bundle(directory):
+def load_bundle(directory, *, limits=None):
     directory = Path(directory)
     settings = json.loads((directory / 'settings.json').read_text(encoding='utf-8-sig'))
     if not isinstance(settings, dict) or set(settings) != {'depot_id','data_kind','travel_source','window_rule'}:
@@ -117,15 +117,16 @@ def load_bundle(directory):
     sources = {name:hashlib.sha256((directory/name).read_bytes()).hexdigest()
                for name in ('orders.csv','vehicles.csv','travel.csv','settings.json')}
     data = dict(settings=settings,orders=orders,vehicles=vehicles,legs=legs,source_sha256=sources)
-    validate(data)
+    validate(data, limits=limits)
     return data
 
 
-def validate(data):
+def validate(data, *, limits=None):
     if 'business' in data:
         business.validate(data['business'], data['orders'])
-    if not 1 <= len(data['orders']) <= MAX_STOPS or not 1 <= len(data['vehicles']) <= MAX_VEHICLES:
-        raise ValueError('离线试算支持1–40个门店、1–10辆车；这不是生产规模承诺')
+    max_stops, max_vehicles = limits or (MAX_STOPS, MAX_VEHICLES)
+    if not 1 <= len(data['orders']) <= max_stops or not 1 <= len(data['vehicles']) <= max_vehicles:
+        raise ValueError(f'试算支持1–{max_stops}个门店、1–{max_vehicles}辆车')
     nodes = {o['id'] for o in data['orders']}; depot = data['settings']['depot_id']
     if depot in nodes: raise ValueError('门店编号不能等于仓库编号')
     nodes.add(depot)

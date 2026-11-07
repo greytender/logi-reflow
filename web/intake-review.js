@@ -5,10 +5,10 @@
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fields = {order_id:'订单编号',store_id:'门店编号',store_name:'门店名称',address:'门店地址',regular_quantity:'常规数量',regular_weight:'常规重量',regular_volume:'常规体积',cold_quantity:'冷链数量',cold_weight:'冷链重量',cold_volume:'冷链体积'};
   const units = {regular_weight:['常规重量单位',['kg','g']],regular_volume:['常规体积单位',['m3','L','cm3']],cold_weight:['冷链重量单位',['kg','g']],cold_volume:['冷链体积单位',['m3','L','cm3']]};
-  const identityLabels = {order_id:'订单编号',store_id:'门店编号',batch_id:'批次编号',note:'身份核对备注'};
+  const identityLabels = {store_id:'门店编号',store_name:'补录名称',address:'补录地址',order_id:'订单编号',batch_id:'批次编号',note:'核对备注'};
   const fieldPattern = new RegExp(Object.keys(fields).join('|'),'g');
   const fieldText = value => String(value ?? '').replace(fieldPattern, key => fields[key]);
-  const state = {source:null,review:null,config:null,baseline:'',page:0,busy:false,generation:0};
+  const state = {source:null,review:null,config:null,baseline:'',page:0,previewPage:0,filter:'all',search:'',busy:false,generation:0};
   let decision = null;
   const host = () => document.getElementById('intakeReview');
   const byId = id => document.getElementById(id);
@@ -60,6 +60,7 @@
     const count=rows().length;
     if(byId('reviewPrevious'))byId('reviewPrevious').disabled=state.busy||state.page===0;
     if(byId('reviewNext'))byId('reviewNext').disabled=state.busy||(state.page+1)*30>=count;
+    if(byId('reviewSave'))byId('reviewSave').disabled=state.busy||(!hasDraft()&&state.review.revision>0);
     const link=byId('reviewExport');
     if(link) {
       const allowed=!state.busy&&!hasDraft()&&state.review.revision>0;link.setAttribute('aria-disabled',String(!allowed));
@@ -69,13 +70,17 @@
   }
   function updateStatus() {
     if(!state.review)return;
-    byId('reviewSaveState').textContent=state.busy?'正在处理…':hasDraft()?'本页更改尚未保存':state.review.revision>0?`已保存草稿 · 修订 ${state.review.revision}`:'初始建议 · 尚未保存';
+    byId('reviewSaveState').textContent=state.busy?'正在处理…':hasDraft()?'有未保存修改':state.review.revision>0?`已保存 · 版本 ${state.review.revision}`:'待核对';
     byId('reviewSaveState').classList.toggle('dirty',hasDraft());
-    byId('reviewCount').textContent=`当前工作表全部 ${rows().length} 个原始行 · 本次草稿选中 ${state.config.rows.length} 行；未截取前12行。`;
+    byId('reviewCount').textContent=`本批选中 ${state.config.rows.length} 行，可按配送范围调整。`;
     byId('reviewAssessmentState').textContent=`${state.review.revision>0?'以下是已保存修订 '+state.review.revision+' 的核对结果。':'以下是初始核对预览，尚未保存或人工确认。'}${hasDraft()?'当前更改尚未保存，结果没有随之重算。':'保存缺项草稿不等于完成业务确认。'}`;
     const factor = unit => ({kg:'kg → kg（×1）',g:'g → kg（÷1000）',m3:'m³ → m³（×1）',L:'L → m³（÷1000）',cm3:'cm³ → m³（÷1000000）'}[unit]||'未确认，不形成换算值');
     byId('reviewUnitBasis').textContent=Object.entries(units).map(([key,[label]])=>label+'：'+factor(state.config.units[key])).join('；');
     controls();
+    window.dispatchEvent(new CustomEvent('intake:review', {detail:{
+      id:state.source.id, revision:state.review.revision, dirty:hasDraft(), selected:state.config.rows.length
+    }}));
+    renderPreview();
   }
   function columnOptions(selected) {
     const sheet=state.source.sheets[state.config.sheet_index];
@@ -89,25 +94,34 @@
     const element=host();if(!element||!state.review)return;
     element.hidden=false;
     const config=state.config;
-    element.innerHTML=`<div class="section-intro"><h2>映射、单位与身份草稿</h2><span id="reviewSaveState" class="save-state"></span></div>
-      <p class="boundary">本页保存核对草稿，始终不能直接求解。原始资料、已保存草稿和未保存填写分别保留；不会自动确认门店、订单或单位，不会生成仓库、车辆、道路或冷链规则。</p>
+    const central=!!state.review.business_rules;
+    element.innerHTML=`<div class="section-intro"><h2>标准订单</h2><span id="reviewSaveState" class="save-state"></span></div>
       <div id="reviewNotice" role="status" aria-live="polite" class="notice" hidden></div>
+      <div class="standard-toolbar"><div class="standard-filters" role="group" aria-label="筛选订单"><button type="button" data-preview-filter="all" aria-pressed="${state.filter==='all'}">全部订单 <span id="previewAllCount"></span></button><button type="button" data-preview-filter="issues" aria-pressed="${state.filter==='issues'}">待处理 <span id="previewIssueCount"></span></button></div><label class="standard-search"><span class="sr-only">搜索门店或地址</span><input id="previewSearch" type="search" value="${esc(state.search)}" placeholder="搜索门店或地址" aria-label="搜索门店或地址"></label></div>
+      <p id="standardSummary" class="section-note"></p><div id="standardOrders" class="table-scroll"></div>
+      <div class="intake-pager standard-pager"><button id="standardPrevious" type="button">上一页</button><span id="standardPage" aria-live="polite"></span><button id="standardNext" type="button">下一页</button></div>
       <form id="reviewEditor" novalidate>
-        <div class="form-grid"><label class="wide">草稿对应工作表<select id="reviewSheet" aria-label="草稿对应工作表">${state.source.sheets.map((s,i)=>`<option value="${i}" ${i===config.sheet_index?'selected':''}>${esc(s.name)} · ${s.rows.length} 原行${s.state!=='visible'?' · 隐藏表':''}</option>`).join('')}</select></label>
-        ${Object.entries(fields).map(([key,label])=>`<label>${label}来源列<select data-review-field="${key}" aria-label="${esc(label)}来源列">${columnOptions(config.fields[key])}</select></label>`).join('')}
-        ${Object.entries(units).map(([key,[label,choices]])=>`<label>${label}<select data-review-unit="${key}" aria-label="${esc(label)}"><option value="">未确认</option>${choices.map(unit=>`<option value="${unit}" ${config.units[key]===unit?'selected':''}>${unit==='m3'?'m³':unit==='cm3'?'cm³':unit}</option>`).join('')}</select></label>`).join('')}
-        <label>本批次编号（可留空）<input aria-label="本批次编号（可留空）" data-review-global="batch_id" value="${esc(config.batch_id)}" maxlength="120"></label>
-        <label>配送日期（可留空）<input aria-label="配送日期（可留空）" data-review-global="delivery_date" type="date" value="${esc(config.delivery_date)}"></label>
-        <label class="wide">整体核对备注<textarea aria-label="整体核对备注" data-review-global="note" maxlength="500">${esc(config.note)}</textarea></label></div>
-        <p id="reviewUnitBasis" class="section-note"></p>
-        <p class="section-note">默认列映射仅为建议，尚待人工核对。列下拉展示原值示例，不能据此推定表头或单位。手填身份优先于明确映射列；订单/门店ID都未填写且未映射时仍为缺项，不把序号或名称自动当作稳定ID。</p>
-        <h3>选择原行并补充身份</h3><p id="reviewCount" class="section-note"></p>
-        <p class="section-note">可翻页查看全部原行（含可能的标题、隐藏或空白行）。勾选才纳入本次草稿，取消勾选仍保留本行身份填写；选择全部非空行时也会包含可能的表头，请自行核对。</p>
-        <div class="intake-pager"><button id="reviewSelectAll" type="button">选中本表全部非空原行</button><button id="reviewSelectNone" type="button">全部不选</button></div>
-        <div id="reviewIdentityRows" class="table-scroll"></div><div class="intake-pager"><button id="reviewPrevious" type="button">上一页身份行</button><span id="reviewPage" aria-live="polite"></span><button id="reviewNext" type="button">下一页身份行</button></div>
-        <div class="intake-pager"><button id="reviewSave" class="primary" type="submit">保存映射与身份草稿</button><button id="reviewReload" type="button">重新读取已保存草稿</button><a id="reviewExport" class="button" download>导出已保存核对JSON</a></div>
+        <details class="review-more" id="reviewBatch"><summary>配送批次与日期 <span id="batchDateHint"></span></summary>
+        <div class="form-grid">
+        <label>配送批次<input aria-label="本批次编号（可留空）" data-review-global="batch_id" value="${esc(config.batch_id)}" maxlength="120" placeholder="如 CS-1106-A"></label>
+        <label>配送日期<input aria-label="配送日期（可留空）" data-review-global="delivery_date" type="date" value="${esc(config.delivery_date)}"></label>
+        </div></details>
+        <details class="review-more" id="reviewMapping"><summary>手动调整字段与单位</summary>
+          <div class="form-grid"><label class="wide">工作表<select id="reviewSheet" aria-label="草稿对应工作表">${state.source.sheets.map((s,i)=>`<option value="${i}" ${i===config.sheet_index?'selected':''}>${esc(s.name)} · ${s.rows.length} 行</option>`).join('')}</select></label>
+          ${Object.entries(units).map(([key,[label,choices]])=>`<label>${label}<select data-review-unit="${key}" aria-label="${esc(label)}"><option value="">未确认</option>${choices.map(unit=>`<option value="${unit}" ${config.units[key]===unit?'selected':''}>${unit==='m3'?'m³':unit==='cm3'?'cm³':unit}</option>`).join('')}</select></label>`).join('')}
+          ${Object.entries(fields).map(([key,label])=>`<label>${label}来源列<select data-review-field="${key}" aria-label="${esc(label)}来源列">${columnOptions(config.fields[key])}</select></label>`).join('')}
+          <label class="wide">核对备注<textarea aria-label="整体核对备注" data-review-global="note" maxlength="500">${esc(config.note)}</textarea></label></div>
+          <p id="reviewUnitBasis" class="section-note"></p>
+        </details>
+        <details class="review-more" id="reviewIdentity"><summary>选择原行与门店编号</summary><p id="reviewCount" class="section-note"></p>
+          <div class="review-row-tools"><button id="reviewSelectAll" type="button">选中全部订单行</button><button id="reviewSelectNone" type="button">取消全部</button></div>
+          <div id="reviewIdentityRows" class="table-scroll"></div><div class="intake-pager"><button id="reviewPrevious" type="button">上一页</button><span id="reviewPage" aria-live="polite"></span><button id="reviewNext" type="button">下一页</button></div>
+        </details>
+        <div class="dispatch-actions review-identity-action"><button id="suggestStoreIds" type="button" disabled>核对本机门店编号</button></div>
+        <div id="identitySuggestions" class="dispatch-result" hidden></div>
+        <div class="review-save-actions"><button id="reviewSave" class="primary" type="submit">保存订单核对</button><a id="continueDispatch" class="button" href="#intakeDispatchSection">继续补齐配送资料</a><details class="review-save-more"><summary>更多操作</summary><div><button id="reviewReload" type="button">恢复已保存版本</button><a id="reviewExport" class="button" download>导出映射记录</a></div></details></div>
       </form>
-      <section class="comparison"><h3>核对结果与缺项</h3><p id="reviewAssessmentState"></p><div id="reviewAssessment"></div></section>
+      <details class="review-more"><summary>核对结果与单元格来源</summary><p id="reviewAssessmentState"></p><div id="reviewAssessment"></div></details>
       <details class="receipt-history"><summary>${state.review.history?.length?'保存历史 · '+state.review.history.length+' 次':'尚无保存历史'}</summary>${(state.review.history||[]).map(h=>`<p>修订 ${h.revision} · ${esc(h.saved_at)} · 来源 ${esc(h.source_sha256)}</p>`).join('')}</details>`;
     element.querySelectorAll('[data-review-field]').forEach(input=>input.addEventListener('change',()=>{
       config.fields[input.dataset.reviewField]=input.value?Number(input.value):null;renderRows();updateStatus();
@@ -116,19 +130,123 @@
     element.querySelectorAll('[data-review-global]').forEach(input=>input.addEventListener('input',()=>{config[input.dataset.reviewGlobal]=input.value;updateStatus();}));
     byId('reviewEditor').addEventListener('submit',event=>{event.preventDefault();save();});
     byId('reviewSheet').addEventListener('change',changeSheet);
-    byId('reviewSelectAll').addEventListener('click',()=>{config.rows=rows().filter(hasContent).map(r=>r.row);renderRows();updateStatus();});
+    byId('reviewSelectAll').addEventListener('click',()=>{
+      const audit=state.source.audit;
+      const isRecognized=audit.profile==='official_order_headers'&&audit.sheet===state.source.sheets[config.sheet_index].name;
+      config.rows=isRecognized?[...audit.source_rows]:rows().filter(hasContent).map(r=>r.row);
+      renderRows();updateStatus();
+    });
     byId('reviewSelectNone').addEventListener('click',()=>{config.rows=[];renderRows();updateStatus();});
     byId('reviewPrevious').addEventListener('click',()=>{state.page--;renderRows();updateStatus();});
     byId('reviewNext').addEventListener('click',()=>{state.page++;renderRows();updateStatus();});
     byId('reviewReload').addEventListener('click',async()=>{if(await canLeave())await open(state.source);});
+    byId('continueDispatch').addEventListener('click',event=>{
+      event.preventDefault();
+      if(hasDraft()||!state.review.revision){message('先保存订单核对，再补齐配送资料。');return;}
+      const section=byId('intakeDispatchSection');section.open=true;section.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+    element.querySelectorAll('[data-preview-filter]').forEach(button=>button.addEventListener('click',()=>{
+      state.filter=button.dataset.previewFilter;state.previewPage=0;renderPreview();
+    }));
+    byId('previewSearch').addEventListener('input',event=>{state.search=event.target.value;state.previewPage=0;renderPreview();});
+    byId('standardPrevious').addEventListener('click',()=>{state.previewPage--;renderPreview();});
+    byId('standardNext').addEventListener('click',()=>{state.previewPage++;renderPreview();});
     renderRows();updateStatus();
+    if(central){
+      byId('reviewSave').textContent='确认订单，继续排车';
+      byId('reviewSave').setAttribute('form','reviewEditor');
+      element.querySelector('.standard-toolbar').before(byId('reviewSave').closest('.review-save-actions'));
+      byId('suggestStoreIds').closest('.review-identity-action').hidden=true;
+      byId('continueDispatch').textContent='进入配送设置';
+      byId('standardSummary').textContent=`${config.rows.length} 笔订单 · ${new Set(Object.values(config.identities).map(i=>i.store_id)).size} 家门店 · 中央仓直配`;
+      const rules=document.createElement('details');rules.className='review-more';
+      rules.innerHTML='<summary>订单整理规则</summary><p>同名门店合并配送；冷链空白为无冷链货物。冷链商品按10×10×10cm计算装箱体积，原表值可逐行查看。</p>';
+      byId('standardSummary').after(rules);
+      const agent=byId('intakeAgent');if(agent)agent.hidden=true;
+    }
+  }
+  function previewProblems(row) {
+    const problems=[];
+    if(!row.identity.store_name)problems.push('缺门店名称');
+    if(!row.identity.address)problems.push('缺地址');
+    const missingUnits=Object.keys(units).filter(key=>!state.config.units[key]);
+    if(missingUnits.length)problems.push('单位待确认');
+    if(row.issues.some(i=>i.code==='cold_unknown'))problems.push('冷链待确认');
+    for(const issue of row.issues)if(issue.code!=='cold_unknown')problems.push(issue.message);
+    if(row.missing.some(k=>/regular|cold/.test(k)&&!k.endsWith('单位')))problems.push('货量有缺项');
+    return [...new Set(problems)];
+  }
+  function renderPreview() {
+    if(!byId('standardOrders')||!state.config)return;
+    // Preview is derived locally from the current edits, not the stale saved assessment.
+    const config=state.config,sheet=state.source.sheets[config.sheet_index];
+    const mapped=(row,key)=>{
+      const cell=row.cells.find(c=>c.column===config.fields[key]);
+      const saved=config.identities[String(row.row)]?.[key];
+      if(saved)return saved;
+      if(cell?.formula&&cell.cache_status==='missing')return null;
+      if(key.endsWith('weight')||key.endsWith('volume')||key.endsWith('quantity')){
+        if(cell?.merged_from)return null;
+      }
+      return cellValue(cell);
+    };
+    const selected=new Set(config.rows);
+    const items=sheet.rows.filter(r=>selected.has(r.row)).map(source=>{
+      const identity={store_name:mapped(source,'store_name'),address:mapped(source,'address'),store_id:mapped(source,'store_id')};
+      const raw=Object.fromEntries(Object.keys(fields).slice(4).map(key=>[key,mapped(source,key)]));
+      const central=state.review.business_rules&&JSON.stringify(config.fields)===JSON.stringify(state.review.config.fields)&&JSON.stringify(config.units)===JSON.stringify(state.review.config.units);
+      if(central){
+        if(['cold_quantity','cold_weight','cold_volume'].every(key=>raw[key]==null)){
+          raw.cold_quantity=0;raw.cold_weight=0;raw.cold_volume=0;
+        }
+        if(typeof raw.cold_quantity==='number')raw.cold_volume=Number((raw.cold_quantity*.001).toFixed(12));
+      }
+      const issues=[],missing=[];
+      for(const [key,v] of Object.entries(raw)){
+        if(v==null||v==='')missing.push(key);
+        else if(typeof v!=='number'||!Number.isFinite(v)||v<0)issues.push({code:'invalid',message:'货量数值需核对'});
+      }
+      if(['cold_quantity','cold_weight','cold_volume'].every(k=>raw[k]==null))issues.push({code:'cold_unknown'});
+      for(const field of Object.keys(fields).slice(4)){
+        const cell=source.cells.find(c=>c.column===config.fields[field]);
+        if(cell?.formula&&(!central||cell.cache_status==='missing'))issues.push({code:'formula',message:cell.cache_status==='missing'?'公式无缓存':'公式缓存待核对'});
+        if(cell?.merged_from)issues.push({code:'merged',message:'合并货量待确认'});
+      }
+      const problems=previewProblems({identity,issues,missing});
+      return {source,identity,raw,problems};
+    });
+    const issueCount=items.filter(r=>r.problems.length).length;
+    const search=state.search.trim().toLocaleLowerCase();
+    const filtered=items.filter(r=>(state.filter!=='issues'||r.problems.length)&&(!search||`${r.identity.store_name??''} ${r.identity.address??''}`.toLocaleLowerCase().includes(search)));
+    const pages=Math.max(1,Math.ceil(filtered.length/20));state.previewPage=Math.min(Math.max(0,state.previewPage),pages-1);
+    const current=filtered.slice(state.previewPage*20,(state.previewPage+1)*20);
+    byId('previewAllCount').textContent=items.length;byId('previewIssueCount').textContent=issueCount;
+    host().querySelectorAll('[data-preview-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.previewFilter===state.filter)));
+    byId('standardSummary').textContent=state.review.business_rules
+      ? `${items.length} 笔订单 · ${new Set(items.map(i=>i.identity.store_id)).size} 家门店 · 中央仓直配`
+      : `${items.length} 条原始订单完整保留 · 重量、体积按整行总量展示${hasDraft()?' · 当前填写预览，尚未保存':''}`;
+    const number=(item,key)=>{
+      const raw=item.raw[key],unit=config.units[key];
+      if(raw==null||raw==='')return '<span class="pending-value">待补</span>';
+      if(typeof raw!=='number'||!Number.isFinite(raw)||raw<0)return `<span class="pending-value">${esc(raw)}</span>`;
+      if(key.endsWith('quantity'))return esc(raw);
+      if(!unit)return `${esc(raw)} <span class="pending-value">单位?</span>`;
+      const factor={kg:1,g:.001,m3:1,L:.001,cm3:.000001}[unit];
+      return esc(Number((raw*factor).toPrecision(10)));
+    };
+    byId('standardOrders').innerHTML=`<table class="standard-order-table"><caption class="sr-only">标准订单，重量单位 kg，体积单位 m³。待补或单位问号表示尚未确认。</caption><thead><tr><th rowspan="2">原行</th><th rowspan="2">门店与地址</th><th colspan="3" scope="colgroup">常规货</th><th colspan="3" scope="colgroup">冷链货</th><th rowspan="2">核对状态</th></tr><tr>${[1,2].map(()=>'<th>数量</th><th>总重 kg</th><th>总体积 m³</th>').join('')}</tr></thead><tbody>${current.length?current.map(item=>`<tr><td>${item.source.row}</td><td><strong>${esc(item.identity.store_name||'名称待补')}</strong><small>${esc(item.identity.address||'地址待补')}</small><details class="standard-source"><summary>查看原格</summary>${Object.entries(fields).map(([key,label])=>{const cell=item.source.cells.find(c=>c.column===config.fields[key]);return `<p>${label} · ${esc(cell?.ref||'未映射')}：${esc(cellValue(cell)??'空白')}${cell?.merged_from?' · 合并自 '+esc(cell.merged_from):''}</p>`;}).join('')}</details></td>${Object.keys(fields).slice(4).map(key=>`<td>${number(item,key)}</td>`).join('')}<td><span class="row-state ${item.problems.length?'pending':''}">${item.problems.length?'待处理':'已对应'}</span><small>${esc(item.problems.slice(0,2).join(' · '))}</small></td></tr>`).join(''):'<tr><td colspan="9" class="standard-empty">没有符合条件的订单。可切换筛选或检查原行选择。</td></tr>'}</tbody></table>`;
+    byId('standardPage').textContent=`第 ${state.previewPage+1} / ${pages} 页 · ${filtered.length} 条`;
+    byId('standardPrevious').disabled=state.busy||state.previewPage===0;
+    byId('standardNext').disabled=state.busy||state.previewPage+1>=pages;
+    byId('batchDateHint').textContent=config.delivery_date||'日期待填';
+    byId('continueDispatch').hidden=hasDraft()||!state.review.revision;
   }
   function renderRows() {
     const config=state.config,pageRows=rows().slice(state.page*30,(state.page+1)*30),selected=new Set(config.rows);
     const mapped=(row,key)=>cellValue(row.cells.find(c=>c.column===config.fields[key]));
     byId('reviewIdentityRows').innerHTML=`<table><caption>身份填写 · 当前工作表第 ${state.page+1} 页，每页最多30个原行</caption><thead><tr><th>纳入</th><th>原行</th><th>名称/地址映射原值</th>${Object.values(identityLabels).map(label=>`<th>${label}</th>`).join('')}</tr></thead><tbody>${pageRows.map(row=>{
       const identity=config.identities[String(row.row)]||{};
-      return `<tr><td><input type="checkbox" data-review-select="${row.row}" ${selected.has(row.row)?'checked':''} aria-label="纳入原行 ${row.row}"></td><td>${row.row}${row.hidden?'（隐藏）':''}</td><td><span>${esc(mapped(row,'store_name')??'未映射/空白')}</span><small class="sku">${esc(mapped(row,'address')??'未映射/空白')}</small></td>${Object.entries(identityLabels).map(([key,label])=>`<td><input data-review-row="${row.row}" data-identity-field="${key}" value="${esc(identity[key]||'')}" maxlength="${key==='note'?500:120}" aria-label="原行 ${row.row} ${label}" placeholder="${key==='order_id'||key==='store_id'?esc(mapped(row,key)==null?'未填写；ID仍待确认':'明确映射值：'+mapped(row,key)):'可留空'}"></td>`).join('')}</tr>`;
+      return `<tr><td><input type="checkbox" data-review-select="${row.row}" ${selected.has(row.row)?'checked':''} aria-label="纳入原行 ${row.row}"></td><td>${row.row}${row.hidden?'（隐藏）':''}</td><td><span>${esc(mapped(row,'store_name')??'名称待补')}</span><small class="sku">${esc(mapped(row,'address')??'地址待补')}</small></td>${Object.entries(identityLabels).map(([key,label])=>`<td><input data-review-row="${row.row}" data-identity-field="${key}" value="${esc(identity[key]||'')}" maxlength="${['address','note'].includes(key)?500:120}" aria-label="原行 ${row.row} ${label}" placeholder="${key==='store_id'?esc(mapped(row,key)||'待确认'):'可留空'}"></td>`).join('')}</tr>`;
     }).join('')}</tbody></table>`;
     byId('reviewPage').textContent=`第 ${state.page+1} / ${Math.max(1,Math.ceil(rows().length/30))} 页 · 全部 ${rows().length} 原行可查看`;
     byId('reviewIdentityRows').querySelectorAll('[data-review-select]').forEach(input=>input.addEventListener('change',()=>{
@@ -169,7 +287,8 @@
     try {
       const review=await api('review',{id,revision:state.review.revision,config:clone(state.config)});
       if(generation!==state.generation||state.source.id!==id)return;
-      state.review=review;state.config=clone(review.config);state.baseline=JSON.stringify(state.config);render();message('草稿已保存，缺项与冲突已更新；尚未创建配送任务。');
+      state.review=review;state.config=clone(review.config);state.baseline=JSON.stringify(state.config);render();message(review.business_rules?'订单已确认，可进入配送设置。':'草稿已保存，缺项与冲突已更新；尚未创建配送任务。');
+      if(review.business_rules){const section=byId('intakeDispatchSection');section.open=true;section.scrollIntoView({behavior:'smooth',block:'start'});}
     } catch(error) {if(generation===state.generation)message(error.message+' 当前填写仍保留；重新读取已保存草稿前会询问是否丢弃。',true);}
     finally {if(generation===state.generation){state.busy=false;updateStatus();}}
   }
@@ -187,5 +306,32 @@
     } catch(error) {if(generation===state.generation)message(error.message+' 原始预览仍可使用；可重新选择资料后重试。',true);return false;}
     finally {if(generation===state.generation){state.busy=false;if(state.review)updateStatus();}}
   }
-  window.intakeReview={open,hasDraft,canLeave,currentSourceId:()=>state.source?.id||null};
+  function applyStoreSuggestions(suggestions,id,revision) {
+    if(state.busy||state.source?.id!==id||state.review?.revision!==revision)return false;
+    const saved=state.review.config;
+    if(state.config.sheet_index!==saved.sheet_index||
+      ['store_name','address','store_id'].some(key=>state.config.fields[key]!==saved.fields[key]))return false;
+    const selected=new Set(state.config.rows);
+    for(const {source_row,store_id} of suggestions) {
+      if(!selected.has(source_row)||!store_id)continue;
+      const previous=state.config.identities[source_row]||{};
+      const original=saved.identities[source_row]||{};
+      if(!previous.store_id&&previous.store_name===original.store_name&&previous.address===original.address) {
+        state.config.identities[source_row]={...previous,store_id};
+      }
+    }
+    render();
+    message('建议编号已填入。核对后保存订单。');
+    byId('reviewSave').focus();
+    return true;
+  }
+  function snapshot() {
+    return state.review?{id:state.source.id,revision:state.review.revision,config:clone(state.config),source_sha256:state.source.sha256}:null;
+  }
+  function acceptAgent(review,baseDigest) {
+    if(state.busy||review.document_id!==state.source?.id||JSON.stringify(state.config)!==baseDigest)return false;
+    state.review=review;state.config=clone(review.config);state.baseline=JSON.stringify(state.config);state.previewPage=0;
+    render();message('整理结果已保存，原表保持完整。待确认项可继续补充。');return true;
+  }
+  window.intakeReview={open,hasDraft,canLeave,applyStoreSuggestions,snapshot,acceptAgent,currentSourceId:()=>state.source?.id||null};
 })();
