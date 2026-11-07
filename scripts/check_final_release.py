@@ -56,6 +56,30 @@ def check_launchers(archive):
                 finally:
                     subprocess.run(['taskkill','/PID',str(process.pid),'/T','/F'],capture_output=True)
                     process.wait(timeout=15)
+        # Exercise a real Python startup failure, then dismiss the batch PAUSE.
+        # The backup shell must still be alive because it is explicitly /k.
+        blocked=extraction/'not-a-data-directory'
+        blocked.write_text('startup failure fixture',encoding='ascii')
+        launcher=app/'备用启动.cmd'
+        command=f'"{launcher}" --data-dir "{blocked}"'
+        error_log=extraction/'backup-failure.log'
+        with error_log.open('w',encoding='utf-8') as output:
+            process=subprocess.Popen(f'"{os.environ["COMSPEC"]}" /d /s /c "{command}"',cwd=extraction,env=env,stdin=subprocess.PIPE,stdout=output,stderr=subprocess.STDOUT)
+            try:
+                deadline=time.monotonic()+15
+                startup_log=app/'runtime/data/startup-error.log'
+                while not startup_log.exists():
+                    assert process.poll() is None, 'Backup console closed after startup failure'
+                    assert time.monotonic()<deadline, 'Startup failure log missing'
+                    time.sleep(.1)
+                assert 'FileExistsError' in startup_log.read_text(encoding='utf-8')
+                process.stdin.write(b'\r\n');process.stdin.flush()
+                time.sleep(.5)
+                assert process.poll() is None, 'Backup console closed after dismissing the error pause'
+                checks.append('Forced startup failure writes a traceback log; backup console remains open after the error pause is dismissed')
+            finally:
+                subprocess.run(['taskkill','/PID',str(process.pid),'/T','/F'],capture_output=True)
+                process.wait(timeout=15)
     report=dict(passed=True,sha256=sha256(archive.read_bytes()).hexdigest(),checks=checks)
     (ROOT/'outputs/releases/launcher-check.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps(report,ensure_ascii=True,indent=2))

@@ -132,4 +132,18 @@ def main():
         try: service.serve_forever()
         except KeyboardInterrupt: pass
 
-if __name__=='__main__': main()
+if __name__=='__main__':
+    try:
+        main()
+    except Exception:
+        import traceback
+        error=traceback.format_exc()
+        log=ROOT/'runtime/data/startup-error.log'
+        try:
+            log.parent.mkdir(parents=True,exist_ok=True)
+            log.write_text(error,encoding='utf-8')
+            print(f'Startup failed. Error log: {log}',file=sys.stderr,flush=True)
+        except OSError:
+            pass
+        print(error,file=sys.stderr,flush=True)
+        sys.exit(1)

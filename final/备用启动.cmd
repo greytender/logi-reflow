@@ -2,4 +2,5 @@
 setlocal
 cd /d "%~dp0"
 echo Starting the local demo. Open the URL printed below in Edge or Chrome.
-call "%~dp0start-demo.cmd" --no-browser %*
+echo This console stays open even if the service stops or startup fails.
+"%ComSpec%" /d /k ""%~dp0start-demo.cmd" --no-browser %*"
