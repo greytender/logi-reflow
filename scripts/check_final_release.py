@@ -19,6 +19,47 @@ import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
 
+def check_launchers(archive):
+    checks=[]
+    with tempfile.TemporaryDirectory(prefix='启动验收 空格 ') as temporary:
+        extraction=Path(temporary)
+        with zipfile.ZipFile(archive) as package: package.extractall(extraction)
+        app=extraction/'城配续航'
+        env=dict(os.environ)
+        env['PATH']=str(Path(os.environ['SystemRoot'])/'System32')
+        for key in list(env):
+            if key.startswith(('PYTHON','CONDA','VIRTUAL_ENV')):env.pop(key)
+        client=build_opener(ProxyHandler({}))
+        launchers=[app/'打开城配续航.cmd',app/'备用启动.cmd',ROOT/'打开城配续航.cmd']
+        for index,launcher in enumerate(launchers):
+            assert launcher.read_bytes().isascii(), 'Launcher content depends on the Windows code page'
+            with socket.socket() as probe:
+                probe.bind(('127.0.0.1',0));port=probe.getsockname()[1]
+            command=f'"{launcher}" --no-browser --port {port} --data-dir "{extraction / ("work data "+str(index))}"'
+            log=extraction/f'launcher-{index}.log'
+            with log.open('w',encoding='utf-8') as output:
+                process=subprocess.Popen(f'"{os.environ["COMSPEC"]}" /d /s /c "{command}"',cwd=extraction,env=env,stdout=output,stderr=subprocess.STDOUT)
+                try:
+                    deadline=time.monotonic()+30
+                    while True:
+                        try:
+                            with client.open(f'http://127.0.0.1:{port}/',timeout=2) as response:
+                                assert '城配续航' in response.read().decode('utf-8')
+                            break
+                        except OSError:
+                            if process.poll() is not None or time.monotonic()>deadline:
+                                raise AssertionError(log.read_text(encoding='utf-8',errors='replace'))
+                            time.sleep(.2)
+                    with client.open(f'http://127.0.0.1:{port}/api/multiwarehouse/tasks',timeout=15) as response:
+                        assert json.load(response)['tasks'][0]['orders']==103
+                    checks.append(f'{launcher.name}: clean CMD startup, bundled Python, 103-store batch, ASCII-safe command content')
+                finally:
+                    subprocess.run(['taskkill','/PID',str(process.pid),'/T','/F'],capture_output=True)
+                    process.wait(timeout=15)
+    report=dict(passed=True,sha256=sha256(archive.read_bytes()).hexdigest(),checks=checks)
+    (ROOT/'outputs/releases/launcher-check.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+    print(json.dumps(report,ensure_ascii=True,indent=2))
+
 class References(HTMLParser):
     def __init__(self): super().__init__(); self.urls=[]
     def handle_starttag(self,tag,attrs):
@@ -109,9 +150,13 @@ def check(archive):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--archive',type=Path)
+    parser.add_argument('--launchers-only',action='store_true')
     args=parser.parse_args()
     if args.archive is None:
         from build_final_release import build
         args.archive=ROOT/'outputs/releases/城配续航-决赛离线演示-Windows-x64.zip'
         build(args.archive)
-    check(args.archive.resolve())
+    if args.launchers_only:check_launchers(args.archive.resolve())
+    else:
+        check(args.archive.resolve())
+        check_launchers(args.archive.resolve())
